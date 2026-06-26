@@ -7,7 +7,7 @@ import {
   Award, Users, Wrench, Leaf, TrendingUp, Sun,
   ChevronRight, Phone, Landmark, Flame, Car, Sparkles,
   TreePine, Lightbulb, Smartphone, Mail, MapPin, Lock,
-  HardHat, FlaskConical
+  HardHat, FlaskConical, MessageCircle, X, Plus
 } from "lucide-react";
 
 import heroImg    from "@assets/feceb23a-4a60-414a-943f-282e1c2ab911_1782452676920.jpeg";
@@ -71,6 +71,72 @@ const realizations = [
   { img: proj5Img, label: "MOBILITÉ",           title: "Tricycle Cargo Électrique" },
   { img: proj6Img, label: "TRAITEMENT EAU",    title: "Système de Purification" },
 ];
+
+// ─── Floating Action Button ──────────────────────────────────────────────────
+
+function FloatingActionButton() {
+  const [open, setOpen] = useState(false);
+
+  const actions = [
+    {
+      label: "WhatsApp",
+      href: "https://wa.me/237697221970",
+      bg: "#25D366",
+      icon: <MessageCircle size={18} />,
+    },
+    {
+      label: "Donner un Avis",
+      href: "#avis",
+      bg: "#F57C00",
+      icon: <Star size={18} />,
+    },
+    {
+      label: "Nous Contacter",
+      href: "#contact",
+      bg: "#1a2b4a",
+      icon: <Mail size={18} />,
+    },
+  ];
+
+  return (
+    <div className="fixed bottom-6 right-5 z-50 flex flex-col items-end gap-3">
+      {/* Action items */}
+      <div
+        className="flex flex-col items-end gap-2 transition-all duration-300"
+        style={{
+          opacity: open ? 1 : 0,
+          transform: open ? "translateY(0)" : "translateY(12px)",
+          pointerEvents: open ? "auto" : "none",
+        }}
+      >
+        {actions.map((a, i) => (
+          <a
+            key={i}
+            href={a.href}
+            target={a.href.startsWith("http") ? "_blank" : undefined}
+            rel={a.href.startsWith("http") ? "noopener noreferrer" : undefined}
+            onClick={() => setOpen(false)}
+            className="flex items-center gap-2 rounded-full px-4 py-2 text-white text-sm font-semibold shadow-lg hover:opacity-90 transition-opacity"
+            style={{ backgroundColor: a.bg }}
+          >
+            {a.icon}
+            {a.label}
+          </a>
+        ))}
+      </div>
+
+      {/* Main FAB button */}
+      <button
+        onClick={() => setOpen((o) => !o)}
+        className="w-14 h-14 rounded-full text-white flex items-center justify-center shadow-xl hover:scale-105 transition-transform"
+        style={{ backgroundColor: "#F57C00" }}
+        aria-label="Menu rapide"
+      >
+        {open ? <X size={24} /> : <Plus size={24} />}
+      </button>
+    </div>
+  );
+}
 
 // ─── Component ───────────────────────────────────────────────────────────────
 
@@ -863,6 +929,7 @@ export default function Home() {
       </section>
 
       <Footer />
+      <FloatingActionButton />
     </div>
   );
 }
