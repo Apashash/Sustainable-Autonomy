@@ -102,7 +102,6 @@ function FloatingActionButton() {
 
   return (
     <div className="fixed bottom-6 right-5 z-50 flex flex-col items-end gap-3">
-      {/* Action items */}
       <div
         className="flex flex-col items-end gap-2 transition-all duration-300"
         style={{
@@ -126,8 +125,6 @@ function FloatingActionButton() {
           </a>
         ))}
       </div>
-
-      {/* Main FAB button */}
       <button
         onClick={() => setOpen((o) => !o)}
         className="w-14 h-14 rounded-full text-white flex items-center justify-center shadow-xl hover:scale-105 transition-transform"
@@ -140,7 +137,7 @@ function FloatingActionButton() {
   );
 }
 
-// ─── Component ───────────────────────────────────────────────────────────────
+// ─── Testimonials Carousel ───────────────────────────────────────────────────
 
 function TestimonialsCarousel() {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -152,10 +149,9 @@ function TestimonialsCarousel() {
 
   const items = [...testimonials, ...testimonials, ...testimonials];
 
-  const CARD_W = 320; // card width + gap
+  const CARD_W = 320;
   const TOTAL = testimonials.length * CARD_W;
 
-  // Auto-scroll via requestAnimationFrame
   const offset = useRef(0);
   const rafId = useRef<number | null>(null);
 
@@ -167,7 +163,6 @@ function TestimonialsCarousel() {
     rafId.current = requestAnimationFrame(tick);
   };
 
-  // sync offset with actual scrollLeft when manually scrolling
   const startAuto = () => {
     if (rafId.current) cancelAnimationFrame(rafId.current);
     if (containerRef.current) offset.current = containerRef.current.scrollLeft;
@@ -180,13 +175,11 @@ function TestimonialsCarousel() {
     setPaused(true);
   };
 
-  // Start auto-scroll on mount
   React.useEffect(() => {
     startAuto();
     return () => { if (rafId.current) cancelAnimationFrame(rafId.current); };
   }, []);
 
-  // Pointer drag handlers (works for both mouse and touch via pointer events)
   const onPointerDown = (e: React.PointerEvent) => {
     if (!containerRef.current) return;
     stopAuto();
@@ -246,6 +239,14 @@ function TestimonialsCarousel() {
   );
 }
 
+// ─── Section label helper ─────────────────────────────────────────────────────
+
+function SectionLabel({ color = "#F57C00", children }: { color?: string; children: React.ReactNode }) {
+  return <p className="sr-up font-bold text-xs tracking-widest uppercase mb-2" style={{ color }}>{children}</p>;
+}
+
+// ─── Page ────────────────────────────────────────────────────────────────────
+
 export default function Home() {
   useScrollReveal();
   const [form, setForm] = useState({ nom: "", tel: "", email: "", service: "", message: "" });
@@ -253,8 +254,6 @@ export default function Home() {
   return (
     <div className="bg-white text-gray-800 font-sans">
       <Navbar />
-
-      {/* spacer for fixed bars — mobile 2-line topbar ≈ 96px, desktop 1-line ≈ 88px */}
       <div className="h-24 sm:h-[5.5rem]" />
 
       {/* ══ HERO ═══════════════════════════════════════════════════════════ */}
@@ -267,7 +266,6 @@ export default function Home() {
           minHeight: "560px",
         }}
       >
-        {/* Dark overlay for readability */}
         <div className="absolute inset-0 bg-[#1a2b4a]/65" />
         <div className="relative z-10 max-w-7xl mx-auto px-4 py-20 lg:py-28 flex flex-col justify-center min-h-[560px]">
           <h1 className="font-bold leading-snug mb-5 text-white tracking-normal" style={{ fontSize: "clamp(1.6rem,3.5vw,2.8rem)" }}>
@@ -294,7 +292,7 @@ export default function Home() {
         <div className="max-w-7xl mx-auto px-4">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div>
-              <p className="sr-left text-[#F57C00] font-bold text-xs tracking-widest uppercase mb-2">VISION STRATÉGIQUE</p>
+              <SectionLabel>VISION STRATÉGIQUE</SectionLabel>
               <h2 className="sr-left sr-d1 text-2xl md:text-3xl font-bold text-[#1a2b4a] mb-4">L'Ère de la Transformation</h2>
               <p className="sr-left sr-d2 text-gray-600 text-sm leading-relaxed mb-6">
                 Sous la direction de <strong>M. Ahmed NCHANGE</strong>, Ingénieur en Procédés des Énergies Renouvelables et Trader-Broker International, et son équipe chevronnée, <strong>PADESS Engineering SARL</strong> ne se contente pas de construire : nous créons des systèmes de vie.
@@ -328,31 +326,15 @@ export default function Home() {
       <section className="py-14 bg-white">
         <div className="max-w-7xl mx-auto px-4">
           <div className="text-center mb-10">
-            <p className="sr-up text-[#F57C00] font-bold text-xs tracking-widest uppercase mb-2">VITRINE PRIMAIRE</p>
+            <SectionLabel>VITRINE PRIMAIRE</SectionLabel>
             <h2 className="sr-up sr-d1 text-2xl md:text-3xl font-bold text-[#1a2b4a]">Les Piliers de la Disruption</h2>
           </div>
           <div className="grid grid-cols-2 gap-5">
             {[
-              {
-                icon: <Landmark size={28} />, bg: "#4CAF50",
-                title: "Autonomie Territoriale",
-                desc: "Systèmes souverains clé-en-main : habitat, énergie, eau. Chaque mètre carré devient une unité productive.",
-              },
-              {
-                icon: <TrendingUp size={28} />, bg: "#F57C00",
-                title: "Trading Stratégique",
-                desc: "Broker international : chaînes d'approvisionnement sécurisées, matières premières africaines valorisées mondialmente.",
-              },
-              {
-                icon: <FlaskConical size={28} />, bg: "#8B1A1A",
-                title: "Ingénierie du Futur (R&D)",
-                desc: "Pionniers de H.E.R.O.® et PLASTI-BUILD® — le déchet devient ressource éternelle.",
-              },
-              {
-                icon: <Recycle size={28} />, bg: "#1565C0",
-                title: "Zéro Déchet, 100% Valeur",
-                desc: "Plastiques, biodéchets, métaux — transformés en actifs industriels à haute performance.",
-              },
+              { icon: <Landmark size={28} />, bg: "#4CAF50", title: "Autonomie Territoriale", desc: "Systèmes souverains clé-en-main : habitat, énergie, eau. Chaque mètre carré devient une unité productive." },
+              { icon: <TrendingUp size={28} />, bg: "#F57C00", title: "Trading Stratégique", desc: "Broker international : chaînes d'approvisionnement sécurisées, matières premières africaines valorisées mondialmente." },
+              { icon: <FlaskConical size={28} />, bg: "#8B1A1A", title: "Ingénierie du Futur (R&D)", desc: "Pionniers de H.E.R.O.® et PLASTI-BUILD® — le déchet devient ressource éternelle." },
+              { icon: <Recycle size={28} />, bg: "#1565C0", title: "Zéro Déchet, 100% Valeur", desc: "Plastiques, biodéchets, métaux — transformés en actifs industriels à haute performance." },
             ].map((p, i) => (
               <div key={i} className={`sr-scale sr-d${i + 1} rounded-2xl p-4 sm:p-6 flex flex-col gap-2 sm:gap-3 shadow-md hover:shadow-lg transition-shadow`} style={{ backgroundColor: p.bg }}>
                 <div className="text-white">{p.icon}</div>
@@ -390,7 +372,7 @@ export default function Home() {
       <section id="services" className="py-16 bg-white">
         <div className="max-w-7xl mx-auto px-4">
           <div className="text-center mb-10">
-            <p className="sr-up text-[#F57C00] font-bold text-xs tracking-widest uppercase mb-2">NOS EXPERTISES</p>
+            <SectionLabel>NOS EXPERTISES</SectionLabel>
             <h2 className="sr-up sr-d1 text-2xl md:text-3xl font-bold text-[#1a2b4a]">
               Solutions d'Ingénierie Complètes<br />
               <span className="text-[#F57C00]">pour Particuliers & Entreprises</span>
@@ -413,31 +395,119 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ══ ARCHITECTURE HAUTE COUTURE ══════════════════════════════════════ */}
+      {/* ══ PLASTI-BUILD® & H.E.R.O.® ═══════════════════════════════════════ */}
+      <section id="plastibuild" className="py-16 bg-white">
+        <div className="max-w-7xl mx-auto px-4">
+          <div className="text-center mb-10">
+            <SectionLabel>PLASTI-BUILD® & H.E.R.O.®</SectionLabel>
+            <h2 className="sr-up sr-d1 text-2xl md:text-3xl font-bold text-[#1a2b4a]">La Révolution de la Rapidité Fulgurante</h2>
+            <p className="sr-up sr-d2 text-gray-500 text-sm mt-3 max-w-2xl mx-auto">
+              Le concept <strong>H.E.R.O.® (Habitation Écologique à Rendement Optimisé)</strong> redéfinit la vitesse de construction mondiale par l'innovation des matériaux.
+            </p>
+          </div>
+
+          {/* Hero images */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-10">
+            <div className="relative rounded-xl overflow-hidden shadow-lg group">
+              <img src={equipImg} alt="Équipements PADESS" className="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-500" />
+              <div className="absolute inset-0 bg-[#1a2b4a]/60 flex flex-col justify-end p-6">
+                <h3 className="text-white font-bold text-xl">Équipements Industriels</h3>
+                <p className="text-white/80 text-sm mt-1">Machines et outils professionnels de dernière génération pour chaque chantier.</p>
+              </div>
+            </div>
+            <div className="relative rounded-xl overflow-hidden shadow-lg group">
+              <img src={matImg} alt="Matériaux PADESS" className="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-500" />
+              <div className="absolute inset-0 bg-[#4CAF50]/70 flex flex-col justify-end p-6">
+                <h3 className="text-white font-bold text-xl">Matériaux Écologiques PLASTI-BUILD®</h3>
+                <p className="text-white/80 text-sm mt-1">Briques certifiées en composite plastique-sable : hydrofuges, ignifuges et parasismiques.</p>
+              </div>
+            </div>
+          </div>
+
+          {/* Feature cards */}
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
+            {[
+              { icon: <HardHat size={24} />, color: "#4CAF50", title: "Technologie LEGO-BLOCK", desc: "Emboîtement mécanique mâle-femelle sans mortier classique" },
+              { icon: <Zap size={24} />, color: "#F57C00", title: "5× Plus Rapide", desc: "Temps de chantier divisé par 5 — isolation thermique native" },
+              { icon: <Shield size={24} />, color: "#8B1A1A", title: "3× Plus Résistant", desc: "Plus robuste que le béton, hydrofuge, ignifuge, parasismique" },
+              { icon: <Leaf size={24} />, color: "#1565C0", title: "Assainissement Biofil", desc: "Biocompostage intégré — zéro vidange à vie, zéro odeur" },
+            ].map((f, i) => (
+              <div key={i} className="bg-gray-50 rounded-xl p-4 text-center border border-gray-100 flex flex-col items-center">
+                <div className="mb-2" style={{ color: f.color }}>{f.icon}</div>
+                <h4 className="font-bold text-xs mb-1" style={{ color: f.color }}>{f.title}</h4>
+                <p className="text-xs text-gray-500 leading-relaxed">{f.desc}</p>
+              </div>
+            ))}
+          </div>
+
+          {/* Projection box */}
+          <div className="bg-[#1a2b4a] rounded-xl p-6 flex items-start gap-4 mb-10">
+            <Lightbulb size={22} className="text-[#F57C00] shrink-0 mt-0.5" />
+            <div>
+              <h4 className="font-bold text-[#F57C00] text-sm uppercase tracking-wide mb-1">Projection Chantier</h4>
+              <p className="text-white/80 text-sm leading-relaxed">L'érection d'une cité ouvrière ou d'un complexe scolaire de <strong className="text-white">20 bâtiments en seulement 30 jours</strong>, avec une isolation thermique native supprimant le besoin de climatisation énergivore.</p>
+            </div>
+          </div>
+
+          {/* PLASTI-BUILD photo galleries */}
+          <div className="overflow-hidden">
+            <p className="text-center text-[#4CAF50] font-bold text-xs tracking-widest uppercase mb-4">NOS RÉALISATIONS PLASTI-BUILD®</p>
+            <AutoScrollRow direction="left" images={[
+              { src: "/realisations/plastibuild-team.jpeg",           label: "Équipe PLASTI-BUILD® — Chantier" },
+              { src: "/realisations/paving-cobblestone.jpeg",         label: "Pavage Recyclé — Allée" },
+              { src: "/realisations/paving-colorful-house.jpeg",      label: "Pavage Hexagonal Multicolore" },
+              { src: "/realisations/paving-closeup.jpeg",             label: "Pavé Recyclé — Détail Texture" },
+              { src: "/realisations/roof-tiles-display.jpeg",         label: "Tuiles Plastique — Stand Exposition" },
+              { src: "/realisations/roof-tiles-on-house.jpeg",        label: "Toiture PLASTI-BUILD® Installée" },
+              { src: "/realisations/roof-tiles-closeup.jpeg",         label: "Tuiles Multicolores Closeup" },
+              { src: "/realisations/roof-tiles-eco.jpeg",             label: "Tuiles Écologiques — Alliage Plastique-Sable" },
+              { src: "/realisations/factory-workers.jpeg",            label: "Atelier de Production PADESS" },
+              { src: "/realisations/waste-raw-material.jpeg",         label: "Matière Première — Déchets Valorisés" },
+            ]} />
+            <AutoScrollRow direction="right" images={[
+              { src: "/realisations/toilet-gray-speckled.jpeg",      label: "Toilette PLASTI-BUILD® Gris Granit" },
+              { src: "/realisations/toilet-black-chunks.jpeg",        label: "Toilette PLASTI-BUILD® Noir Terrazzo" },
+              { src: "/realisations/toilet-set-room.jpeg",            label: "Collection Sanitaires Recyclés" },
+              { src: "/realisations/toilet-colorful-green.jpeg",      label: "Gamme Couleurs PLASTI-BUILD®" },
+              { src: "/realisations/toilet-white.jpeg",               label: "Toilette PLASTI-BUILD® Blanc" },
+              { src: "/realisations/toilet-orange-wallhung.jpeg",     label: "Toilette Suspendue Orange" },
+              { src: "/realisations/toilet-multicolor-set.jpeg",      label: "Gamme Multicolore Sanitaires" },
+              { src: "/realisations/bathroom-set-gray.jpeg",          label: "Collection Salle de Bain Complète" },
+              { src: "/realisations/bathroom-vanity-collection.jpeg", label: "Meubles Vasque PADESS" },
+              { src: "/realisations/bathroom-pods.jpeg",              label: "Modules Sanitaires Intégrés" },
+              { src: "/realisations/sink-closeup.jpeg",               label: "Évier PADESS — Détail Texture" },
+            ]} />
+            <AutoScrollRow direction="left" images={[
+              { src: "/realisations/kitchen-teal-pink.jpeg",     label: "Cuisine PLASTI-BUILD® Design" },
+              { src: "/realisations/kitchen-sink-unit.jpeg",     label: "Évier & Plan de Travail Recyclé" },
+              { src: "/realisations/kitchen-counter.jpeg",       label: "Plan de Travail Époxy Granit" },
+              { src: "/realisations/kitchen-gray-premium.jpeg",  label: "Plan de Travail Premium Gris" },
+              { src: "/realisations/kitchen-green-white.jpeg",   label: "Cuisine Verte PLASTI-BUILD®" },
+              { src: "/realisations/kitchen-white-yellow.jpeg",  label: "Cuisine Blanche & Accents Jaunes" },
+              { src: "/realisations/factory-brouettes.jpeg",     label: "Brouettes Recyclées — Production" },
+              { src: "/realisations/factory-brouettes-2.jpeg",   label: "Ligne de Production Brouettes" },
+            ]} />
+          </div>
+        </div>
+      </section>
+
+      {/* ══ ARCHITECTURE & ART ÉPOXY ═════════════════════════════════════════ */}
       <section id="architecture" className="py-16 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4">
           <div className="text-center mb-10">
-            <p className="sr-up text-[#F57C00] font-bold text-xs tracking-widest uppercase mb-2">ARCHITECTURE & DESIGN</p>
+            <SectionLabel>ARCHITECTURE & DESIGN</SectionLabel>
             <h2 className="sr-up sr-d1 text-2xl md:text-3xl font-bold text-[#1a2b4a]">Haute Couture & Art Époxy</h2>
-            <p className="sr-up sr-d2 text-gray-500 text-sm mt-3 max-w-2xl mx-auto">L'espace devient une œuvre d'art fonctionnelle. Nous fusionnons la solidité structurelle avec une esthétique de palace.</p>
+            <p className="sr-up sr-d2 text-gray-500 text-sm mt-3 max-w-2xl mx-auto">
+              L'espace devient une œuvre d'art fonctionnelle. Nous fusionnons la solidité structurelle avec une esthétique de palace.
+            </p>
           </div>
+
+          {/* 3 service cards */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
             {[
-              {
-                icon: <Landmark size={28} />, color: "#1a2b4a",
-                title: "Plafonds Artistiques (BA13)",
-                desc: "Sculptures géométriques, lumières indirectes — une atmosphère de palace sur mesure.",
-              },
-              {
-                icon: <Sparkles size={28} />, color: "#F57C00",
-                title: 'Sols Époxy "Miroir"',
-                desc: "Finition marbrée monolithique : incassable, antibactérienne, d'un éclat éternel.",
-              },
-              {
-                icon: <TreePine size={28} />, color: "#4CAF50",
-                title: "Ébénisterie Bois & Époxy",
-                desc: 'River Tables et mobiliers de luxe — essences nobles fusionnées à la résine cristalline.',
-              },
+              { icon: <Landmark size={28} />, color: "#1a2b4a", title: "Plafonds Artistiques (BA13)", desc: "Sculptures géométriques, lumières indirectes — une atmosphère de palace sur mesure." },
+              { icon: <Sparkles size={28} />, color: "#F57C00", title: 'Sols Époxy "Miroir"', desc: "Finition marbrée monolithique : incassable, antibactérienne, d'un éclat éternel." },
+              { icon: <TreePine size={28} />, color: "#4CAF50", title: "Ébénisterie Bois & Époxy", desc: 'River Tables et mobiliers de luxe — essences nobles fusionnées à la résine cristalline.' },
             ].map((a, i) => (
               <div key={i} className={`sr-up sr-d${i + 1} rounded-xl shadow-sm p-6 hover:shadow-md transition-shadow`} style={{ backgroundColor: a.color }}>
                 <div className="mb-3 text-white">{a.icon}</div>
@@ -446,51 +516,46 @@ export default function Home() {
               </div>
             ))}
           </div>
-          <div className="bg-[#1a2b4a] rounded-xl p-6 flex items-start gap-4">
+
+          {/* Projection VIP */}
+          <div className="bg-[#1a2b4a] rounded-xl p-6 flex items-start gap-4 mb-10">
             <Lightbulb size={22} className="text-[#F57C00] shrink-0 mt-0.5" />
             <div>
               <h4 className="font-bold text-[#F57C00] text-sm uppercase tracking-wide mb-1">Projection VIP</h4>
               <p className="text-white/80 text-sm leading-relaxed">Une résidence VIP où le mobilier semble flotter sur un sol de quartz liquide, chaque pièce étant numérotée et personnalisée selon l'identité du propriétaire.</p>
             </div>
           </div>
-        </div>
-      </section>
 
-      {/* ══ VIDÉOS TERRAIN ══════════════════════════════════════════════════ */}
-      <section className="py-14 bg-[#1a2b4a]">
-        <div className="max-w-7xl mx-auto px-4">
-          <div className="text-center mb-8">
-            <p className="sr-up text-[#F57C00] font-bold text-xs tracking-widest uppercase mb-2">NOS TRAVAUX EN ACTION</p>
-            <h2 className="sr-up sr-d1 text-2xl md:text-3xl font-bold text-white">Voir par vous-même</h2>
-          </div>
-
-          {/* Vidéos */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
-            {["/media/video1.mp4", "/media/video2.mp4", "/media/video3.mp4"].map((src, i) => (
-              <div key={i} className="rounded-xl overflow-hidden shadow-lg aspect-video bg-black">
-                <video
-                  className="w-full h-full object-cover"
-                  autoPlay
-                  muted
-                  loop
-                  playsInline
-                >
-                  <source src={src} type="video/mp4" />
-                </video>
-              </div>
-            ))}
-          </div>
-
-          {/* Photo Before/After */}
-          <div className="rounded-xl overflow-hidden shadow-lg max-w-xl mx-auto">
-            <img
-              src="/media/before-after.jpeg"
-              alt="Avant / Après — Sol Époxy PADESS"
-              className="w-full object-cover"
-            />
-            <div className="bg-[#F57C00] text-white text-center py-2 text-xs font-bold tracking-widest uppercase">
-              Avant / Après — Sol Époxy PADESS
-            </div>
+          {/* Architecture photo galleries */}
+          <div className="overflow-hidden">
+            <p className="text-center text-[#8B1A1A] font-bold text-xs tracking-widest uppercase mb-4">NOS RÉALISATIONS ART ÉPOXY</p>
+            <AutoScrollRow direction="left" images={[
+              { src: "/realisations/padess-showroom-epoxy.jpeg",     label: "Showroom PADESS — Art Époxy" },
+              { src: "/realisations/epoxy-living-blue-wood.jpeg",    label: "Salon Époxy Bois & Bleu Prestige" },
+              { src: "/realisations/epoxy-dining-green-wood.jpeg",   label: "Salle à Manger River Table Verte" },
+              { src: "/realisations/epoxy-ocean-furniture.jpeg",     label: "River Table Océan — Sur Mesure" },
+              { src: "/realisations/epoxy-bedroom.jpeg",             label: "Art Époxy — Chambre Prestige" },
+              { src: "/realisations/epoxy-green-geometric.jpeg",     label: "Sol Époxy Géométrique Vert" },
+              { src: "/realisations/padess-reception-stars.jpeg",    label: "Réception PADESS — Sol Étoilé" },
+              { src: "/realisations/padess-meeting-room.jpeg",       label: "Salle de Réunion PADESS Époxy" },
+              { src: "/realisations/epoxy-lamps.jpeg",               label: "Lampes Art Époxy PADESS" },
+              { src: "/realisations/epoxy-dome-lamp.jpeg",           label: "Dôme Époxy Fleurs — Art de Prestige" },
+            ]} />
+            <AutoScrollRow direction="right" images={[
+              { src: "/realisations/epoxy-team-applying.jpeg",   label: "Équipe PADESS — Application Sol Époxy" },
+              { src: "/realisations/epoxy-dark-team.jpeg",       label: "Application Sol Époxy Prestige" },
+              { src: "/realisations/epoxy-large-team.jpeg",      label: "Chantier Époxy — Grande Surface" },
+              { src: "/realisations/workshop-epoxy-tables.jpeg", label: "Atelier River Tables — Production" },
+              { src: "/realisations/workshop-blue-resin.jpeg",   label: "Atelier Résine Bleue PADESS" },
+              { src: "/realisations/epoxy-blue-green-furniture.jpeg", label: "Mobilier Époxy Bleu & Vert LED" },
+              { src: "/realisations/epoxy-living-blue2.jpeg",    label: "Salon Époxy — Tons Bleu Océan" },
+              { src: "/realisations/interior-hex-shelves.jpeg",  label: "Intérieur Étagères Hexagonales Époxy" },
+            ]} />
+            <AutoScrollRow direction="left" images={[
+              { src: "/realisations/shelf-hexagonal-1.jpeg",         label: "Bibliothèque Hexagonale Époxy" },
+              { src: "/realisations/shelf-hexagonal-2.jpeg",         label: "Étagère Prestige — Art Époxy" },
+              { src: "/realisations/shelf-hexagonal-3.jpeg",         label: "Bibliothèque Couleurs Vives" },
+            ]} />
           </div>
         </div>
       </section>
@@ -499,29 +564,99 @@ export default function Home() {
       <section id="energie" className="py-16 bg-white">
         <div className="max-w-7xl mx-auto px-4">
           <div className="text-center mb-10">
-            <p className="sr-up text-[#F57C00] font-bold text-xs tracking-widest uppercase mb-2">ÉNERGIE & EAU</p>
+            <SectionLabel>ÉNERGIE & EAU</SectionLabel>
             <h2 className="sr-up sr-d1 text-2xl md:text-3xl font-bold text-[#1a2b4a]">L'Indépendance Totale</h2>
-            <p className="sr-up sr-d2 text-gray-500 text-sm mt-3 max-w-2xl mx-auto">Interconnexion intelligente multi-sources pour une résilience 24h/24. Nous brisons la dépendance aux réseaux.</p>
+            <p className="sr-up sr-d2 text-gray-500 text-sm mt-3 max-w-2xl mx-auto">
+              Interconnexion intelligente multi-sources pour une résilience 24h/24. Nous brisons la dépendance aux réseaux grâce à une technologie multi-sources intégrée.
+            </p>
           </div>
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
+
+          {/* 4 energy cards */}
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-12">
             {[
-              { icon: <Zap size={22} />, color: "#F57C00", title: "PADESS-BIOFLOW POWER™", desc: "Électricité microbienne 24h/24 — aucun réseau requis." },
-              { icon: <Flame size={22} />, color: "#4CAF50", title: "Biogaz Domestique & Industriel", desc: "Biodéchets → gaz de cuisson et électricité stable." },
-              { icon: <Droplet size={22} />, color: "#1565C0", title: "Forages & Filtration Ionique", desc: "Eau potable de qualité supérieure, partout, 24h/24." },
-              { icon: <Car size={22} />, color: "#1a2b4a", title: "Rétrofit Électrique", desc: "Véhicules thermiques convertis en 100% électrique." },
+              { icon: <Zap size={22} />, color: "#F57C00", title: "PADESS-BIOFLOW POWER™", desc: "Électricité microbienne 24h/24 — aucun réseau requis. Bactéries des sols et racines de raphia/mangrove." },
+              { icon: <Flame size={22} />, color: "#4CAF50", title: "Biogaz Domestique & Industriel", desc: "Biodéchets → gaz de cuisson et électricité stable. Zéro intrant, zéro pollution." },
+              { icon: <Droplet size={22} />, color: "#1565C0", title: "Forages & Filtration Ionique", desc: "Eau potable de qualité supérieure, partout, 24h/24 via pompage autonome." },
+              { icon: <Car size={22} />, color: "#1a2b4a", title: "Rétrofit Électrique", desc: "Véhicules thermiques convertis en 100% électrique. Suppression totale de la dépendance aux hydrocarbures." },
             ].map((e, i) => (
-              <div key={i} className={`sr-up sr-d${i + 1} rounded-xl p-4 hover:shadow-lg transition-shadow`} style={{ backgroundColor: e.color }}>
-                <div className="mb-2 text-white">{e.icon}</div>
-                <h3 className="font-bold text-xs mb-1 text-white">{e.title}</h3>
-                <p className="text-white/80 text-[11px] leading-relaxed">{e.desc}</p>
+              <div key={i} className={`sr-up sr-d${i + 1} rounded-xl p-5 hover:shadow-lg transition-shadow`} style={{ backgroundColor: e.color }}>
+                <div className="mb-3 text-white">{e.icon}</div>
+                <h3 className="font-bold text-sm mb-2 text-white">{e.title}</h3>
+                <p className="text-white/80 text-xs leading-relaxed">{e.desc}</p>
               </div>
             ))}
+          </div>
+
+          {/* Vidéos terrain */}
+          <div className="bg-[#1a2b4a] rounded-2xl p-6 md:p-10">
+            <div className="text-center mb-8">
+              <p className="text-[#F57C00] font-bold text-xs tracking-widest uppercase mb-2">NOS TRAVAUX EN ACTION</p>
+              <h3 className="text-2xl font-bold text-white">Voir par vous-même</h3>
+            </div>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
+              {["/media/video1.mp4", "/media/video2.mp4", "/media/video3.mp4"].map((src, i) => (
+                <div key={i} className="rounded-xl overflow-hidden shadow-lg aspect-video bg-black">
+                  <video className="w-full h-full object-cover" autoPlay muted loop playsInline>
+                    <source src={src} type="video/mp4" />
+                  </video>
+                </div>
+              ))}
+            </div>
+            <div className="rounded-xl overflow-hidden shadow-lg max-w-xl mx-auto">
+              <img src="/media/before-after.jpeg" alt="Avant / Après — Sol Époxy PADESS" className="w-full object-cover" />
+              <div className="bg-[#F57C00] text-white text-center py-2 text-xs font-bold tracking-widest uppercase">
+                Avant / Après — Sol Époxy PADESS
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ══ MOBILITÉ & INDUSTRIE CIRCULAIRE ══════════════════════════════════ */}
+      <section id="mobilite" className="py-16 bg-gray-50">
+        <div className="max-w-7xl mx-auto px-4">
+          <div className="text-center mb-10">
+            <SectionLabel color="#1565C0">MOBILITÉ & INDUSTRIE CIRCULAIRE</SectionLabel>
+            <h2 className="sr-up sr-d1 text-2xl md:text-3xl font-bold text-[#1a2b4a]">Industrie du Futur, Dès Aujourd'hui</h2>
+            <p className="sr-up sr-d2 text-gray-500 text-sm mt-3 max-w-2xl mx-auto">
+              Rétrofit électrique, métallurgie de recyclage et mobilier de chantier indestructible — PADESS transforme chaque déchet en actif industriel.
+            </p>
+          </div>
+
+          {/* 3 mobility cards */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-10">
+            {[
+              { icon: <Car size={28} />, color: "#1565C0", title: "Rétrofit Électrique", desc: "Conversion de véhicules thermiques en 100% électriques pour une économie totale de carburant. Tricycles cargo pour la logistique urbaine." },
+              { icon: <Recycle size={28} />, color: "#4CAF50", title: "Métallurgie de Recyclage", desc: "Transformation des canettes en aluminium pour fabriquer des jantes de luxe et des composants mécaniques haute performance." },
+              { icon: <HardHat size={28} />, color: "#8B1A1A", title: "Mobilier de Chantier Indestructible", desc: "Brouettes et sanitaires en polymères renforcés, conçus pour résister aux conditions de chantier les plus extrêmes." },
+            ].map((m, i) => (
+              <div key={i} className={`sr-up sr-d${i + 1} rounded-xl p-6 hover:shadow-lg transition-shadow`} style={{ backgroundColor: m.color }}>
+                <div className="mb-3 text-white">{m.icon}</div>
+                <h3 className="font-bold text-white mb-2">{m.title}</h3>
+                <p className="text-white/80 text-sm leading-relaxed">{m.desc}</p>
+              </div>
+            ))}
+          </div>
+
+          {/* Mobility photo galleries */}
+          <div className="overflow-hidden">
+            <p className="text-center text-[#1565C0] font-bold text-xs tracking-widest uppercase mb-4">NOS RÉALISATIONS MOBILITÉ & INDUSTRIE</p>
+            <AutoScrollRow direction="left" images={[
+              { src: "/realisations/wheels-showroom.jpeg",    label: "Showroom Jantes PADESS" },
+              { src: "/realisations/wheels-center.jpeg",      label: "Centre Mobilité PADESS" },
+              { src: "/realisations/wheels-red.jpeg",         label: "Atelier Jantes — Rétrofit" },
+              { src: "/realisations/retrofit-workshop.jpeg",  label: "Rétrofit Électrique — Atelier" },
+              { src: "/realisations/factory-brouettes.jpeg",  label: "Brouettes Recyclées — Production" },
+              { src: "/realisations/factory-brouettes-2.jpeg",label: "Ligne de Production Brouettes" },
+              { src: "/realisations/factory-workers.jpeg",    label: "Atelier de Production PADESS" },
+              { src: "/realisations/waste-raw-material.jpeg", label: "Notre Matière Première — Déchets Valorisés" },
+            ]} />
           </div>
         </div>
       </section>
 
       {/* ══ POURQUOI NOUS CHOISIR ════════════════════════════════════════════ */}
-      <section className="py-12 bg-gray-50 border-y border-gray-200">
+      <section className="py-12 bg-white border-y border-gray-200">
         <div className="max-w-7xl mx-auto px-4">
           <h2 className="sr-up text-center text-2xl md:text-3xl font-bold text-[#1a2b4a] mb-8">Pourquoi Nos Clients Nous Choisissent</h2>
           <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-7 gap-4 text-center">
@@ -537,90 +672,42 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ══ NOS RÉALISATIONS — galerie défilante ════════════════════════════ */}
-      <section className="py-14 bg-white overflow-hidden">
-        <div className="max-w-7xl mx-auto px-4 mb-8 text-center">
-          <p className="sr-up text-[#F57C00] font-bold text-xs tracking-widest uppercase mb-2">GALERIE</p>
-          <h2 className="sr-up sr-d1 text-2xl md:text-3xl font-bold text-[#1a2b4a]">Nos Réalisations</h2>
-          <p className="sr-up sr-d2 text-gray-500 text-sm mt-2">Produits PLASTI-BUILD®, cuisine, toiture, art époxy — fabriqués à partir de déchets recyclés</p>
+      {/* ══ COMMENT ÇA MARCHE ════════════════════════════════════════════════ */}
+      <section className="py-16 bg-gray-50">
+        <div className="max-w-7xl mx-auto px-4">
+          <h2 className="sr-up text-center text-2xl md:text-3xl font-bold text-[#1a2b4a] mb-12">Comment Ça Marche</h2>
+          <div className="flex flex-col gap-4 lg:hidden">
+            {steps.map((s, i) => (
+              <div key={i} className={`sr-left sr-d${i + 1} flex items-start gap-4 bg-white rounded-xl p-4 shadow-sm border border-gray-100`}>
+                <div className="w-12 h-12 rounded-full bg-[#F57C00] text-white flex items-center justify-center text-lg font-bold shadow-md shrink-0">
+                  {s.n}
+                </div>
+                <div>
+                  <h4 className="font-bold text-gray-900 text-sm mb-1">{s.title}</h4>
+                  <p className="text-gray-500 text-xs leading-relaxed">{s.desc}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+          <div className="hidden lg:grid grid-cols-5 gap-6 relative">
+            <div className="absolute top-8 left-[10%] right-[10%] h-0.5 bg-gray-200 z-0" />
+            {steps.map((s, i) => (
+              <div key={i} className="flex flex-col items-center text-center relative z-10">
+                <div className="w-16 h-16 rounded-full bg-[#F57C00] text-white flex items-center justify-center text-2xl font-bold shadow-md mb-4">
+                  {s.n}
+                </div>
+                <h4 className="font-bold text-gray-900 text-sm mb-1">{s.title}</h4>
+                <p className="text-gray-500 text-xs leading-relaxed">{s.desc}</p>
+              </div>
+            ))}
+          </div>
         </div>
-
-        {/* Row 1 — défile vers la gauche — Sanitaires & Construction */}
-        <AutoScrollRow direction="left" images={[
-          { src: "/realisations/toilet-gray-speckled.jpeg",      label: "Toilette PLASTI-BUILD® Gris Granit" },
-          { src: "/realisations/toilet-black-chunks.jpeg",        label: "Toilette PLASTI-BUILD® Noir Terrazzo" },
-          { src: "/realisations/toilet-set-room.jpeg",            label: "Collection Sanitaires Recyclés" },
-          { src: "/realisations/toilet-colorful-green.jpeg",      label: "Gamme Couleurs PLASTI-BUILD®" },
-          { src: "/realisations/toilet-white.jpeg",               label: "Toilette PLASTI-BUILD® Blanc" },
-          { src: "/realisations/toilet-orange-wallhung.jpeg",     label: "Toilette Suspendue Orange" },
-          { src: "/realisations/toilet-multicolor-set.jpeg",      label: "Gamme Multicolore Sanitaires" },
-          { src: "/realisations/bathroom-set-gray.jpeg",          label: "Collection Salle de Bain Complète" },
-          { src: "/realisations/bathroom-vanity-collection.jpeg", label: "Meubles Vasque PADESS" },
-          { src: "/realisations/bathroom-pods.jpeg",              label: "Modules Sanitaires Intégrés" },
-          { src: "/realisations/plastibuild-team.jpeg",           label: "Équipe PLASTI-BUILD® — Construction" },
-          { src: "/realisations/paving-cobblestone.jpeg",         label: "Pavage Recyclé — Allée" },
-          { src: "/realisations/paving-colorful-house.jpeg",      label: "Pavage Hexagonal Multicolore" },
-          { src: "/realisations/paving-closeup.jpeg",             label: "Pavé Recyclé — Détail Texture" },
-        ]} />
-
-        {/* Row 2 — défile vers la droite — Tuiles, Cuisine & Mobilité */}
-        <AutoScrollRow direction="right" images={[
-          { src: "/realisations/roof-tiles-display.jpeg",    label: "Tuiles Plastique — Stand Exposition" },
-          { src: "/realisations/roof-tiles-on-house.jpeg",   label: "Toiture PLASTI-BUILD® Installée" },
-          { src: "/realisations/roof-tiles-closeup.jpeg",    label: "Tuiles Multicolores Closeup" },
-          { src: "/realisations/roof-tiles-eco.jpeg",        label: "Tuiles Écologiques — Alliage Plastique-Sable" },
-          { src: "/realisations/kitchen-teal-pink.jpeg",     label: "Cuisine PLASTI-BUILD® Design" },
-          { src: "/realisations/kitchen-sink-unit.jpeg",     label: "Évier & Plan de Travail Recyclé" },
-          { src: "/realisations/kitchen-counter.jpeg",       label: "Plan de Travail Époxy Granit" },
-          { src: "/realisations/kitchen-gray-premium.jpeg",  label: "Plan de Travail Premium Gris" },
-          { src: "/realisations/kitchen-green-white.jpeg",   label: "Cuisine Verte PLASTI-BUILD®" },
-          { src: "/realisations/kitchen-white-yellow.jpeg",  label: "Cuisine Blanche & Accents Jaunes" },
-          { src: "/realisations/sink-closeup.jpeg",          label: "Évier PADESS — Détail Texture" },
-          { src: "/realisations/wheels-showroom.jpeg",       label: "Showroom Jantes PADESS" },
-          { src: "/realisations/wheels-center.jpeg",         label: "Centre Mobilité PADESS" },
-          { src: "/realisations/wheels-red.jpeg",            label: "Atelier Jantes — Rétrofit" },
-          { src: "/realisations/retrofit-workshop.jpeg",     label: "Rétrofit Électrique — Atelier" },
-        ]} />
-
-        {/* Row 3 — défile vers la gauche — Sols Époxy & Ateliers */}
-        <AutoScrollRow direction="left" images={[
-          { src: "/realisations/epoxy-team-applying.jpeg",   label: "Équipe PADESS — Application Sol Époxy" },
-          { src: "/realisations/epoxy-dark-team.jpeg",       label: "Application Sol Époxy Prestige" },
-          { src: "/realisations/epoxy-large-team.jpeg",      label: "Chantier Époxy — Grande Surface" },
-          { src: "/realisations/workshop-epoxy-tables.jpeg", label: "Atelier River Tables — Production" },
-          { src: "/realisations/workshop-blue-resin.jpeg",   label: "Atelier Résine Bleue PADESS" },
-          { src: "/realisations/factory-workers.jpeg",       label: "Atelier de Production PADESS" },
-          { src: "/realisations/factory-brouettes.jpeg",     label: "Brouettes Recyclées — Production" },
-          { src: "/realisations/factory-brouettes-2.jpeg",   label: "Ligne de Production Brouettes" },
-          { src: "/realisations/waste-raw-material.jpeg",    label: "Notre Matière Première — Déchets Valorisés" },
-          { src: "/realisations/padess-meeting-room.jpeg",   label: "Salle de Réunion PADESS Époxy" },
-        ]} />
-
-        {/* Row 4 — défile vers la droite — Mobilier Époxy & Showrooms */}
-        <AutoScrollRow direction="right" images={[
-          { src: "/realisations/epoxy-living-blue-wood.jpeg",    label: "Salon Époxy Bois & Bleu Prestige" },
-          { src: "/realisations/epoxy-dining-green-wood.jpeg",   label: "Salle à Manger River Table Verte" },
-          { src: "/realisations/padess-showroom-epoxy.jpeg",     label: "Showroom PADESS — Art Époxy" },
-          { src: "/realisations/interior-hex-shelves.jpeg",      label: "Intérieur Étagères Hexagonales Époxy" },
-          { src: "/realisations/epoxy-blue-green-furniture.jpeg",label: "Mobilier Époxy Bleu & Vert LED" },
-          { src: "/realisations/epoxy-living-blue2.jpeg",        label: "Salon Époxy — Tons Bleu Océan" },
-          { src: "/realisations/epoxy-ocean-furniture.jpeg",     label: "River Table Océan — Sur Mesure" },
-          { src: "/realisations/epoxy-green-geometric.jpeg",     label: "Sol Époxy Géométrique Vert" },
-          { src: "/realisations/padess-reception-stars.jpeg",    label: "Réception PADESS — Sol Étoilé" },
-          { src: "/realisations/shelf-hexagonal-1.jpeg",         label: "Bibliothèque Hexagonale Époxy" },
-          { src: "/realisations/shelf-hexagonal-2.jpeg",         label: "Étagère Prestige — Art Époxy" },
-          { src: "/realisations/shelf-hexagonal-3.jpeg",         label: "Bibliothèque Couleurs Vives" },
-          { src: "/realisations/epoxy-lamps.jpeg",               label: "Lampes Art Époxy PADESS" },
-          { src: "/realisations/epoxy-dome-lamp.jpeg",           label: "Dôme Époxy Fleurs — Art de Prestige" },
-          { src: "/realisations/epoxy-bedroom.jpeg",             label: "Art Époxy — Chambre Prestige" },
-        ]} />
       </section>
 
       {/* ══ CONTACT FORM SECTION ════════════════════════════════════════════ */}
       <section id="contact" className="py-16 bg-white">
         <div className="max-w-7xl mx-auto px-4">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-0 rounded-xl overflow-hidden shadow-xl">
-            {/* Left — dark info panel */}
             <div className="bg-[#1a2b4a] text-white p-6 lg:p-10 flex flex-col justify-between">
               <div>
                 <p className="text-[#F57C00] font-bold text-xs tracking-widest uppercase mb-3">CONTACTEZ-NOUS</p>
@@ -642,7 +729,7 @@ export default function Home() {
                 <div className="flex items-start gap-2">
                   <Smartphone size={14} className="text-[#F57C00] shrink-0 mt-0.5" />
                   <div>
-                    <div className="font-semibold text-white/90 mb-0.5">WhatsApp :</div>
+                    <div className="font-semibold text-white/90 mb-0.5">WhatsApp / Téléphone :</div>
                     <div><a href="https://wa.me/237697221970" className="hover:text-[#F57C00]">+237 697 221 970</a></div>
                     <div><a href="tel:+237658929070" className="hover:text-[#F57C00]">(+237) 658 92 90 70</a></div>
                     <div><a href="tel:+237690389545" className="hover:text-[#F57C00]">(+237) 690 38 95 45</a></div>
@@ -659,7 +746,6 @@ export default function Home() {
                 <div className="flex items-center gap-2"><MapPin size={14} className="text-[#F57C00] shrink-0" /> Siège Social : Douala, Cameroun</div>
               </div>
             </div>
-            {/* Right — form */}
             <div className="bg-gray-50 p-6 lg:p-10">
               <form className="space-y-4" onSubmit={(e) => e.preventDefault()}>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
@@ -685,7 +771,7 @@ export default function Home() {
                       <option>Architecture & Art Époxy</option>
                       <option>Systèmes Énergétiques</option>
                       <option>Traitement de l'Eau</option>
-                      <option>Mobilité Industrielle</option>
+                      <option>Mobilité & Rétrofit Électrique</option>
                       <option>Conseil & Investissement</option>
                       <option>Autre</option>
                     </select>
@@ -728,99 +814,16 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ══ PLASTI-BUILD & H.E.R.O ══════════════════════════════════════════ */}
-      <section id="about" className="py-16 bg-white">
-        <div className="max-w-7xl mx-auto px-4">
-          <div className="text-center mb-10">
-            <p className="sr-up text-[#F57C00] font-bold text-xs tracking-widest uppercase mb-2">PLASTI-BUILD® & H.E.R.O.®</p>
-            <h2 className="sr-up sr-d1 text-2xl md:text-3xl font-bold text-[#1a2b4a]">La Révolution de la Rapidité Fulgurante</h2>
-            <p className="sr-up sr-d2 text-gray-500 text-sm mt-3 max-w-2xl mx-auto">Le concept H.E.R.O.® (Habitation Écologique à Rendement Optimisé) redéfinit la vitesse de construction mondiale.</p>
-          </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-10">
-            <div className="relative rounded-xl overflow-hidden shadow-lg group">
-              <img src={equipImg} alt="Équipements PADESS" className="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-500" />
-              <div className="absolute inset-0 bg-[#1a2b4a]/60 flex flex-col justify-end p-6">
-                <h3 className="text-white font-bold text-xl">Équipements Industriels</h3>
-                <p className="text-white/80 text-sm mt-1">Machines et outils professionnels de dernière génération pour chaque chantier.</p>
-              </div>
-            </div>
-            <div className="relative rounded-xl overflow-hidden shadow-lg group">
-              <img src={matImg} alt="Matériaux PADESS" className="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-500" />
-              <div className="absolute inset-0 bg-[#4CAF50]/70 flex flex-col justify-end p-6">
-                <h3 className="text-white font-bold text-xl">Matériaux Écologiques PLASTI-BUILD®</h3>
-                <p className="text-white/80 text-sm mt-1">Briques certifiées en composite plastique-sable : hydrofuges, ignifuges et parasismiques.</p>
-              </div>
-            </div>
-          </div>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
-            {[
-              { icon: <HardHat size={24} />, color: "#4CAF50", title: "Technologie LEGO-BLOCK", desc: "Emboîtement mécanique mâle-femelle sans mortier classique" },
-              { icon: <Zap size={24} />, color: "#F57C00", title: "5× Plus Rapide", desc: "Temps de chantier divisé par 5 — isolation thermique native" },
-              { icon: <Shield size={24} />, color: "#8B1A1A", title: "3× Plus Résistant", desc: "Plus robuste que le béton, hydrofuge, ignifuge, parasismique" },
-              { icon: <Leaf size={24} />, color: "#1565C0", title: "Assainissement Biofil", desc: "Biocompostage intégré — zéro vidange à vie, zéro odeur" },
-            ].map((f, i) => (
-              <div key={i} className="bg-gray-50 rounded-xl p-4 text-center border border-gray-100 flex flex-col items-center">
-                <div className="mb-2" style={{ color: f.color }}>{f.icon}</div>
-                <h4 className="font-bold text-xs mb-1" style={{ color: f.color }}>{f.title}</h4>
-                <p className="text-xs text-gray-500 leading-relaxed">{f.desc}</p>
-              </div>
-            ))}
-          </div>
-          <div className="bg-[#1a2b4a] rounded-xl p-6 flex items-start gap-4">
-            <Lightbulb size={22} className="text-[#F57C00] shrink-0 mt-0.5" />
-            <div>
-              <h4 className="font-bold text-[#F57C00] text-sm uppercase tracking-wide mb-1">Projection Chantier</h4>
-              <p className="text-white/80 text-sm leading-relaxed">L'érection d'une cité ouvrière ou d'un complexe scolaire de <strong className="text-white">20 bâtiments en seulement 30 jours</strong>, avec une isolation thermique native supprimant le besoin de climatisation énergivore.</p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* ══ COMMENT ÇA MARCHE ════════════════════════════════════════════════ */}
-      <section className="py-16 bg-gray-50">
-        <div className="max-w-7xl mx-auto px-4">
-          <h2 className="sr-up text-center text-2xl md:text-3xl font-bold text-[#1a2b4a] mb-12">Comment Ça Marche</h2>
-          {/* Mobile: vertical list — Desktop: 5-col grid */}
-          <div className="flex flex-col gap-4 lg:hidden">
-            {steps.map((s, i) => (
-              <div key={i} className={`sr-left sr-d${i + 1} flex items-start gap-4 bg-white rounded-xl p-4 shadow-sm border border-gray-100`}>
-                <div className="w-12 h-12 rounded-full bg-[#F57C00] text-white flex items-center justify-center text-lg font-bold shadow-md shrink-0">
-                  {s.n}
-                </div>
-                <div>
-                  <h4 className="font-bold text-gray-900 text-sm mb-1">{s.title}</h4>
-                  <p className="text-gray-500 text-xs leading-relaxed">{s.desc}</p>
-                </div>
-              </div>
-            ))}
-          </div>
-          <div className="hidden lg:grid grid-cols-5 gap-6 relative">
-            <div className="absolute top-8 left-[10%] right-[10%] h-0.5 bg-gray-200 z-0" />
-            {steps.map((s, i) => (
-              <div key={i} className="flex flex-col items-center text-center relative z-10">
-                <div className="w-16 h-16 rounded-full bg-[#F57C00] text-white flex items-center justify-center text-2xl font-bold shadow-md mb-4">
-                  {s.n}
-                </div>
-                <h4 className="font-bold text-gray-900 text-sm mb-1">{s.title}</h4>
-                <p className="text-gray-500 text-xs leading-relaxed">{s.desc}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ══ RÉALISATIONS ════════════════════════════════════════════════════ */}
+      {/* ══ TÉMOIGNAGES & RÉALISATIONS ══════════════════════════════════════ */}
       <section id="realisations" className="py-16 bg-white">
         <div className="max-w-7xl mx-auto px-4">
           <div className="text-center mb-10">
-            <p className="sr-up text-[#F57C00] font-bold text-xs tracking-widest uppercase mb-2">NOS RÉALISATIONS</p>
+            <SectionLabel>TÉMOIGNAGES</SectionLabel>
             <h2 className="sr-up sr-d1 text-2xl md:text-3xl font-bold text-[#1a2b4a]">Ce Que Nos Clients Disent de Nous</h2>
           </div>
-          {/* Testimonials carousel */}
           <div className="mb-14">
             <TestimonialsCarousel />
           </div>
-          {/* Project gallery */}
           <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3">
             {realizations.map((r, i) => (
               <div key={i} className="group relative rounded-lg overflow-hidden aspect-square shadow-sm cursor-pointer">
@@ -840,9 +843,11 @@ export default function Home() {
       <section id="investisseurs" className="py-16 bg-gray-50 border-y border-gray-200">
         <div className="max-w-7xl mx-auto px-4">
           <div className="text-center mb-10">
-            <p className="sr-up text-[#F57C00] font-bold text-xs tracking-widest uppercase mb-2">OPPORTUNITÉS</p>
+            <SectionLabel>OPPORTUNITÉS</SectionLabel>
             <h2 className="sr-up sr-d1 text-2xl md:text-3xl font-bold text-[#1a2b4a]">Espace Investisseurs</h2>
-            <p className="sr-up sr-d2 text-gray-500 mt-3 max-w-xl mx-auto text-sm">PADESS offre des opportunités d'investissement exceptionnelles dans des marchés en forte croissance en Afrique.</p>
+            <p className="sr-up sr-d2 text-gray-500 mt-3 max-w-xl mx-auto text-sm">
+              PADESS offre des opportunités d'investissement exceptionnelles dans des marchés en forte croissance en Afrique. Profil de risque bas pour un rendement de croissance exponentiel.
+            </p>
           </div>
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-5 mb-8">
             {[
@@ -865,8 +870,10 @@ export default function Home() {
               { n: "3", color: "#8B1A1A", title: "Appui aux Gouvernements", desc: "Solution clé en main pour stopper l'exode rural, lutter contre l'immigration clandestine en créant des emplois locaux et dépolluer les villes." },
               { n: "4", color: "#1565C0", title: "Souveraineté Nationale", desc: "Nous aidons les États à réduire leurs importations (ciment, pétrole) en utilisant le génie local et les ressources disponibles en Afrique." },
             ].map((r, i) => (
-              <div key={i} className="flex gap-4 bg-white border border-gray-100 rounded-xl p-5 shadow-sm hover:shadow-md transition-shadow">
-                <div className="w-8 h-8 rounded-full flex items-center justify-center text-sm font-bold shrink-0 text-white" style={{ backgroundColor: r.color }}>{r.n}</div>
+              <div key={i} className={`sr-up sr-d${i + 1} bg-white rounded-xl p-5 shadow-sm border border-gray-100 flex gap-4 items-start`}>
+                <div className="w-10 h-10 rounded-full text-white flex items-center justify-center font-bold text-base shrink-0" style={{ backgroundColor: r.color }}>
+                  {r.n}
+                </div>
                 <div>
                   <h4 className="font-bold text-gray-900 text-sm mb-1">{r.title}</h4>
                   <p className="text-gray-500 text-xs leading-relaxed">{r.desc}</p>
@@ -874,16 +881,23 @@ export default function Home() {
               </div>
             ))}
           </div>
-          <div className="text-center">
-            <a href="#contact" className="inline-flex items-center gap-2 bg-[#F57C00] hover:bg-[#E65100] text-white font-bold px-10 py-4 rounded transition-colors shadow-lg text-sm">
-              DEVENIR PARTENAIRE <ArrowRight size={16} />
+          <div className="bg-[#1a2b4a] rounded-xl p-6 md:p-8 flex items-start gap-4">
+            <Lightbulb size={24} className="text-[#F57C00] shrink-0 mt-0.5" />
+            <div>
+              <h4 className="font-bold text-[#F57C00] text-sm uppercase tracking-wide mb-2">Projection Financière</h4>
+              <p className="text-white/80 text-sm leading-relaxed">Le déploiement d'un cluster industriel H.E.R.O.® combiné au trading de matériaux recyclés permet de capter des marchés publics et privés se chiffrant en <strong className="text-white">millions d'euros, de dollars et en dizaines de milliards de FCFA</strong>.</p>
+            </div>
+          </div>
+          <div className="mt-8 text-center">
+            <a href="#contact" className="inline-flex items-center gap-2 bg-[#F57C00] hover:bg-[#E65100] text-white font-bold px-8 py-4 rounded-lg transition-colors shadow-md">
+              DEMANDER UN DOSSIER D'INVESTISSEMENT <ChevronRight size={18} />
             </a>
           </div>
         </div>
       </section>
 
-      <Footer />
       <FloatingActionButton />
+      <Footer />
     </div>
   );
 }
