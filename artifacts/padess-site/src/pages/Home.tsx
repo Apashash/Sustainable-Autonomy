@@ -388,17 +388,17 @@ export default function Home() {
             <h2 className="text-2xl md:text-3xl font-bold text-[#1a2b4a]">L'Indépendance Totale</h2>
             <p className="text-gray-500 text-sm mt-3 max-w-2xl mx-auto">Interconnexion intelligente multi-sources pour une résilience 24h/24. Nous brisons la dépendance aux réseaux.</p>
           </div>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
             {[
-              { icon: "⚡", color: "#F57C00", title: "PADESS-BIOFLOW POWER™", desc: "Énergie microbienne (MFC) à partir des bactéries des sols et racines de mangrove/raphia. Électricité stable même par temps couvert ou sans vent." },
-              { icon: "🔥", color: "#8B1A1A", title: "Biogaz Domestique & Industriel", desc: "Transformation des biodéchets organiques en gaz de cuisson et en électricité stable pour l'habitat et l'industrie." },
-              { icon: "💧", color: "#1565C0", title: "Forages & Filtration Ionique", desc: "Accès permanent à une eau potable de qualité supérieure via des systèmes de pompage autonomes, même en zone reculée." },
-              { icon: "🚗", color: "#4CAF50", title: "Rétrofit Électrique", desc: "Conversion de véhicules thermiques en 100% électriques. Suppression totale de la dépendance aux hydrocarbures et réduction des coûts." },
+              { icon: "⚡", color: "#F57C00", title: "PADESS-BIOFLOW POWER™", desc: "Énergie microbienne (MFC) — électricité stable même par temps couvert ou sans vent." },
+              { icon: "🔥", color: "#8B1A1A", title: "Biogaz Domestique & Industriel", desc: "Biodéchets transformés en gaz de cuisson et électricité stable." },
+              { icon: "💧", color: "#1565C0", title: "Forages & Filtration Ionique", desc: "Eau potable de qualité supérieure en zone reculée, 24h/24." },
+              { icon: "🚗", color: "#4CAF50", title: "Rétrofit Électrique", desc: "Véhicules thermiques convertis en 100% électrique — zéro carburant." },
             ].map((e, i) => (
-              <div key={i} className="rounded-xl border border-gray-100 p-5 hover:shadow-md transition-shadow bg-white">
-                <div className="text-3xl mb-3">{e.icon}</div>
-                <h3 className="font-bold text-sm mb-2" style={{ color: e.color }}>{e.title}</h3>
-                <p className="text-gray-500 text-xs leading-relaxed">{e.desc}</p>
+              <div key={i} className="rounded-xl border border-gray-100 p-4 hover:shadow-md transition-shadow bg-white">
+                <div className="text-2xl mb-2">{e.icon}</div>
+                <h3 className="font-bold text-xs mb-1" style={{ color: e.color }}>{e.title}</h3>
+                <p className="text-gray-500 text-[11px] leading-relaxed">{e.desc}</p>
               </div>
             ))}
           </div>
