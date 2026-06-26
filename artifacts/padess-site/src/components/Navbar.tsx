@@ -4,22 +4,15 @@ import logo from "@assets/padess-logo-transparent.png";
 
 const navLinks = [
   { name: "Accueil", href: "#" },
+  { name: "Services", href: "#services", hasDropdown: true },
   { name: "À Propos", href: "#about" },
-  { name: "Services", href: "#services" },
-  { name: "Réalisations", href: "#realisations" },
-  { name: "Investisseurs", href: "#investisseurs" },
+  { name: "Avis", href: "#avis" },
+  { name: "Réalisations", href: "#realisations", hasDropdown: true },
   { name: "Contact", href: "#contact" },
 ];
 
 export default function Navbar() {
-  const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
-
-  useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 60);
-    window.addEventListener("scroll", onScroll);
-    return () => window.removeEventListener("scroll", onScroll);
-  }, []);
 
   useEffect(() => {
     document.body.style.overflow = open ? "hidden" : "";
@@ -29,34 +22,41 @@ export default function Navbar() {
   return (
     <>
       {/* Top info bar */}
-      <div className="fixed top-0 w-full z-50 bg-[#1565C0] text-white text-sm py-2">
-        <div className="max-w-7xl mx-auto px-4 flex items-center justify-between">
-          <div className="flex items-center gap-6">
+      <div className="fixed top-0 w-full z-50 bg-[#1a2b4a] text-white text-xs">
+        <div className="max-w-7xl mx-auto px-4 py-2 flex items-center justify-between flex-wrap gap-2">
+          <div className="flex items-center gap-4">
             <a href="tel:+237697221970" className="flex items-center gap-1.5 hover:text-[#F57C00] transition-colors">
-              <Phone size={13} /> +237 697 221 970
+              <Phone size={12} /> +237 697 221 970
             </a>
             <a href="mailto:npadess@hoo.com" className="hidden sm:flex items-center gap-1.5 hover:text-[#F57C00] transition-colors">
-              <Mail size={13} /> npadess@hoo.com
+              <Mail size={12} /> npadess@hoo.com
             </a>
           </div>
-          <div className="hidden sm:flex items-center gap-1 text-xs text-white/70">
-            <span>📍 Douala, Cameroun</span>
+          <div className="hidden md:flex items-center gap-4 text-white/80">
+            <span className="flex items-center gap-1">✔ Entreprise Agréée</span>
+            <span className="text-white/30">|</span>
+            <span className="flex items-center gap-1">✔ Sans Frais Cachés</span>
+            <span className="text-white/30">|</span>
+            <span className="flex items-center gap-1">✔ Noté 5 Étoiles</span>
           </div>
+          <a
+            href="#contact"
+            className="bg-[#F57C00] hover:bg-[#E65100] text-white font-bold px-4 py-1.5 rounded text-xs transition-colors whitespace-nowrap"
+          >
+            OBTENIR UN DEVIS
+          </a>
         </div>
       </div>
 
       {/* Main navbar */}
-      <header
-        className={`fixed top-8 w-full z-40 transition-all duration-300 ${
-          scrolled
-            ? "bg-white shadow-lg py-2"
-            : "bg-white border-b border-gray-100 py-3"
-        }`}
-      >
-        <div className="max-w-7xl mx-auto px-4 flex items-center justify-between">
-          {/* Logo */}
-          <a href="#" className="flex items-center shrink-0">
-            <img src={logo} alt="PADESS ENGINEERING" className="h-12 w-auto object-contain" />
+      <header className="fixed top-8 w-full z-40 bg-white shadow-sm border-b border-gray-200">
+        <div className="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between">
+          <a href="#" className="flex items-center gap-2 shrink-0">
+            <img src={logo} alt="PADESS ENGINEERING" className="h-11 w-auto object-contain" />
+            <div className="hidden sm:block leading-tight">
+              <div className="font-extrabold text-[#1a2b4a] text-sm tracking-wide">PADESS</div>
+              <div className="text-[10px] text-gray-500 uppercase tracking-widest">Engineering & Storage</div>
+            </div>
           </a>
 
           {/* Desktop nav */}
@@ -65,65 +65,40 @@ export default function Navbar() {
               <a
                 key={link.name}
                 href={link.href}
-                className="px-4 py-2 text-sm font-semibold text-gray-700 hover:text-[#1565C0] transition-colors rounded"
+                className="flex items-center gap-0.5 px-3 py-2 text-sm font-semibold text-gray-700 hover:text-[#F57C00] transition-colors rounded"
               >
                 {link.name}
+                {link.hasDropdown && <ChevronDown size={13} className="opacity-60" />}
               </a>
             ))}
           </nav>
 
-          {/* CTA */}
-          <div className="hidden lg:block">
-            <a
-              href="#contact"
-              className="bg-[#F57C00] hover:bg-[#E65100] text-white font-bold px-6 py-3 rounded text-sm transition-colors shadow-md"
-            >
-              OBTENIR UN DEVIS
-            </a>
-          </div>
-
-          {/* Hamburger */}
-          <button
-            className="lg:hidden p-2 text-gray-700"
-            onClick={() => setOpen(true)}
-            aria-label="Menu"
-          >
-            <Menu size={26} />
+          <button className="lg:hidden p-2 text-gray-700" onClick={() => setOpen(true)} aria-label="Menu">
+            <Menu size={24} />
           </button>
         </div>
       </header>
 
       {/* Mobile menu */}
-      <div
-        className={`fixed inset-0 z-[200] bg-white flex flex-col transition-transform duration-300 ease-in-out lg:hidden ${
-          open ? "translate-x-0" : "translate-x-full"
-        }`}
-      >
-        <div className="bg-[#1565C0] text-white px-6 py-4 flex items-center justify-between">
-          <img src={logo} alt="PADESS ENGINEERING" className="h-10 w-auto object-contain brightness-0 invert" />
-          <button onClick={() => setOpen(false)} aria-label="Fermer" className="text-white">
-            <X size={26} />
-          </button>
+      <div className={`fixed inset-0 z-[200] bg-white flex flex-col lg:hidden transition-transform duration-300 ${open ? "translate-x-0" : "translate-x-full"}`}>
+        <div className="bg-[#1a2b4a] px-5 py-4 flex items-center justify-between">
+          <img src={logo} alt="PADESS" className="h-9 brightness-0 invert" />
+          <button onClick={() => setOpen(false)} className="text-white"><X size={24} /></button>
         </div>
-        <nav className="flex flex-col flex-1 px-6 pt-4">
+        <nav className="flex flex-col px-5 pt-2 flex-1 overflow-y-auto">
           {navLinks.map((link) => (
             <a
               key={link.name}
               href={link.href}
               onClick={() => setOpen(false)}
-              className="flex items-center justify-between py-4 border-b border-gray-100 text-base font-semibold text-gray-800 hover:text-[#1565C0] transition-colors"
+              className="flex items-center justify-between py-4 border-b border-gray-100 text-sm font-semibold text-gray-800 hover:text-[#F57C00]"
             >
-              {link.name}
-              <span className="text-gray-300">›</span>
+              {link.name} <span className="text-gray-300">›</span>
             </a>
           ))}
         </nav>
-        <div className="px-6 py-6">
-          <a
-            href="#contact"
-            onClick={() => setOpen(false)}
-            className="block w-full text-center bg-[#F57C00] hover:bg-[#E65100] text-white font-bold py-4 rounded text-base transition-colors"
-          >
+        <div className="p-5">
+          <a href="#contact" onClick={() => setOpen(false)} className="block w-full text-center bg-[#F57C00] text-white font-bold py-3.5 rounded transition-colors">
             OBTENIR UN DEVIS
           </a>
         </div>

@@ -1,207 +1,161 @@
-import React from "react";
+import React, { useState } from "react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import { ArrowRight, CheckCircle, Recycle, Zap, Building2, Truck, Droplet, Factory } from "lucide-react";
+import {
+  ArrowRight, CheckCircle, Star, Shield, Clock, ThumbsUp,
+  Recycle, Zap, Building2, Truck, Droplet, Factory,
+  Award, Users, Wrench, Leaf, TrendingUp, Sun,
+  ChevronRight, Phone
+} from "lucide-react";
 
-// Assets
-import heroImg       from "@assets/feceb23a-4a60-414a-943f-282e1c2ab911_1782452676920.jpeg";
-import aboutImg      from "@assets/efcd27e7-9cc0-41fe-8c8e-a590ec77c2a6_1782452676920.jpeg";
-import svc1Img       from "@assets/8486619a-4af6-478a-8ed2-b378cd2cf4e3_1782452676920.jpeg";
-import svc2Img       from "@assets/a22b47b7-9012-4f22-93f7-9019ab75b306_1782452676920.jpeg";
-import svc3Img       from "@assets/d533f035-dad8-4e38-9532-945543a9faa2_1782452676919.jpeg";
-import svc4Img       from "@assets/7f0dac84-e7e2-4d58-89d7-dc8b22228aa9_1782452676920.jpeg";
-import svc5Img       from "@assets/dd12a05e-615d-4ebe-b991-0a2af297bcd0_1782452676920.jpeg";
-import svc6Img       from "@assets/ae7fe586-7bf4-4de0-b0ad-0874113871ad_1782452676920.jpeg";
-import proj1Img      from "@assets/308ead75-fc65-4e7a-8a66-6129152ad5d7_1782452676920.jpeg";
-import proj2Img      from "@assets/aa2f8511-e97e-4985-8caf-4fb54a44bfcb_1782452676920.jpeg";
-import proj3Img      from "@assets/f838483e-0d73-4d7c-ab3a-70bb00fe2395_1782452676920.jpeg";
-import proj4Img      from "@assets/1a8eaeba-11cf-4372-8881-47b0d19ed33f_1782452676920.jpeg";
+import heroImg    from "@assets/feceb23a-4a60-414a-943f-282e1c2ab911_1782452676920.jpeg";
+import aboutImg   from "@assets/efcd27e7-9cc0-41fe-8c8e-a590ec77c2a6_1782452676920.jpeg";
+import svc1Img    from "@assets/8486619a-4af6-478a-8ed2-b378cd2cf4e3_1782452676920.jpeg";
+import svc2Img    from "@assets/a22b47b7-9012-4f22-93f7-9019ab75b306_1782452676920.jpeg";
+import svc3Img    from "@assets/d533f035-dad8-4e38-9532-945543a9faa2_1782452676919.jpeg";
+import equipImg   from "@assets/dd12a05e-615d-4ebe-b991-0a2af297bcd0_1782452676920.jpeg";
+import matImg     from "@assets/7f0dac84-e7e2-4d58-89d7-dc8b22228aa9_1782452676920.jpeg";
+import proj1Img   from "@assets/308ead75-fc65-4e7a-8a66-6129152ad5d7_1782452676920.jpeg";
+import proj2Img   from "@assets/aa2f8511-e97e-4985-8caf-4fb54a44bfcb_1782452676920.jpeg";
+import proj3Img   from "@assets/f838483e-0d73-4d7c-ab3a-70bb00fe2395_1782452676920.jpeg";
+import proj4Img   from "@assets/1a8eaeba-11cf-4372-8881-47b0d19ed33f_1782452676920.jpeg";
+import proj5Img   from "@assets/ae7fe586-7bf4-4de0-b0ad-0874113871ad_1782452676920.jpeg";
+import proj6Img   from "@assets/df0e837b-4930-429c-832d-8a8a6e78715c_1782452676920.jpeg";
 
-// ── Feature cards below hero ────────────────────────────────────────────────
-const features = [
-  { icon: <Recycle size={36} className="text-[#4CAF50]" />, title: "PLASTI-BUILD®", desc: "Construction écologique à partir de déchets plastiques transformés en briques durables." },
-  { icon: <Zap size={36} className="text-[#F57C00]" />, title: "Énergie Solaire", desc: "Systèmes solaires et hydrauliques souverains pour une autonomie énergétique totale." },
-  { icon: <Building2 size={36} className="text-[#8B1A1A]" />, title: "Architecture Époxy", desc: "Revêtements époxy haut de gamme et finitions architecturales de prestige." },
-  { icon: <Truck size={36} className="text-[#1565C0]" />, title: "Mobilité & Industrie", desc: "Tricycles cargo électriques et solutions industrielles pour le marché africain." },
-];
+// ─── Data ───────────────────────────────────────────────────────────────────
 
-// ── Services ────────────────────────────────────────────────────────────────
 const services = [
-  { img: svc1Img, icon: <Building2 size={22} />, color: "#8B1A1A", title: "Architecture & Art Époxy", desc: "Sols époxy industriels, décoration murale et finitions architecturales pour particuliers et entreprises." },
-  { img: svc2Img, icon: <Recycle size={22} />, color: "#4CAF50", title: "PLASTI-BUILD® & H.E.R.O.®", desc: "Briques en plastique recyclé, panneaux modulaires et systèmes de construction révolutionnaires." },
-  { img: svc3Img, icon: <Zap size={22} />, color: "#F57C00", title: "Énergie & Eau", desc: "Installations solaires, systèmes hydrauliques autonomes et gestion durable des ressources." },
-  { img: svc4Img, icon: <Truck size={22} />, color: "#1565C0", title: "Mobilité Industrielle", desc: "Tricycles cargo électriques pour la logistique urbaine et transport de marchandises en Afrique." },
-  { img: svc5Img, icon: <Factory size={22} />, color: "#4CAF50", title: "Ingénierie Industrielle", desc: "Conception, installation et maintenance d'équipements industriels sur mesure." },
-  { img: svc6Img, icon: <Droplet size={22} />, color: "#1565C0", title: "Traitement de l'Eau", desc: "Systèmes de purification, de stockage et de distribution d'eau pour particuliers et collectivités." },
+  { icon: <Recycle size={28} />,   color: "#4CAF50", title: "Construction PLASTI-BUILD®",    desc: "Briques écologiques à partir de déchets plastiques recyclés pour une construction durable et économique." },
+  { icon: <Building2 size={28} />, color: "#8B1A1A", title: "Architecture & Art Époxy",       desc: "Revêtements époxy industriels, décoration murale et finitions architecturales haut de gamme." },
+  { icon: <Zap size={28} />,       color: "#F57C00", title: "Systèmes Énergétiques",           desc: "Installations solaires et hydrauliques souverains pour une autonomie énergétique totale." },
+  { icon: <Droplet size={28} />,   color: "#1565C0", title: "Traitement de l'Eau",             desc: "Systèmes de purification, stockage et distribution d'eau pour particuliers et collectivités." },
+  { icon: <Truck size={28} />,     color: "#1565C0", title: "Mobilité Industrielle",           desc: "Tricycles cargo électriques pour la logistique urbaine et transport de marchandises." },
+  { icon: <Factory size={28} />,   color: "#4CAF50", title: "H.E.R.O.® System",               desc: "Technologie brevetée de valorisation des déchets plastiques en matériaux de construction." },
+  { icon: <Sun size={28} />,       color: "#F57C00", title: "Pôle Énergie Renouvelable",       desc: "Études, conception et maintenance de centrales solaires et micro-hydrauliques." },
+  { icon: <TrendingUp size={28} />,color: "#8B1A1A", title: "Conseil & Investissement",        desc: "Accompagnement stratégique et opportunités d'investissement dans les secteurs porteurs d'Afrique." },
+  { icon: <Leaf size={28} />,      color: "#4CAF50", title: "Gestion des Déchets",             desc: "Collecte, tri et valorisation industrielle des déchets plastiques pour les villes et entreprises." },
 ];
 
-// ── Projects ────────────────────────────────────────────────────────────────
-const projects = [
-  { img: proj1Img, label: "PLASTI-BUILD®", title: "Chantier Résidentiel Douala" },
-  { img: proj2Img, label: "ART ÉPOXY", title: "Sol Industriel Haut de Gamme" },
-  { img: proj3Img, label: "ÉNERGIE SOLAIRE", title: "Installation Système Autonome" },
-  { img: proj4Img, label: "H.E.R.O.®", title: "Transformation Déchets Plastiques" },
+const whyUs = [
+  { icon: <Users size={24} />,      label: "Ingénieurs\nExpérimentés" },
+  { icon: <Wrench size={24} />,     label: "Travail\nSoigné" },
+  { icon: <Shield size={24} />,     label: "Devis\nTransparents" },
+  { icon: <Award size={24} />,      label: "Entreprise\nAgréée" },
+  { icon: <Clock size={24} />,      label: "Délais\nRespectés" },
+  { icon: <ThumbsUp size={24} />,   label: "Équipes\nLocales" },
+  { icon: <CheckCircle size={24} />,label: "Résultats\nGarantis" },
 ];
 
-// ── Stats ───────────────────────────────────────────────────────────────────
-const stats = [
-  { value: "15+", label: "Années d'Expérience" },
-  { value: "200+", label: "Projets Réalisés" },
-  { value: "5", label: "Domaines d'Expertise" },
-  { value: "3", label: "Pays Couverts" },
+const steps = [
+  { n: "1", title: "Demande de Devis",   desc: "Soumettez votre projet via le formulaire et recevez une réponse sous 24h." },
+  { n: "2", title: "Étude Technique",    desc: "Nos ingénieurs analysent vos besoins et préparent une solution sur mesure." },
+  { n: "3", title: "Planification",      desc: "Nous définissons les étapes, le calendrier et les ressources nécessaires." },
+  { n: "4", title: "Réalisation",        desc: "Exécution professionnelle du projet dans les délais et selon les standards." },
+  { n: "5", title: "Livraison & Suivi",  desc: "Réception du projet avec suivi post-livraison et service après-vente dédié." },
 ];
+
+const testimonials = [
+  { name: "Alain T.", city: "Douala", stars: 5, text: "PADESS a transformé notre immeuble avec un sol époxy magnifique. Travail soigné, délais respectés, équipe très professionnelle. Je recommande vivement !" },
+  { name: "Marie-Claire N.", city: "Yaoundé", stars: 5, text: "Notre système solaire fonctionne parfaitement depuis l'installation. L'équipe PADESS a été réactive et compétente du début à la fin du projet." },
+  { name: "Ibrahim K.", city: "Bafoussam", stars: 5, text: "Le système PLASTI-BUILD® est révolutionnaire. Des briques solides fabriquées à partir de déchets plastiques — PADESS est en avance sur son temps." },
+];
+
+const realizations = [
+  { img: proj1Img, label: "PLASTI-BUILD®",    title: "Chantier Résidentiel, Douala" },
+  { img: proj2Img, label: "ART ÉPOXY",         title: "Sol Industriel Haut de Gamme" },
+  { img: proj3Img, label: "ÉNERGIE SOLAIRE",   title: "Installation Système Autonome" },
+  { img: proj4Img, label: "H.E.R.O.®",         title: "Valorisation Déchets Plastiques" },
+  { img: proj5Img, label: "MOBILITÉ",           title: "Tricycle Cargo Électrique" },
+  { img: proj6Img, label: "TRAITEMENT EAU",    title: "Système de Purification" },
+];
+
+// ─── Component ───────────────────────────────────────────────────────────────
 
 export default function Home() {
+  const [form, setForm] = useState({ nom: "", tel: "", email: "", service: "", message: "" });
+
   return (
     <div className="bg-white text-gray-800 font-sans">
       <Navbar />
 
-      {/* ── HERO ──────────────────────────────────────────────────────────── */}
-      <section className="relative min-h-[92vh] flex items-center" style={{ paddingTop: "7rem" }}>
-        <div className="absolute inset-0">
-          <img src={heroImg} alt="PADESS Team" className="w-full h-full object-cover" />
-          <div className="absolute inset-0 bg-[#0a1628]/75" />
-        </div>
-        <div className="relative z-10 max-w-7xl mx-auto px-4 py-20">
-          <div className="inline-block bg-[#F57C00] text-white text-xs font-bold px-4 py-1.5 rounded mb-6 tracking-widest uppercase">
-            15 Ans d'Expérience en Ingénierie
-          </div>
-          <h1 className="text-white font-extrabold leading-tight mb-6" style={{ fontSize: "clamp(2rem, 5vw, 4rem)", maxWidth: "700px" }}>
-            Solutions d'Ingénierie<br />
-            <span className="text-[#F57C00]">Innovantes & Durables</span><br />
-            pour l'Afrique
-          </h1>
-          <p className="text-gray-300 text-lg mb-10 max-w-xl">
-            PADESS ENGINEERING SARL — Le centre de commandement d'une nouvelle révolution industrielle africaine. Transformer le déchet en richesse, installer des systèmes énergétiques souverains.
-          </p>
-          <div className="flex flex-wrap gap-4">
-            <a href="#services" className="inline-flex items-center gap-2 bg-[#F57C00] hover:bg-[#E65100] text-white font-bold px-8 py-4 rounded transition-colors shadow-lg">
-              NOS SERVICES <ArrowRight size={18} />
-            </a>
-            <a href="#contact" className="inline-flex items-center gap-2 border-2 border-white text-white hover:bg-white hover:text-gray-900 font-bold px-8 py-4 rounded transition-colors">
-              NOUS CONTACTER
-            </a>
-          </div>
-        </div>
-      </section>
+      {/* spacer for fixed bars */}
+      <div className="h-[6.5rem]" />
 
-      {/* ── FEATURE CARDS (below hero) ────────────────────────────────────── */}
-      <section className="relative z-10 -mt-1 bg-white">
-        <div className="max-w-7xl mx-auto px-4">
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 -mt-16 gap-0 shadow-xl rounded-lg overflow-hidden">
-            {features.map((f, i) => (
-              <div
-                key={i}
-                className="bg-white border-r border-gray-100 last:border-r-0 p-8 flex flex-col gap-4 hover:bg-gray-50 transition-colors group"
-              >
-                <div className="mb-1">{f.icon}</div>
-                <h3 className="font-bold text-gray-900 text-lg">{f.title}</h3>
-                <p className="text-gray-500 text-sm leading-relaxed">{f.desc}</p>
-                <a href="#services" className="text-sm font-bold text-[#1565C0] hover:text-[#F57C00] transition-colors flex items-center gap-1 mt-auto">
-                  EN SAVOIR PLUS <ArrowRight size={14} />
-                </a>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ── ABOUT ─────────────────────────────────────────────────────────── */}
-      <section id="about" className="py-24 bg-white">
-        <div className="max-w-7xl mx-auto px-4">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-            {/* Image col */}
-            <div className="relative">
-              <div className="relative rounded-lg overflow-hidden shadow-2xl aspect-[4/3]">
-                <img src={aboutImg} alt="À propos de PADESS" className="w-full h-full object-cover" />
-                <div className="absolute inset-0 bg-[#1565C0]/10" />
-              </div>
-              {/* Years badge */}
-              <div className="absolute -bottom-6 -right-6 bg-[#F57C00] text-white rounded-full w-32 h-32 flex flex-col items-center justify-center shadow-xl text-center">
-                <span className="text-4xl font-extrabold leading-none">15</span>
-                <span className="text-xs font-bold uppercase leading-tight mt-1">Ans<br/>d'Expertise</span>
-              </div>
-              {/* Accent bar */}
-              <div className="absolute -left-4 top-8 w-2 h-2/3 bg-[#4CAF50] rounded-full" />
-            </div>
-
-            {/* Text col */}
-            <div className="lg:pl-6">
-              <p className="text-[#F57C00] font-bold text-sm tracking-widest uppercase mb-3">À PROPOS DE NOUS</p>
-              <h2 className="text-3xl md:text-4xl font-extrabold text-gray-900 mb-6 leading-tight">
-                PADESS Engineering —<br />
-                <span className="text-[#1565C0]">L'Innovation au Service</span><br />
-                de l'Autonomie Africaine
-              </h2>
-              <p className="text-gray-600 mb-6 leading-relaxed">
-                Fondée à Douala, Cameroun, PADESS ENGINEERING SARL est une entreprise d'ingénierie multi-sectorielle spécialisée dans la construction écologique, l'énergie durable et la mobilité industrielle. Nous transformons les défis africains en opportunités économiques.
-              </p>
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-8">
-                <div className="flex items-start gap-3 bg-gray-50 rounded-lg p-4">
-                  <CheckCircle size={20} className="text-[#4CAF50] shrink-0 mt-0.5" />
-                  <div>
-                    <h4 className="font-bold text-gray-900 text-sm">Travail Innovant</h4>
-                    <p className="text-gray-500 text-xs mt-1">Technologies brevetées adaptées au marché africain</p>
-                  </div>
-                </div>
-                <div className="flex items-start gap-3 bg-gray-50 rounded-lg p-4">
-                  <CheckCircle size={20} className="text-[#4CAF50] shrink-0 mt-0.5" />
-                  <div>
-                    <h4 className="font-bold text-gray-900 text-sm">Construction Unique</h4>
-                    <p className="text-gray-500 text-xs mt-1">Systèmes PLASTI-BUILD® et H.E.R.O.® exclusifs</p>
-                  </div>
-                </div>
-              </div>
-              <a href="#contact" className="inline-flex items-center gap-2 bg-[#1565C0] hover:bg-[#0D47A1] text-white font-bold px-8 py-4 rounded transition-colors shadow-md">
-                DÉCOUVRIR PLUS <ArrowRight size={18} />
+      {/* ══ HERO ═══════════════════════════════════════════════════════════ */}
+      <section className="bg-white py-12 lg:py-0 overflow-hidden">
+        <div className="max-w-7xl mx-auto px-4 lg:flex lg:items-stretch lg:min-h-[560px]">
+          {/* Left — text */}
+          <div className="flex flex-col justify-center lg:w-1/2 lg:pr-12 py-10">
+            <h1 className="font-extrabold leading-tight mb-5 text-[#1a2b4a]" style={{ fontSize: "clamp(1.8rem,4vw,3rem)" }}>
+              Services d'Ingénierie<br />
+              <span className="text-[#F57C00]">Innovants & Durables</span><br />
+              pour l'Afrique
+            </h1>
+            <p className="text-gray-500 text-base mb-8 max-w-lg">
+              Construction écologique PLASTI-BUILD®, systèmes énergétiques souverains, art époxy, mobilité industrielle et bien plus encore — des solutions complètes de confiance pour vos projets en Afrique.
+            </p>
+            <div className="flex flex-wrap gap-3">
+              <a href="#contact" className="inline-flex items-center gap-2 bg-[#F57C00] hover:bg-[#E65100] text-white font-bold px-6 py-3.5 rounded transition-colors shadow-md text-sm">
+                OBTENIR UN DEVIS <ChevronRight size={16} />
+              </a>
+              <a href="#services" className="inline-flex items-center gap-2 border-2 border-[#1a2b4a] text-[#1a2b4a] hover:bg-[#1a2b4a] hover:text-white font-bold px-6 py-3.5 rounded transition-colors text-sm">
+                VOIR NOS SERVICES
               </a>
             </div>
           </div>
+          {/* Right — image */}
+          <div className="lg:w-1/2 relative mt-6 lg:mt-0">
+            <div className="h-72 lg:h-full w-full overflow-hidden lg:rounded-none rounded-xl">
+              <img src={heroImg} alt="PADESS Engineering Team" className="w-full h-full object-cover" />
+              <div className="absolute inset-0 bg-gradient-to-r from-white/30 to-transparent lg:from-white/10" />
+            </div>
+          </div>
         </div>
       </section>
 
-      {/* ── STATS ─────────────────────────────────────────────────────────── */}
-      <section className="bg-[#1565C0] py-16">
+      {/* ══ TRUST BADGES ════════════════════════════════════════════════════ */}
+      <section className="bg-gray-50 border-y border-gray-200 py-6">
         <div className="max-w-7xl mx-auto px-4">
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 text-center text-white">
-            {stats.map((s, i) => (
-              <div key={i}>
-                <div className="text-5xl font-extrabold text-[#F57C00]">{s.value}</div>
-                <div className="text-sm font-semibold mt-2 text-white/80 uppercase tracking-wide">{s.label}</div>
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 text-center">
+            {[
+              { icon: <Shield size={22} className="text-[#4CAF50]" />, title: "Entreprise Agréée",    sub: "Sécurité & Conformité" },
+              { icon: <Star   size={22} className="text-[#F57C00]" />, title: "Noté 5 Étoiles",       sub: "Par nos clients" },
+              { icon: <Clock  size={22} className="text-[#1565C0]" />, title: "Livraison à Temps",    sub: "À chaque projet" },
+              { icon: <ThumbsUp size={22} className="text-[#8B1A1A]" />, title: "Soins & Fiabilité", sub: "Experts Locaux" },
+            ].map((b, i) => (
+              <div key={i} className="flex items-center justify-center gap-3 py-2">
+                {b.icon}
+                <div className="text-left">
+                  <div className="font-bold text-sm text-gray-800">{b.title}</div>
+                  <div className="text-xs text-gray-500">{b.sub}</div>
+                </div>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* ── SERVICES ──────────────────────────────────────────────────────── */}
-      <section id="services" className="py-24 bg-gray-50">
+      {/* ══ NOS SERVICES ════════════════════════════════════════════════════ */}
+      <section id="services" className="py-16 bg-white">
         <div className="max-w-7xl mx-auto px-4">
-          <div className="text-center mb-14">
-            <p className="text-[#F57C00] font-bold text-sm tracking-widest uppercase mb-3">NOS SERVICES</p>
-            <h2 className="text-3xl md:text-4xl font-extrabold text-gray-900">
-              Nous Fournissons des Solutions<br />
-              <span className="text-[#1565C0]">d'Ingénierie de Qualité</span>
+          <div className="text-center mb-10">
+            <p className="text-[#F57C00] font-bold text-xs tracking-widest uppercase mb-2">NOS EXPERTISES</p>
+            <h2 className="text-2xl md:text-3xl font-extrabold text-[#1a2b4a]">
+              Solutions d'Ingénierie Complètes<br />
+              <span className="text-[#F57C00]">pour Particuliers & Entreprises</span>
             </h2>
           </div>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {services.map((s, i) => (
-              <div key={i} className="bg-white rounded-lg overflow-hidden shadow-md hover:shadow-xl transition-shadow group">
-                <div className="relative h-52 overflow-hidden">
-                  <img src={s.img} alt={s.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
-                  {/* Icon badge */}
-                  <div
-                    className="absolute bottom-0 right-0 w-14 h-14 flex items-center justify-center text-white rounded-tl-xl"
-                    style={{ backgroundColor: s.color }}
-                  >
-                    {s.icon}
-                  </div>
+              <div key={i} className="flex items-start gap-4 p-5 border border-gray-100 rounded-lg hover:shadow-md transition-shadow bg-white group">
+                <div className="shrink-0 w-14 h-14 rounded-lg flex items-center justify-center text-white" style={{ backgroundColor: s.color }}>
+                  {s.icon}
                 </div>
-                <div className="p-6">
-                  <h3 className="font-bold text-gray-900 text-lg mb-2">{s.title}</h3>
-                  <p className="text-gray-500 text-sm leading-relaxed mb-4">{s.desc}</p>
-                  <a href="#contact" className="text-sm font-bold uppercase tracking-wide flex items-center gap-1 transition-colors" style={{ color: s.color }}>
-                    EN SAVOIR PLUS <ArrowRight size={14} />
+                <div>
+                  <h3 className="font-bold text-gray-900 mb-1 text-sm">{s.title}</h3>
+                  <p className="text-gray-500 text-xs leading-relaxed">{s.desc}</p>
+                  <a href="#contact" className="inline-flex items-center gap-1 text-xs font-bold mt-2 transition-colors" style={{ color: s.color }}>
+                    EN SAVOIR PLUS <ArrowRight size={12} />
                   </a>
                 </div>
               </div>
@@ -210,23 +164,194 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ── RÉALISATIONS ──────────────────────────────────────────────────── */}
-      <section id="realisations" className="py-24 bg-white">
+      {/* ══ POURQUOI NOUS CHOISIR ════════════════════════════════════════════ */}
+      <section className="py-12 bg-gray-50 border-y border-gray-200">
         <div className="max-w-7xl mx-auto px-4">
-          <div className="text-center mb-14">
-            <p className="text-[#F57C00] font-bold text-sm tracking-widest uppercase mb-3">NOS RÉALISATIONS</p>
-            <h2 className="text-3xl md:text-4xl font-extrabold text-gray-900">
-              Nos Projets <span className="text-[#1565C0]">en Afrique</span>
-            </h2>
+          <h2 className="text-center text-2xl md:text-3xl font-extrabold text-[#1a2b4a] mb-8">Pourquoi Nos Clients Nous Choisissent</h2>
+          <div className="grid grid-cols-3 sm:grid-cols-4 lg:grid-cols-7 gap-4 text-center">
+            {whyUs.map((w, i) => (
+              <div key={i} className="flex flex-col items-center gap-2">
+                <div className="w-14 h-14 rounded-full bg-[#1a2b4a] text-white flex items-center justify-center">
+                  {w.icon}
+                </div>
+                <p className="text-xs font-semibold text-gray-700 whitespace-pre-line leading-tight">{w.label}</p>
+              </div>
+            ))}
           </div>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            {projects.map((p, i) => (
-              <div key={i} className="group relative rounded-lg overflow-hidden shadow-md aspect-[3/4] cursor-pointer">
-                <img src={p.img} alt={p.title} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
-                <div className="absolute bottom-0 left-0 right-0 p-5">
-                  <span className="text-[#F57C00] text-xs font-bold uppercase tracking-widest">{p.label}</span>
-                  <h4 className="text-white font-bold mt-1">{p.title}</h4>
+        </div>
+      </section>
+
+      {/* ══ CONTACT FORM SECTION ════════════════════════════════════════════ */}
+      <section id="contact" className="py-16 bg-white">
+        <div className="max-w-7xl mx-auto px-4">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-0 rounded-xl overflow-hidden shadow-xl">
+            {/* Left — dark info panel */}
+            <div className="bg-[#1a2b4a] text-white p-10 flex flex-col justify-between">
+              <div>
+                <p className="text-[#F57C00] font-bold text-xs tracking-widest uppercase mb-3">CONTACTEZ-NOUS</p>
+                <h2 className="text-2xl font-extrabold mb-4 leading-tight">
+                  Planifiez votre<br />Projet Maintenant !
+                </h2>
+                <p className="text-white/70 text-sm mb-8">
+                  Obtenez un devis gratuit et sans engagement. Nos ingénieurs analysent votre projet et vous répondent sous 24h.
+                </p>
+                <ul className="space-y-3 text-sm">
+                  {["Devis Gratuits & Rapides", "Sans Frais Cachés", "Entreprise Agréée", "Équipe Locale Expérimentée"].map((t, i) => (
+                    <li key={i} className="flex items-center gap-2 text-white/90">
+                      <CheckCircle size={16} className="text-[#4CAF50] shrink-0" /> {t}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+              <div className="mt-10 pt-8 border-t border-white/20 space-y-3 text-sm text-white/80">
+                <div className="flex items-center gap-2"><Phone size={14} className="text-[#F57C00]" /> +237 697 221 970</div>
+                <div className="flex items-center gap-2"><span className="text-[#F57C00]">✉</span> npadess@hoo.com</div>
+                <div className="flex items-center gap-2"><span className="text-[#F57C00]">📍</span> Douala, Cameroun</div>
+              </div>
+            </div>
+            {/* Right — form */}
+            <div className="bg-gray-50 p-10">
+              <form className="space-y-4" onSubmit={(e) => e.preventDefault()}>
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  <div>
+                    <label className="block text-xs font-semibold text-gray-600 mb-1">Votre Nom</label>
+                    <input type="text" placeholder="Nom complet" className="w-full border border-gray-300 rounded px-3 py-2.5 text-sm bg-white focus:outline-none focus:border-[#1565C0]" />
+                  </div>
+                  <div>
+                    <label className="block text-xs font-semibold text-gray-600 mb-1">Numéro de Téléphone</label>
+                    <input type="tel" placeholder="+237 ..." className="w-full border border-gray-300 rounded px-3 py-2.5 text-sm bg-white focus:outline-none focus:border-[#1565C0]" />
+                  </div>
+                </div>
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  <div>
+                    <label className="block text-xs font-semibold text-gray-600 mb-1">Email</label>
+                    <input type="email" placeholder="votre@email.com" className="w-full border border-gray-300 rounded px-3 py-2.5 text-sm bg-white focus:outline-none focus:border-[#1565C0]" />
+                  </div>
+                  <div>
+                    <label className="block text-xs font-semibold text-gray-600 mb-1">Type de Service</label>
+                    <select className="w-full border border-gray-300 rounded px-3 py-2.5 text-sm bg-white focus:outline-none focus:border-[#1565C0] text-gray-700">
+                      <option value="">Sélectionner...</option>
+                      <option>Construction PLASTI-BUILD®</option>
+                      <option>Architecture & Art Époxy</option>
+                      <option>Systèmes Énergétiques</option>
+                      <option>Traitement de l'Eau</option>
+                      <option>Mobilité Industrielle</option>
+                      <option>Conseil & Investissement</option>
+                      <option>Autre</option>
+                    </select>
+                  </div>
+                </div>
+                <div>
+                  <label className="block text-xs font-semibold text-gray-600 mb-1">Décrivez votre Projet</label>
+                  <textarea rows={4} placeholder="Ex : Sol époxy pour entrepôt 500m², installation solaire 10kWc, maison PLASTI-BUILD® 3 chambres..." className="w-full border border-gray-300 rounded px-3 py-2.5 text-sm bg-white focus:outline-none focus:border-[#1565C0] resize-y" />
+                </div>
+                <button type="submit" className="w-full bg-[#F57C00] hover:bg-[#E65100] text-white font-bold py-3.5 rounded transition-colors text-sm tracking-wide shadow-md">
+                  OBTENIR MON DEVIS GRATUIT →
+                </button>
+                <p className="text-center text-xs text-gray-400">🔒 Vos données sont confidentielles et sécurisées.</p>
+              </form>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ══ CERTIFICATIONS / RATINGS ════════════════════════════════════════ */}
+      <section id="avis" className="bg-gray-50 border-y border-gray-200 py-8">
+        <div className="max-w-7xl mx-auto px-4">
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 text-center">
+            <div className="flex flex-col items-center gap-1">
+              <div className="flex gap-0.5 text-yellow-400">{[...Array(5)].map((_, i) => <Star key={i} size={18} fill="currentColor" />)}</div>
+              <div className="font-bold text-gray-900 text-sm mt-1">Note 4.9 / 5</div>
+              <div className="text-xs text-gray-500">Basé sur 80+ avis clients</div>
+            </div>
+            <div className="flex flex-col items-center gap-1">
+              <Shield size={28} className="text-[#4CAF50]" />
+              <div className="font-bold text-gray-900 text-sm mt-1">ENTREPRISE AGRÉÉE</div>
+              <div className="text-xs text-gray-500">Pour votre tranquillité d'esprit</div>
+            </div>
+            <div className="flex flex-col items-center gap-1">
+              <Award size={28} className="text-[#F57C00]" />
+              <div className="font-bold text-gray-900 text-sm mt-1">PRÉSENCE EN AFRIQUE</div>
+              <div className="text-xs text-gray-500">Cameroun, régional & international</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ══ ÉQUIPEMENTS & MATÉRIAUX ════════════════════════════════════════ */}
+      <section id="about" className="py-16 bg-white">
+        <div className="max-w-7xl mx-auto px-4 grid grid-cols-1 md:grid-cols-2 gap-8">
+          <div className="relative rounded-xl overflow-hidden shadow-lg group">
+            <img src={equipImg} alt="Équipements PADESS" className="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-500" />
+            <div className="absolute inset-0 bg-[#1a2b4a]/60 flex flex-col justify-end p-6">
+              <h3 className="text-white font-extrabold text-xl">Équipements Industriels</h3>
+              <p className="text-white/80 text-sm mt-1">Machines et outils professionnels de dernière génération pour chaque chantier.</p>
+            </div>
+          </div>
+          <div className="relative rounded-xl overflow-hidden shadow-lg group">
+            <img src={matImg} alt="Matériaux PADESS" className="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-500" />
+            <div className="absolute inset-0 bg-[#4CAF50]/70 flex flex-col justify-end p-6">
+              <h3 className="text-white font-extrabold text-xl">Matériaux Écologiques</h3>
+              <p className="text-white/80 text-sm mt-1">Briques PLASTI-BUILD® certifiées et matériaux durables pour vos constructions.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ══ COMMENT ÇA MARCHE ════════════════════════════════════════════════ */}
+      <section className="py-16 bg-gray-50">
+        <div className="max-w-7xl mx-auto px-4">
+          <h2 className="text-center text-2xl md:text-3xl font-extrabold text-[#1a2b4a] mb-12">Comment Ça Marche</h2>
+          <div className="grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-5 gap-6 relative">
+            {/* connector line desktop */}
+            <div className="hidden lg:block absolute top-8 left-[10%] right-[10%] h-0.5 bg-gray-200 z-0" />
+            {steps.map((s, i) => (
+              <div key={i} className="flex flex-col items-center text-center relative z-10">
+                <div className="w-16 h-16 rounded-full bg-[#F57C00] text-white flex items-center justify-center text-2xl font-extrabold shadow-md mb-4">
+                  {s.n}
+                </div>
+                <h4 className="font-bold text-gray-900 text-sm mb-1">{s.title}</h4>
+                <p className="text-gray-500 text-xs leading-relaxed">{s.desc}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ══ RÉALISATIONS ════════════════════════════════════════════════════ */}
+      <section id="realisations" className="py-16 bg-white">
+        <div className="max-w-7xl mx-auto px-4">
+          <div className="text-center mb-10">
+            <p className="text-[#F57C00] font-bold text-xs tracking-widest uppercase mb-2">NOS RÉALISATIONS</p>
+            <h2 className="text-2xl md:text-3xl font-extrabold text-[#1a2b4a]">Ce Que Nos Clients Disent de Nous</h2>
+          </div>
+          {/* Testimonials */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-14">
+            {testimonials.map((t, i) => (
+              <div key={i} className="bg-gray-50 border border-gray-100 rounded-xl p-6 shadow-sm">
+                <div className="flex gap-0.5 text-yellow-400 mb-3">{[...Array(t.stars)].map((_, j) => <Star key={j} size={14} fill="currentColor" />)}</div>
+                <p className="text-gray-600 text-sm leading-relaxed mb-4">"{t.text}"</p>
+                <div className="flex items-center gap-2 mt-auto">
+                  <div className="w-9 h-9 rounded-full bg-[#1a2b4a] text-white flex items-center justify-center text-sm font-bold">
+                    {t.name[0]}
+                  </div>
+                  <div>
+                    <div className="font-bold text-gray-900 text-sm">{t.name}</div>
+                    <div className="text-xs text-gray-500">{t.city}</div>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+          {/* Project gallery */}
+          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3">
+            {realizations.map((r, i) => (
+              <div key={i} className="group relative rounded-lg overflow-hidden aspect-square shadow-sm cursor-pointer">
+                <img src={r.img} alt={r.title} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
+                <div className="absolute bottom-0 left-0 right-0 p-2 translate-y-full group-hover:translate-y-0 transition-transform duration-300">
+                  <span className="text-[#F57C00] text-[10px] font-bold uppercase">{r.label}</span>
+                  <p className="text-white text-xs font-semibold leading-tight">{r.title}</p>
                 </div>
               </div>
             ))}
@@ -234,99 +359,32 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ── INVESTISSEURS ─────────────────────────────────────────────────── */}
-      <section id="investisseurs" className="py-24 bg-gray-50">
+      {/* ══ INVESTISSEURS ════════════════════════════════════════════════════ */}
+      <section id="investisseurs" className="py-16 bg-[#1a2b4a]">
         <div className="max-w-7xl mx-auto px-4">
-          <div className="text-center mb-14">
-            <p className="text-[#F57C00] font-bold text-sm tracking-widest uppercase mb-3">OPPORTUNITÉS</p>
-            <h2 className="text-3xl md:text-4xl font-extrabold text-gray-900">
-              Espace <span className="text-[#1565C0]">Investisseurs</span>
-            </h2>
-            <p className="text-gray-500 mt-4 max-w-xl mx-auto">
-              PADESS offre des opportunités d'investissement exceptionnelles dans des marchés en forte croissance sur le continent africain.
-            </p>
+          <div className="text-center mb-10">
+            <p className="text-[#F57C00] font-bold text-xs tracking-widest uppercase mb-2">OPPORTUNITÉS</p>
+            <h2 className="text-2xl md:text-3xl font-extrabold text-white">Espace Investisseurs</h2>
+            <p className="text-white/60 mt-3 max-w-xl mx-auto text-sm">PADESS offre des opportunités d'investissement exceptionnelles dans des marchés en forte croissance en Afrique.</p>
           </div>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-5 mb-10">
             {[
-              { val: "65%", label: "Marges PLASTI-BUILD®", color: "#4CAF50", desc: "Matière première à coût zéro — le déchet est notre ressource principale." },
-              { val: "18–30m", label: "ROI Projeté", color: "#F57C00", desc: "Retour sur investissement en 18 à 30 mois selon les unités déployées." },
-              { val: "$/€", label: "Trading International", color: "#8B1A1A", desc: "Couverture naturelle contre les dévaluations monétaires locales." },
-              { val: "↑", label: "Emplois Massifs", color: "#1565C0", desc: "Création d'emplois locaux dans la collecte, transformation et construction." },
-            ].map((item, i) => (
-              <div key={i} className="bg-white rounded-lg p-8 text-center shadow-md hover:shadow-lg transition-shadow border-t-4" style={{ borderColor: item.color }}>
-                <div className="text-5xl font-extrabold mb-3" style={{ color: item.color }}>{item.val}</div>
-                <h4 className="font-bold text-gray-900 mb-2">{item.label}</h4>
-                <p className="text-gray-500 text-sm">{item.desc}</p>
+              { val: "65%",    label: "Marges PLASTI-BUILD®",   color: "#4CAF50", desc: "Matière première à coût zéro — le déchet est notre ressource principale." },
+              { val: "18–30m", label: "ROI Projeté",             color: "#F57C00", desc: "Retour sur investissement en 18 à 30 mois selon les unités déployées." },
+              { val: "$/€",    label: "Trading International",   color: "#8B1A1A", desc: "Couverture naturelle contre les dévaluations monétaires locales." },
+              { val: "↑",      label: "Emplois Massifs",         color: "#1565C0", desc: "Création d'emplois locaux dans la collecte, transformation et construction." },
+            ].map((c, i) => (
+              <div key={i} className="bg-white/5 border border-white/10 rounded-xl p-6 text-center hover:bg-white/10 transition-colors">
+                <div className="text-4xl font-extrabold mb-2" style={{ color: c.color }}>{c.val}</div>
+                <h4 className="font-bold text-white text-sm mb-2">{c.label}</h4>
+                <p className="text-white/50 text-xs">{c.desc}</p>
               </div>
             ))}
           </div>
           <div className="text-center">
-            <a href="#contact" className="inline-flex items-center gap-2 bg-[#F57C00] hover:bg-[#E65100] text-white font-bold px-10 py-4 rounded transition-colors shadow-lg">
-              DEVENIR PARTENAIRE <ArrowRight size={18} />
+            <a href="#contact" className="inline-flex items-center gap-2 bg-[#F57C00] hover:bg-[#E65100] text-white font-bold px-10 py-4 rounded transition-colors shadow-lg text-sm">
+              DEVENIR PARTENAIRE <ArrowRight size={16} />
             </a>
-          </div>
-        </div>
-      </section>
-
-      {/* ── CONTACT ───────────────────────────────────────────────────────── */}
-      <section id="contact" className="py-24 bg-white">
-        <div className="max-w-7xl mx-auto px-4">
-          <div className="text-center mb-14">
-            <p className="text-[#F57C00] font-bold text-sm tracking-widest uppercase mb-3">CONTACTEZ-NOUS</p>
-            <h2 className="text-3xl md:text-4xl font-extrabold text-gray-900">
-              Parlons de <span className="text-[#1565C0]">Votre Projet</span>
-            </h2>
-          </div>
-
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
-            {/* Info */}
-            <div className="space-y-8">
-              <p className="text-gray-600 leading-relaxed">
-                Chaque demande est traitée avec la rigueur d'un cabinet de conseil international. Notre équipe d'experts vous répond dans les 24 heures.
-              </p>
-              {[
-                { icon: "📞", title: "Téléphone & WhatsApp", lines: ["WhatsApp / Expertise : +237 697 221 970", "(+237) 658 92 90 70  |  (+237) 690 38 95 45"], color: "#4CAF50" },
-                { icon: "✉️", title: "Email", lines: ["npadess@hoo.com", "padess@engineering.com", "ahmednchange@yahoo.com"], color: "#1565C0" },
-                { icon: "📍", title: "Siège Social", lines: ["Douala, Cameroun"], color: "#F57C00" },
-              ].map((item, i) => (
-                <div key={i} className="flex items-start gap-5">
-                  <div className="w-12 h-12 rounded-lg flex items-center justify-center text-xl shrink-0" style={{ backgroundColor: item.color + "18" }}>
-                    {item.icon}
-                  </div>
-                  <div>
-                    <h4 className="font-bold text-gray-900 mb-1">{item.title}</h4>
-                    {item.lines.map((l, j) => <p key={j} className="text-gray-500 text-sm">{l}</p>)}
-                  </div>
-                </div>
-              ))}
-            </div>
-
-            {/* Form */}
-            <div className="bg-gray-50 rounded-lg p-8 shadow-md border border-gray-200">
-              <form className="space-y-5" onSubmit={(e) => e.preventDefault()}>
-                <div>
-                  <label className="block text-sm font-semibold text-gray-700 mb-1.5">Nom complet ou Entreprise</label>
-                  <input type="text" placeholder="Votre nom" className="w-full border border-gray-300 rounded px-4 py-3 text-sm focus:outline-none focus:border-[#1565C0] bg-white text-gray-900" />
-                </div>
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
-                  <div>
-                    <label className="block text-sm font-semibold text-gray-700 mb-1.5">Email</label>
-                    <input type="email" placeholder="votre@email.com" className="w-full border border-gray-300 rounded px-4 py-3 text-sm focus:outline-none focus:border-[#1565C0] bg-white text-gray-900" />
-                  </div>
-                  <div>
-                    <label className="block text-sm font-semibold text-gray-700 mb-1.5">Téléphone</label>
-                    <input type="tel" placeholder="+237 ..." className="w-full border border-gray-300 rounded px-4 py-3 text-sm focus:outline-none focus:border-[#1565C0] bg-white text-gray-900" />
-                  </div>
-                </div>
-                <div>
-                  <label className="block text-sm font-semibold text-gray-700 mb-1.5">Votre Projet / Message</label>
-                  <textarea rows={5} placeholder="Décrivez vos besoins d'ingénierie, d'investissement ou de partenariat..." className="w-full border border-gray-300 rounded px-4 py-3 text-sm focus:outline-none focus:border-[#1565C0] bg-white resize-y text-gray-900" />
-                </div>
-                <button type="submit" className="w-full bg-[#F57C00] hover:bg-[#E65100] text-white font-bold py-4 rounded text-base transition-colors shadow-md">
-                  ENVOYER MA DEMANDE
-                </button>
-              </form>
-            </div>
           </div>
         </div>
       </section>
