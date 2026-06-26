@@ -810,12 +810,12 @@ export default function Home() {
       </section>
 
       {/* ══ INVESTISSEURS ════════════════════════════════════════════════════ */}
-      <section id="investisseurs" className="py-16 bg-[#1a2b4a]">
+      <section id="investisseurs" className="py-16 bg-gray-50 border-y border-gray-200">
         <div className="max-w-7xl mx-auto px-4">
           <div className="text-center mb-10">
             <p className="text-[#F57C00] font-bold text-xs tracking-widest uppercase mb-2">OPPORTUNITÉS</p>
-            <h2 className="text-2xl md:text-3xl font-bold text-white">Espace Investisseurs</h2>
-            <p className="text-white/60 mt-3 max-w-xl mx-auto text-sm">PADESS offre des opportunités d'investissement exceptionnelles dans des marchés en forte croissance en Afrique.</p>
+            <h2 className="text-2xl md:text-3xl font-bold text-[#1a2b4a]">Espace Investisseurs</h2>
+            <p className="text-gray-500 mt-3 max-w-xl mx-auto text-sm">PADESS offre des opportunités d'investissement exceptionnelles dans des marchés en forte croissance en Afrique.</p>
           </div>
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-5 mb-8">
             {[
@@ -824,10 +824,10 @@ export default function Home() {
               { val: "$/€",    label: "Trading International",   color: "#8B1A1A", desc: "Couverture naturelle contre les dévaluations monétaires locales via opérations internationales." },
               { val: "↑🌍",   label: "Emplois & Impact Social",  color: "#1565C0", desc: "Création d'emplois locaux, lutte contre l'exode rural et dépollution des villes africaines." },
             ].map((c, i) => (
-              <div key={i} className="bg-white/5 border border-white/10 rounded-xl p-6 text-center hover:bg-white/10 transition-colors">
+              <div key={i} className="bg-white border border-gray-100 rounded-xl p-6 text-center hover:shadow-md transition-shadow shadow-sm">
                 <div className="text-3xl font-bold mb-2" style={{ color: c.color }}>{c.val}</div>
-                <h4 className="font-bold text-white text-sm mb-2">{c.label}</h4>
-                <p className="text-white/50 text-xs">{c.desc}</p>
+                <h4 className="font-bold text-gray-900 text-sm mb-2">{c.label}</h4>
+                <p className="text-gray-500 text-xs">{c.desc}</p>
               </div>
             ))}
           </div>
@@ -838,11 +838,11 @@ export default function Home() {
               { n: "3", color: "#8B1A1A", title: "Appui aux Gouvernements", desc: "Solution clé en main pour stopper l'exode rural, lutter contre l'immigration clandestine en créant des emplois locaux et dépolluer les villes." },
               { n: "4", color: "#1565C0", title: "Souveraineté Nationale", desc: "Nous aidons les États à réduire leurs importations (ciment, pétrole) en utilisant le génie local et les ressources disponibles en Afrique." },
             ].map((r, i) => (
-              <div key={i} className="flex gap-4 bg-white/5 border border-white/10 rounded-xl p-5">
+              <div key={i} className="flex gap-4 bg-white border border-gray-100 rounded-xl p-5 shadow-sm hover:shadow-md transition-shadow">
                 <div className="w-8 h-8 rounded-full flex items-center justify-center text-sm font-bold shrink-0 text-white" style={{ backgroundColor: r.color }}>{r.n}</div>
                 <div>
-                  <h4 className="font-bold text-white text-sm mb-1">{r.title}</h4>
-                  <p className="text-white/60 text-xs leading-relaxed">{r.desc}</p>
+                  <h4 className="font-bold text-gray-900 text-sm mb-1">{r.title}</h4>
+                  <p className="text-gray-500 text-xs leading-relaxed">{r.desc}</p>
                 </div>
               </div>
             ))}
