@@ -86,7 +86,7 @@ export default function Home() {
         <div className="max-w-7xl mx-auto px-4 lg:flex lg:items-stretch lg:min-h-[560px]">
           {/* Left — text */}
           <div className="flex flex-col justify-center lg:w-1/2 lg:pr-12 py-10">
-            <h1 className="font-extrabold leading-tight mb-5 text-[#1a2b4a]" style={{ fontSize: "clamp(1.8rem,4vw,3rem)" }}>
+            <h1 className="font-bold leading-snug mb-5 text-[#1a2b4a] tracking-normal" style={{ fontSize: "clamp(1.6rem,3.5vw,2.6rem)" }}>
               Services d'Ingénierie<br />
               <span className="text-[#F57C00]">Innovants & Durables</span><br />
               pour l'Afrique
@@ -140,7 +140,7 @@ export default function Home() {
         <div className="max-w-7xl mx-auto px-4">
           <div className="text-center mb-10">
             <p className="text-[#F57C00] font-bold text-xs tracking-widest uppercase mb-2">NOS EXPERTISES</p>
-            <h2 className="text-2xl md:text-3xl font-extrabold text-[#1a2b4a]">
+            <h2 className="text-2xl md:text-3xl font-bold text-[#1a2b4a]">
               Solutions d'Ingénierie Complètes<br />
               <span className="text-[#F57C00]">pour Particuliers & Entreprises</span>
             </h2>
@@ -167,7 +167,7 @@ export default function Home() {
       {/* ══ POURQUOI NOUS CHOISIR ════════════════════════════════════════════ */}
       <section className="py-12 bg-gray-50 border-y border-gray-200">
         <div className="max-w-7xl mx-auto px-4">
-          <h2 className="text-center text-2xl md:text-3xl font-extrabold text-[#1a2b4a] mb-8">Pourquoi Nos Clients Nous Choisissent</h2>
+          <h2 className="text-center text-2xl md:text-3xl font-bold text-[#1a2b4a] mb-8">Pourquoi Nos Clients Nous Choisissent</h2>
           <div className="grid grid-cols-3 sm:grid-cols-4 lg:grid-cols-7 gap-4 text-center">
             {whyUs.map((w, i) => (
               <div key={i} className="flex flex-col items-center gap-2">
@@ -189,7 +189,7 @@ export default function Home() {
             <div className="bg-[#1a2b4a] text-white p-10 flex flex-col justify-between">
               <div>
                 <p className="text-[#F57C00] font-bold text-xs tracking-widest uppercase mb-3">CONTACTEZ-NOUS</p>
-                <h2 className="text-2xl font-extrabold mb-4 leading-tight">
+                <h2 className="text-2xl font-bold mb-4 leading-tight">
                   Planifiez votre<br />Projet Maintenant !
                 </h2>
                 <p className="text-white/70 text-sm mb-8">
@@ -284,14 +284,14 @@ export default function Home() {
           <div className="relative rounded-xl overflow-hidden shadow-lg group">
             <img src={equipImg} alt="Équipements PADESS" className="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-500" />
             <div className="absolute inset-0 bg-[#1a2b4a]/60 flex flex-col justify-end p-6">
-              <h3 className="text-white font-extrabold text-xl">Équipements Industriels</h3>
+              <h3 className="text-white font-bold text-xl">Équipements Industriels</h3>
               <p className="text-white/80 text-sm mt-1">Machines et outils professionnels de dernière génération pour chaque chantier.</p>
             </div>
           </div>
           <div className="relative rounded-xl overflow-hidden shadow-lg group">
             <img src={matImg} alt="Matériaux PADESS" className="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-500" />
             <div className="absolute inset-0 bg-[#4CAF50]/70 flex flex-col justify-end p-6">
-              <h3 className="text-white font-extrabold text-xl">Matériaux Écologiques</h3>
+              <h3 className="text-white font-bold text-xl">Matériaux Écologiques</h3>
               <p className="text-white/80 text-sm mt-1">Briques PLASTI-BUILD® certifiées et matériaux durables pour vos constructions.</p>
             </div>
           </div>
@@ -301,13 +301,13 @@ export default function Home() {
       {/* ══ COMMENT ÇA MARCHE ════════════════════════════════════════════════ */}
       <section className="py-16 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4">
-          <h2 className="text-center text-2xl md:text-3xl font-extrabold text-[#1a2b4a] mb-12">Comment Ça Marche</h2>
+          <h2 className="text-center text-2xl md:text-3xl font-bold text-[#1a2b4a] mb-12">Comment Ça Marche</h2>
           <div className="grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-5 gap-6 relative">
             {/* connector line desktop */}
             <div className="hidden lg:block absolute top-8 left-[10%] right-[10%] h-0.5 bg-gray-200 z-0" />
             {steps.map((s, i) => (
               <div key={i} className="flex flex-col items-center text-center relative z-10">
-                <div className="w-16 h-16 rounded-full bg-[#F57C00] text-white flex items-center justify-center text-2xl font-extrabold shadow-md mb-4">
+                <div className="w-16 h-16 rounded-full bg-[#F57C00] text-white flex items-center justify-center text-2xl font-bold shadow-md mb-4">
                   {s.n}
                 </div>
                 <h4 className="font-bold text-gray-900 text-sm mb-1">{s.title}</h4>
@@ -323,7 +323,7 @@ export default function Home() {
         <div className="max-w-7xl mx-auto px-4">
           <div className="text-center mb-10">
             <p className="text-[#F57C00] font-bold text-xs tracking-widest uppercase mb-2">NOS RÉALISATIONS</p>
-            <h2 className="text-2xl md:text-3xl font-extrabold text-[#1a2b4a]">Ce Que Nos Clients Disent de Nous</h2>
+            <h2 className="text-2xl md:text-3xl font-bold text-[#1a2b4a]">Ce Que Nos Clients Disent de Nous</h2>
           </div>
           {/* Testimonials */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-14">
@@ -364,7 +364,7 @@ export default function Home() {
         <div className="max-w-7xl mx-auto px-4">
           <div className="text-center mb-10">
             <p className="text-[#F57C00] font-bold text-xs tracking-widest uppercase mb-2">OPPORTUNITÉS</p>
-            <h2 className="text-2xl md:text-3xl font-extrabold text-white">Espace Investisseurs</h2>
+            <h2 className="text-2xl md:text-3xl font-bold text-white">Espace Investisseurs</h2>
             <p className="text-white/60 mt-3 max-w-xl mx-auto text-sm">PADESS offre des opportunités d'investissement exceptionnelles dans des marchés en forte croissance en Afrique.</p>
           </div>
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-5 mb-10">
@@ -375,7 +375,7 @@ export default function Home() {
               { val: "↑",      label: "Emplois Massifs",         color: "#1565C0", desc: "Création d'emplois locaux dans la collecte, transformation et construction." },
             ].map((c, i) => (
               <div key={i} className="bg-white/5 border border-white/10 rounded-xl p-6 text-center hover:bg-white/10 transition-colors">
-                <div className="text-4xl font-extrabold mb-2" style={{ color: c.color }}>{c.val}</div>
+                <div className="text-4xl font-bold mb-2" style={{ color: c.color }}>{c.val}</div>
                 <h4 className="font-bold text-white text-sm mb-2">{c.label}</h4>
                 <p className="text-white/50 text-xs">{c.desc}</p>
               </div>
