@@ -1,4 +1,5 @@
 import React, { useState, useRef } from "react";
+import AutoScrollRow from "@/components/AutoScrollRow";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { useScrollReveal } from "@/hooks/useScrollReveal";
@@ -506,176 +507,74 @@ export default function Home() {
         </div>
 
         {/* Row 1 — défile vers la gauche — Sanitaires & Construction */}
-        <div className="relative mb-4">
-          <div className="flex gap-4 animate-scroll-left w-max">
-            {[
-              { src: "/realisations/toilet-gray-speckled.jpeg",      label: "Toilette PLASTI-BUILD® Gris Granit" },
-              { src: "/realisations/toilet-black-chunks.jpeg",        label: "Toilette PLASTI-BUILD® Noir Terrazzo" },
-              { src: "/realisations/toilet-set-room.jpeg",            label: "Collection Sanitaires Recyclés" },
-              { src: "/realisations/toilet-colorful-green.jpeg",      label: "Gamme Couleurs PLASTI-BUILD®" },
-              { src: "/realisations/toilet-white.jpeg",               label: "Toilette PLASTI-BUILD® Blanc" },
-              { src: "/realisations/toilet-orange-wallhung.jpeg",     label: "Toilette Suspendue Orange" },
-              { src: "/realisations/toilet-multicolor-set.jpeg",      label: "Gamme Multicolore Sanitaires" },
-              { src: "/realisations/bathroom-set-gray.jpeg",          label: "Collection Salle de Bain Complète" },
-              { src: "/realisations/bathroom-vanity-collection.jpeg", label: "Meubles Vasque PADESS" },
-              { src: "/realisations/bathroom-pods.jpeg",              label: "Modules Sanitaires Intégrés" },
-              { src: "/realisations/plastibuild-team.jpeg",           label: "Équipe PLASTI-BUILD® — Construction" },
-              { src: "/realisations/paving-cobblestone.jpeg",         label: "Pavage Recyclé — Allée" },
-              { src: "/realisations/paving-colorful-house.jpeg",      label: "Pavage Hexagonal Multicolore" },
-              { src: "/realisations/paving-closeup.jpeg",             label: "Pavé Recyclé — Détail Texture" },
-              /* duplicate for infinite loop */
-              { src: "/realisations/toilet-gray-speckled.jpeg",      label: "Toilette PLASTI-BUILD® Gris Granit" },
-              { src: "/realisations/toilet-black-chunks.jpeg",        label: "Toilette PLASTI-BUILD® Noir Terrazzo" },
-              { src: "/realisations/toilet-set-room.jpeg",            label: "Collection Sanitaires Recyclés" },
-              { src: "/realisations/toilet-colorful-green.jpeg",      label: "Gamme Couleurs PLASTI-BUILD®" },
-              { src: "/realisations/toilet-white.jpeg",               label: "Toilette PLASTI-BUILD® Blanc" },
-              { src: "/realisations/toilet-orange-wallhung.jpeg",     label: "Toilette Suspendue Orange" },
-              { src: "/realisations/toilet-multicolor-set.jpeg",      label: "Gamme Multicolore Sanitaires" },
-              { src: "/realisations/bathroom-set-gray.jpeg",          label: "Collection Salle de Bain Complète" },
-              { src: "/realisations/bathroom-vanity-collection.jpeg", label: "Meubles Vasque PADESS" },
-              { src: "/realisations/bathroom-pods.jpeg",              label: "Modules Sanitaires Intégrés" },
-              { src: "/realisations/plastibuild-team.jpeg",           label: "Équipe PLASTI-BUILD® — Construction" },
-              { src: "/realisations/paving-cobblestone.jpeg",         label: "Pavage Recyclé — Allée" },
-              { src: "/realisations/paving-colorful-house.jpeg",      label: "Pavage Hexagonal Multicolore" },
-              { src: "/realisations/paving-closeup.jpeg",             label: "Pavé Recyclé — Détail Texture" },
-            ].map((img, i) => (
-              <div key={i} className="shrink-0 w-56 h-44 rounded-xl overflow-hidden relative group shadow-sm border border-gray-100">
-                <img src={img.src} alt={img.label} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent flex items-end p-3">
-                  <p className="text-white text-xs font-semibold leading-tight drop-shadow">{img.label}</p>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
+        <AutoScrollRow direction="left" images={[
+          { src: "/realisations/toilet-gray-speckled.jpeg",      label: "Toilette PLASTI-BUILD® Gris Granit" },
+          { src: "/realisations/toilet-black-chunks.jpeg",        label: "Toilette PLASTI-BUILD® Noir Terrazzo" },
+          { src: "/realisations/toilet-set-room.jpeg",            label: "Collection Sanitaires Recyclés" },
+          { src: "/realisations/toilet-colorful-green.jpeg",      label: "Gamme Couleurs PLASTI-BUILD®" },
+          { src: "/realisations/toilet-white.jpeg",               label: "Toilette PLASTI-BUILD® Blanc" },
+          { src: "/realisations/toilet-orange-wallhung.jpeg",     label: "Toilette Suspendue Orange" },
+          { src: "/realisations/toilet-multicolor-set.jpeg",      label: "Gamme Multicolore Sanitaires" },
+          { src: "/realisations/bathroom-set-gray.jpeg",          label: "Collection Salle de Bain Complète" },
+          { src: "/realisations/bathroom-vanity-collection.jpeg", label: "Meubles Vasque PADESS" },
+          { src: "/realisations/bathroom-pods.jpeg",              label: "Modules Sanitaires Intégrés" },
+          { src: "/realisations/plastibuild-team.jpeg",           label: "Équipe PLASTI-BUILD® — Construction" },
+          { src: "/realisations/paving-cobblestone.jpeg",         label: "Pavage Recyclé — Allée" },
+          { src: "/realisations/paving-colorful-house.jpeg",      label: "Pavage Hexagonal Multicolore" },
+          { src: "/realisations/paving-closeup.jpeg",             label: "Pavé Recyclé — Détail Texture" },
+        ]} />
 
         {/* Row 2 — défile vers la droite — Tuiles, Cuisine & Mobilité */}
-        <div className="relative mb-4">
-          <div className="flex gap-4 animate-scroll-right w-max">
-            {[
-              { src: "/realisations/roof-tiles-display.jpeg",    label: "Tuiles Plastique — Stand Exposition" },
-              { src: "/realisations/roof-tiles-on-house.jpeg",   label: "Toiture PLASTI-BUILD® Installée" },
-              { src: "/realisations/roof-tiles-closeup.jpeg",    label: "Tuiles Multicolores Closeup" },
-              { src: "/realisations/roof-tiles-eco.jpeg",        label: "Tuiles Écologiques — Alliage Plastique-Sable" },
-              { src: "/realisations/kitchen-teal-pink.jpeg",     label: "Cuisine PLASTI-BUILD® Design" },
-              { src: "/realisations/kitchen-sink-unit.jpeg",     label: "Évier & Plan de Travail Recyclé" },
-              { src: "/realisations/kitchen-counter.jpeg",       label: "Plan de Travail Époxy Granit" },
-              { src: "/realisations/kitchen-gray-premium.jpeg",  label: "Plan de Travail Premium Gris" },
-              { src: "/realisations/kitchen-green-white.jpeg",   label: "Cuisine Verte PLASTI-BUILD®" },
-              { src: "/realisations/kitchen-white-yellow.jpeg",  label: "Cuisine Blanche & Accents Jaunes" },
-              { src: "/realisations/sink-closeup.jpeg",          label: "Évier PADESS — Détail Texture" },
-              { src: "/realisations/wheels-showroom.jpeg",       label: "Showroom Jantes PADESS" },
-              { src: "/realisations/wheels-center.jpeg",         label: "Centre Mobilité PADESS" },
-              { src: "/realisations/wheels-red.jpeg",            label: "Atelier Jantes — Rétrofit" },
-              { src: "/realisations/retrofit-workshop.jpeg",     label: "Rétrofit Électrique — Atelier" },
-              /* duplicate for infinite loop */
-              { src: "/realisations/roof-tiles-display.jpeg",    label: "Tuiles Plastique — Stand Exposition" },
-              { src: "/realisations/roof-tiles-on-house.jpeg",   label: "Toiture PLASTI-BUILD® Installée" },
-              { src: "/realisations/roof-tiles-closeup.jpeg",    label: "Tuiles Multicolores Closeup" },
-              { src: "/realisations/roof-tiles-eco.jpeg",        label: "Tuiles Écologiques — Alliage Plastique-Sable" },
-              { src: "/realisations/kitchen-teal-pink.jpeg",     label: "Cuisine PLASTI-BUILD® Design" },
-              { src: "/realisations/kitchen-sink-unit.jpeg",     label: "Évier & Plan de Travail Recyclé" },
-              { src: "/realisations/kitchen-counter.jpeg",       label: "Plan de Travail Époxy Granit" },
-              { src: "/realisations/kitchen-gray-premium.jpeg",  label: "Plan de Travail Premium Gris" },
-              { src: "/realisations/kitchen-green-white.jpeg",   label: "Cuisine Verte PLASTI-BUILD®" },
-              { src: "/realisations/kitchen-white-yellow.jpeg",  label: "Cuisine Blanche & Accents Jaunes" },
-              { src: "/realisations/sink-closeup.jpeg",          label: "Évier PADESS — Détail Texture" },
-              { src: "/realisations/wheels-showroom.jpeg",       label: "Showroom Jantes PADESS" },
-              { src: "/realisations/wheels-center.jpeg",         label: "Centre Mobilité PADESS" },
-              { src: "/realisations/wheels-red.jpeg",            label: "Atelier Jantes — Rétrofit" },
-              { src: "/realisations/retrofit-workshop.jpeg",     label: "Rétrofit Électrique — Atelier" },
-            ].map((img, i) => (
-              <div key={i} className="shrink-0 w-56 h-44 rounded-xl overflow-hidden relative group shadow-sm border border-gray-100">
-                <img src={img.src} alt={img.label} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent flex items-end p-3">
-                  <p className="text-white text-xs font-semibold leading-tight drop-shadow">{img.label}</p>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
+        <AutoScrollRow direction="right" images={[
+          { src: "/realisations/roof-tiles-display.jpeg",    label: "Tuiles Plastique — Stand Exposition" },
+          { src: "/realisations/roof-tiles-on-house.jpeg",   label: "Toiture PLASTI-BUILD® Installée" },
+          { src: "/realisations/roof-tiles-closeup.jpeg",    label: "Tuiles Multicolores Closeup" },
+          { src: "/realisations/roof-tiles-eco.jpeg",        label: "Tuiles Écologiques — Alliage Plastique-Sable" },
+          { src: "/realisations/kitchen-teal-pink.jpeg",     label: "Cuisine PLASTI-BUILD® Design" },
+          { src: "/realisations/kitchen-sink-unit.jpeg",     label: "Évier & Plan de Travail Recyclé" },
+          { src: "/realisations/kitchen-counter.jpeg",       label: "Plan de Travail Époxy Granit" },
+          { src: "/realisations/kitchen-gray-premium.jpeg",  label: "Plan de Travail Premium Gris" },
+          { src: "/realisations/kitchen-green-white.jpeg",   label: "Cuisine Verte PLASTI-BUILD®" },
+          { src: "/realisations/kitchen-white-yellow.jpeg",  label: "Cuisine Blanche & Accents Jaunes" },
+          { src: "/realisations/sink-closeup.jpeg",          label: "Évier PADESS — Détail Texture" },
+          { src: "/realisations/wheels-showroom.jpeg",       label: "Showroom Jantes PADESS" },
+          { src: "/realisations/wheels-center.jpeg",         label: "Centre Mobilité PADESS" },
+          { src: "/realisations/wheels-red.jpeg",            label: "Atelier Jantes — Rétrofit" },
+          { src: "/realisations/retrofit-workshop.jpeg",     label: "Rétrofit Électrique — Atelier" },
+        ]} />
 
         {/* Row 3 — défile vers la gauche — Sols Époxy & Ateliers */}
-        <div className="relative mb-4">
-          <div className="flex gap-4 animate-scroll-left w-max">
-            {[
-              { src: "/realisations/epoxy-team-applying.jpeg",   label: "Équipe PADESS — Application Sol Époxy" },
-              { src: "/realisations/epoxy-dark-team.jpeg",       label: "Application Sol Époxy Prestige" },
-              { src: "/realisations/epoxy-large-team.jpeg",      label: "Chantier Époxy — Grande Surface" },
-              { src: "/realisations/workshop-epoxy-tables.jpeg", label: "Atelier River Tables — Production" },
-              { src: "/realisations/workshop-blue-resin.jpeg",   label: "Atelier Résine Bleue PADESS" },
-              { src: "/realisations/factory-workers.jpeg",       label: "Atelier de Production PADESS" },
-              { src: "/realisations/factory-brouettes.jpeg",     label: "Brouettes Recyclées — Production" },
-              { src: "/realisations/factory-brouettes-2.jpeg",   label: "Ligne de Production Brouettes" },
-              { src: "/realisations/waste-raw-material.jpeg",    label: "Notre Matière Première — Déchets Valorisés" },
-              { src: "/realisations/padess-meeting-room.jpeg",   label: "Salle de Réunion PADESS Époxy" },
-              /* duplicate for infinite loop */
-              { src: "/realisations/epoxy-team-applying.jpeg",   label: "Équipe PADESS — Application Sol Époxy" },
-              { src: "/realisations/epoxy-dark-team.jpeg",       label: "Application Sol Époxy Prestige" },
-              { src: "/realisations/epoxy-large-team.jpeg",      label: "Chantier Époxy — Grande Surface" },
-              { src: "/realisations/workshop-epoxy-tables.jpeg", label: "Atelier River Tables — Production" },
-              { src: "/realisations/workshop-blue-resin.jpeg",   label: "Atelier Résine Bleue PADESS" },
-              { src: "/realisations/factory-workers.jpeg",       label: "Atelier de Production PADESS" },
-              { src: "/realisations/factory-brouettes.jpeg",     label: "Brouettes Recyclées — Production" },
-              { src: "/realisations/factory-brouettes-2.jpeg",   label: "Ligne de Production Brouettes" },
-              { src: "/realisations/waste-raw-material.jpeg",    label: "Notre Matière Première — Déchets Valorisés" },
-              { src: "/realisations/padess-meeting-room.jpeg",   label: "Salle de Réunion PADESS Époxy" },
-            ].map((img, i) => (
-              <div key={i} className="shrink-0 w-56 h-44 rounded-xl overflow-hidden relative group shadow-sm border border-gray-100">
-                <img src={img.src} alt={img.label} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent flex items-end p-3">
-                  <p className="text-white text-xs font-semibold leading-tight drop-shadow">{img.label}</p>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
+        <AutoScrollRow direction="left" images={[
+          { src: "/realisations/epoxy-team-applying.jpeg",   label: "Équipe PADESS — Application Sol Époxy" },
+          { src: "/realisations/epoxy-dark-team.jpeg",       label: "Application Sol Époxy Prestige" },
+          { src: "/realisations/epoxy-large-team.jpeg",      label: "Chantier Époxy — Grande Surface" },
+          { src: "/realisations/workshop-epoxy-tables.jpeg", label: "Atelier River Tables — Production" },
+          { src: "/realisations/workshop-blue-resin.jpeg",   label: "Atelier Résine Bleue PADESS" },
+          { src: "/realisations/factory-workers.jpeg",       label: "Atelier de Production PADESS" },
+          { src: "/realisations/factory-brouettes.jpeg",     label: "Brouettes Recyclées — Production" },
+          { src: "/realisations/factory-brouettes-2.jpeg",   label: "Ligne de Production Brouettes" },
+          { src: "/realisations/waste-raw-material.jpeg",    label: "Notre Matière Première — Déchets Valorisés" },
+          { src: "/realisations/padess-meeting-room.jpeg",   label: "Salle de Réunion PADESS Époxy" },
+        ]} />
 
         {/* Row 4 — défile vers la droite — Mobilier Époxy & Showrooms */}
-        <div className="relative">
-          <div className="flex gap-4 animate-scroll-right w-max">
-            {[
-              { src: "/realisations/epoxy-living-blue-wood.jpeg",    label: "Salon Époxy Bois & Bleu Prestige" },
-              { src: "/realisations/epoxy-dining-green-wood.jpeg",   label: "Salle à Manger River Table Verte" },
-              { src: "/realisations/padess-showroom-epoxy.jpeg",     label: "Showroom PADESS — Art Époxy" },
-              { src: "/realisations/interior-hex-shelves.jpeg",      label: "Intérieur Étagères Hexagonales Époxy" },
-              { src: "/realisations/epoxy-blue-green-furniture.jpeg",label: "Mobilier Époxy Bleu & Vert LED" },
-              { src: "/realisations/epoxy-living-blue2.jpeg",        label: "Salon Époxy — Tons Bleu Océan" },
-              { src: "/realisations/epoxy-ocean-furniture.jpeg",     label: "River Table Océan — Sur Mesure" },
-              { src: "/realisations/epoxy-green-geometric.jpeg",     label: "Sol Époxy Géométrique Vert" },
-              { src: "/realisations/padess-reception-stars.jpeg",    label: "Réception PADESS — Sol Étoilé" },
-              { src: "/realisations/shelf-hexagonal-1.jpeg",         label: "Bibliothèque Hexagonale Époxy" },
-              { src: "/realisations/shelf-hexagonal-2.jpeg",         label: "Étagère Prestige — Art Époxy" },
-              { src: "/realisations/shelf-hexagonal-3.jpeg",         label: "Bibliothèque Couleurs Vives" },
-              { src: "/realisations/epoxy-lamps.jpeg",               label: "Lampes Art Époxy PADESS" },
-              { src: "/realisations/epoxy-dome-lamp.jpeg",           label: "Dôme Époxy Fleurs — Art de Prestige" },
-              { src: "/realisations/epoxy-bedroom.jpeg",             label: "Art Époxy — Chambre Prestige" },
-              /* duplicate for infinite loop */
-              { src: "/realisations/epoxy-living-blue-wood.jpeg",    label: "Salon Époxy Bois & Bleu Prestige" },
-              { src: "/realisations/epoxy-dining-green-wood.jpeg",   label: "Salle à Manger River Table Verte" },
-              { src: "/realisations/padess-showroom-epoxy.jpeg",     label: "Showroom PADESS — Art Époxy" },
-              { src: "/realisations/interior-hex-shelves.jpeg",      label: "Intérieur Étagères Hexagonales Époxy" },
-              { src: "/realisations/epoxy-blue-green-furniture.jpeg",label: "Mobilier Époxy Bleu & Vert LED" },
-              { src: "/realisations/epoxy-living-blue2.jpeg",        label: "Salon Époxy — Tons Bleu Océan" },
-              { src: "/realisations/epoxy-ocean-furniture.jpeg",     label: "River Table Océan — Sur Mesure" },
-              { src: "/realisations/epoxy-green-geometric.jpeg",     label: "Sol Époxy Géométrique Vert" },
-              { src: "/realisations/padess-reception-stars.jpeg",    label: "Réception PADESS — Sol Étoilé" },
-              { src: "/realisations/shelf-hexagonal-1.jpeg",         label: "Bibliothèque Hexagonale Époxy" },
-              { src: "/realisations/shelf-hexagonal-2.jpeg",         label: "Étagère Prestige — Art Époxy" },
-              { src: "/realisations/shelf-hexagonal-3.jpeg",         label: "Bibliothèque Couleurs Vives" },
-              { src: "/realisations/epoxy-lamps.jpeg",               label: "Lampes Art Époxy PADESS" },
-              { src: "/realisations/epoxy-dome-lamp.jpeg",           label: "Dôme Époxy Fleurs — Art de Prestige" },
-              { src: "/realisations/epoxy-bedroom.jpeg",             label: "Art Époxy — Chambre Prestige" },
-            ].map((img, i) => (
-              <div key={i} className="shrink-0 w-56 h-44 rounded-xl overflow-hidden relative group shadow-sm border border-gray-100">
-                <img src={img.src} alt={img.label} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent flex items-end p-3">
-                  <p className="text-white text-xs font-semibold leading-tight drop-shadow">{img.label}</p>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
+        <AutoScrollRow direction="right" images={[
+          { src: "/realisations/epoxy-living-blue-wood.jpeg",    label: "Salon Époxy Bois & Bleu Prestige" },
+          { src: "/realisations/epoxy-dining-green-wood.jpeg",   label: "Salle à Manger River Table Verte" },
+          { src: "/realisations/padess-showroom-epoxy.jpeg",     label: "Showroom PADESS — Art Époxy" },
+          { src: "/realisations/interior-hex-shelves.jpeg",      label: "Intérieur Étagères Hexagonales Époxy" },
+          { src: "/realisations/epoxy-blue-green-furniture.jpeg",label: "Mobilier Époxy Bleu & Vert LED" },
+          { src: "/realisations/epoxy-living-blue2.jpeg",        label: "Salon Époxy — Tons Bleu Océan" },
+          { src: "/realisations/epoxy-ocean-furniture.jpeg",     label: "River Table Océan — Sur Mesure" },
+          { src: "/realisations/epoxy-green-geometric.jpeg",     label: "Sol Époxy Géométrique Vert" },
+          { src: "/realisations/padess-reception-stars.jpeg",    label: "Réception PADESS — Sol Étoilé" },
+          { src: "/realisations/shelf-hexagonal-1.jpeg",         label: "Bibliothèque Hexagonale Époxy" },
+          { src: "/realisations/shelf-hexagonal-2.jpeg",         label: "Étagère Prestige — Art Époxy" },
+          { src: "/realisations/shelf-hexagonal-3.jpeg",         label: "Bibliothèque Couleurs Vives" },
+          { src: "/realisations/epoxy-lamps.jpeg",               label: "Lampes Art Époxy PADESS" },
+          { src: "/realisations/epoxy-dome-lamp.jpeg",           label: "Dôme Époxy Fleurs — Art de Prestige" },
+          { src: "/realisations/epoxy-bedroom.jpeg",             label: "Art Époxy — Chambre Prestige" },
+        ]} />
       </section>
 
       {/* ══ CONTACT FORM SECTION ════════════════════════════════════════════ */}
