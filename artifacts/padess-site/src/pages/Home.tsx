@@ -45,11 +45,11 @@ const staggerContainer = {
 
 export default function Home() {
   return (
-    <div className="min-h-screen bg-background text-foreground overflow-hidden">
+    <div className="min-h-screen bg-background text-foreground overflow-x-hidden">
       <Navbar />
 
       {/* HERO SECTION */}
-      <section className="relative min-h-screen flex items-center pt-20" id="hero">
+      <section className="relative min-h-screen flex items-center pt-24" id="hero">
         <div className="absolute inset-0 z-0">
           <div className="absolute inset-0 bg-gradient-to-r from-background via-background/80 to-transparent z-10" />
           <div className="absolute inset-0 bg-gradient-to-b from-transparent via-background/20 to-background z-10" />
@@ -73,11 +73,11 @@ export default function Home() {
             <motion.div variants={fadeUp} className="inline-block px-4 py-1.5 mb-6 border border-padess-gold/30 bg-padess-gold/10 text-padess-gold rounded-full text-sm font-bold tracking-widest uppercase">
               L'INNOVATION DURABLE AU SERVICE DE VOTRE AUTONOMIE !
             </motion.div>
-            <motion.h1 variants={fadeUp} className="text-5xl md:text-7xl lg:text-8xl font-display font-extrabold leading-[1.1] mb-8 text-white">
-              NOUS NE RÉPARONS PAS L'AVENIR, <br/>
-              <span className="text-padess-orange">NOUS L'INVENTONS.</span>
+            <motion.h1 variants={fadeUp} className="text-[clamp(2rem,7vw,5.5rem)] font-display font-extrabold leading-[1.05] mb-8 text-white">
+              NOUS NE RÉPARONS PAS L'AVENIR,{" "}
+              <span className="text-[#F57C00]">NOUS L'INVENTONS.</span>
             </motion.h1>
-            <motion.p variants={fadeUp} className="text-xl md:text-2xl text-foreground/80 mb-10 max-w-2xl font-light">
+            <motion.p variants={fadeUp} className="text-base sm:text-lg md:text-xl text-foreground/80 mb-10 max-w-2xl font-light">
               Le centre de commandement d'une nouvelle révolution industrielle africaine. Transformer le déchet en richesse, installer des systèmes énergétiques souverains et bâtir l'éco-construction à une vitesse fulgurante.
             </motion.p>
             <motion.div variants={fadeUp} className="flex flex-col sm:flex-row gap-4">
