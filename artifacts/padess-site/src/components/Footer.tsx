@@ -49,11 +49,12 @@ export default function Footer() {
               </li>
               <li className="flex items-start gap-3">
                 <Phone size={18} className="text-[#4CAF50] shrink-0 mt-0.5" />
-                <span className="text-gray-600">
-                  WhatsApp: +237 697 221 970<br />
-                  (+237) 658 92 90 70<br />
-                  (+237) 690 38 95 45
-                </span>
+                <div className="text-gray-600">
+                  <div className="font-semibold text-gray-800 mb-0.5">WhatsApp :</div>
+                  <a href="https://wa.me/237697221970" className="block hover:text-[#4CAF50] transition-colors">+237 697 221 970</a>
+                  <a href="tel:+237658929070" className="block hover:text-[#4CAF50] transition-colors">(+237) 658 92 90 70</a>
+                  <a href="tel:+237690389545" className="block hover:text-[#4CAF50] transition-colors">(+237) 690 38 95 45</a>
+                </div>
               </li>
               <li className="flex items-start gap-3">
                 <Mail size={18} className="text-[#1565C0] shrink-0 mt-0.5" />

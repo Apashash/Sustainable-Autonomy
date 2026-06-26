@@ -702,7 +702,8 @@ export default function Home() {
                 <div className="flex items-start gap-2">
                   <Smartphone size={14} className="text-[#F57C00] shrink-0 mt-0.5" />
                   <div>
-                    <div>WhatsApp : <a href="https://wa.me/237697221970" className="hover:text-[#F57C00]">+237 697 221 970</a></div>
+                    <div className="font-semibold text-white/90 mb-0.5">WhatsApp :</div>
+                    <div><a href="https://wa.me/237697221970" className="hover:text-[#F57C00]">+237 697 221 970</a></div>
                     <div><a href="tel:+237658929070" className="hover:text-[#F57C00]">(+237) 658 92 90 70</a></div>
                     <div><a href="tel:+237690389545" className="hover:text-[#F57C00]">(+237) 690 38 95 45</a></div>
                   </div>
