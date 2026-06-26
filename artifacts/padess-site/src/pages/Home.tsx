@@ -422,6 +422,77 @@ export default function Home() {
         </div>
       </section>
 
+      {/* ══ NOS RÉALISATIONS — galerie défilante ════════════════════════════ */}
+      <section className="py-14 bg-white overflow-hidden">
+        <div className="max-w-7xl mx-auto px-4 mb-8 text-center">
+          <p className="text-[#F57C00] font-bold text-xs tracking-widest uppercase mb-2">GALERIE</p>
+          <h2 className="text-2xl md:text-3xl font-bold text-[#1a2b4a]">Nos Réalisations</h2>
+          <p className="text-gray-500 text-sm mt-2">Produits PLASTI-BUILD®, cuisine, toiture, art époxy — fabriqués à partir de déchets recyclés</p>
+        </div>
+
+        {/* Row 1 — défile vers la gauche */}
+        <div className="relative mb-4">
+          <div className="flex gap-4 animate-scroll-left w-max">
+            {[
+              { src: "/realisations/toilet-gray-speckled.jpeg", label: "Toilette PLASTI-BUILD® Gris Granit" },
+              { src: "/realisations/toilet-black-chunks.jpeg", label: "Toilette PLASTI-BUILD® Noir Terrazzo" },
+              { src: "/realisations/toilet-set-room.jpeg", label: "Collection Sanitaires Recyclés" },
+              { src: "/realisations/toilet-colorful-green.jpeg", label: "Gamme Couleurs PLASTI-BUILD®" },
+              { src: "/realisations/toilet-white.jpeg", label: "Toilette PLASTI-BUILD® Blanc" },
+              { src: "/realisations/toilet-orange-wallhung.jpeg", label: "Toilette Suspendue Orange" },
+              { src: "/realisations/toilet-multicolor-set.jpeg", label: "Gamme Multicolore" },
+              { src: "/realisations/factory-workers.jpeg", label: "Atelier de Production PADESS" },
+              { src: "/realisations/toilet-gray-speckled.jpeg", label: "Toilette PLASTI-BUILD® Gris Granit" },
+              { src: "/realisations/toilet-black-chunks.jpeg", label: "Toilette PLASTI-BUILD® Noir Terrazzo" },
+              { src: "/realisations/toilet-set-room.jpeg", label: "Collection Sanitaires Recyclés" },
+              { src: "/realisations/toilet-colorful-green.jpeg", label: "Gamme Couleurs PLASTI-BUILD®" },
+              { src: "/realisations/toilet-white.jpeg", label: "Toilette PLASTI-BUILD® Blanc" },
+              { src: "/realisations/toilet-orange-wallhung.jpeg", label: "Toilette Suspendue Orange" },
+              { src: "/realisations/toilet-multicolor-set.jpeg", label: "Gamme Multicolore" },
+              { src: "/realisations/factory-workers.jpeg", label: "Atelier de Production PADESS" },
+            ].map((img, i) => (
+              <div key={i} className="shrink-0 w-56 h-44 rounded-xl overflow-hidden relative group shadow-sm border border-gray-100">
+                <img src={img.src} alt={img.label} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-3">
+                  <p className="text-white text-xs font-semibold leading-tight">{img.label}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* Row 2 — défile vers la droite */}
+        <div className="relative">
+          <div className="flex gap-4 animate-scroll-right w-max">
+            {[
+              { src: "/realisations/roof-tiles-display.jpeg", label: "Tuiles Plastique — Stand Exposition" },
+              { src: "/realisations/roof-tiles-on-house.jpeg", label: "Toiture PLASTI-BUILD® Installée" },
+              { src: "/realisations/roof-tiles-closeup.jpeg", label: "Tuiles Multicolores Closeup" },
+              { src: "/realisations/kitchen-teal-pink.jpeg", label: "Cuisine PLASTI-BUILD® Design" },
+              { src: "/realisations/kitchen-sink-unit.jpeg", label: "Évier & Plan de Travail Recyclé" },
+              { src: "/realisations/kitchen-counter.jpeg", label: "Plan de Travail Époxy Granit" },
+              { src: "/realisations/epoxy-lamps.jpeg", label: "Lampes Art Époxy PADESS" },
+              { src: "/realisations/epoxy-dome-lamp.jpeg", label: "Dôme Époxy Fleurs — Art de Prestige" },
+              { src: "/realisations/roof-tiles-display.jpeg", label: "Tuiles Plastique — Stand Exposition" },
+              { src: "/realisations/roof-tiles-on-house.jpeg", label: "Toiture PLASTI-BUILD® Installée" },
+              { src: "/realisations/roof-tiles-closeup.jpeg", label: "Tuiles Multicolores Closeup" },
+              { src: "/realisations/kitchen-teal-pink.jpeg", label: "Cuisine PLASTI-BUILD® Design" },
+              { src: "/realisations/kitchen-sink-unit.jpeg", label: "Évier & Plan de Travail Recyclé" },
+              { src: "/realisations/kitchen-counter.jpeg", label: "Plan de Travail Époxy Granit" },
+              { src: "/realisations/epoxy-lamps.jpeg", label: "Lampes Art Époxy PADESS" },
+              { src: "/realisations/epoxy-dome-lamp.jpeg", label: "Dôme Époxy Fleurs — Art de Prestige" },
+            ].map((img, i) => (
+              <div key={i} className="shrink-0 w-56 h-44 rounded-xl overflow-hidden relative group shadow-sm border border-gray-100">
+                <img src={img.src} alt={img.label} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-3">
+                  <p className="text-white text-xs font-semibold leading-tight">{img.label}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* ══ CONTACT FORM SECTION ════════════════════════════════════════════ */}
       <section id="contact" className="py-16 bg-white">
         <div className="max-w-7xl mx-auto px-4">
