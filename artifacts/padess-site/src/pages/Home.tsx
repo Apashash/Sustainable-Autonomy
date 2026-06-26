@@ -254,11 +254,11 @@ export default function Home() {
       </section>
 
       {/* ══ 3 PILIERS DE LA DISRUPTION ══════════════════════════════════════ */}
-      <section className="py-14 bg-[#1a2b4a]">
+      <section className="py-14 bg-gray-50 border-y border-gray-200">
         <div className="max-w-7xl mx-auto px-4">
           <div className="text-center mb-10">
             <p className="text-[#F57C00] font-bold text-xs tracking-widest uppercase mb-2">VITRINE PRIMAIRE</p>
-            <h2 className="text-2xl md:text-3xl font-bold text-white">Les Piliers de la Disruption</h2>
+            <h2 className="text-2xl md:text-3xl font-bold text-[#1a2b4a]">Les Piliers de la Disruption</h2>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {[
@@ -278,10 +278,10 @@ export default function Home() {
                 desc: "Pionnier du concept H.E.R.O.® et de la technologie PLASTI-BUILD®, PADESS Engineering efface la notion de déchet pour instaurer celle de ressource éternelle.",
               },
             ].map((p, i) => (
-              <div key={i} className="bg-white/5 border border-white/10 rounded-xl p-6 hover:bg-white/10 transition-colors">
+              <div key={i} className="bg-white border border-gray-100 rounded-xl p-6 shadow-sm hover:shadow-md transition-shadow">
                 <div className="text-3xl mb-3">{p.icon}</div>
                 <h3 className="font-bold text-base mb-3" style={{ color: p.color }}>{p.title}</h3>
-                <p className="text-white/70 text-sm leading-relaxed">{p.desc}</p>
+                <p className="text-gray-600 text-sm leading-relaxed">{p.desc}</p>
               </div>
             ))}
           </div>
@@ -320,19 +320,17 @@ export default function Home() {
               <span className="text-[#F57C00]">pour Particuliers & Entreprises</span>
             </h2>
           </div>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid grid-cols-2 lg:grid-cols-3 gap-4">
             {services.map((s, i) => (
-              <div key={i} className="flex items-start gap-4 p-5 border border-gray-100 rounded-lg hover:shadow-md transition-shadow bg-white group">
-                <div className="shrink-0 w-14 h-14 rounded-lg flex items-center justify-center text-white" style={{ backgroundColor: s.color }}>
+              <div key={i} className="flex flex-col gap-2 p-4 border border-gray-100 rounded-lg hover:shadow-md transition-shadow bg-white group">
+                <div className="w-11 h-11 rounded-lg flex items-center justify-center text-white shrink-0" style={{ backgroundColor: s.color }}>
                   {s.icon}
                 </div>
-                <div>
-                  <h3 className="font-bold text-gray-900 mb-1 text-sm">{s.title}</h3>
-                  <p className="text-gray-500 text-xs leading-relaxed">{s.desc}</p>
-                  <a href="#contact" className="inline-flex items-center gap-1 text-xs font-bold mt-2 transition-colors" style={{ color: s.color }}>
-                    EN SAVOIR PLUS <ArrowRight size={12} />
-                  </a>
-                </div>
+                <h3 className="font-bold text-gray-900 text-xs leading-tight">{s.title}</h3>
+                <p className="text-gray-500 text-[11px] leading-relaxed hidden sm:block">{s.desc}</p>
+                <a href="#contact" className="inline-flex items-center gap-1 text-[11px] font-bold transition-colors" style={{ color: s.color }}>
+                  EN SAVOIR PLUS <ArrowRight size={10} />
+                </a>
               </div>
             ))}
           </div>
