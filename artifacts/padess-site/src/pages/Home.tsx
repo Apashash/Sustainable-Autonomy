@@ -342,11 +342,11 @@ export default function Home() {
       <section className="py-16 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4">
           <h2 className="text-center text-2xl md:text-3xl font-bold text-[#1a2b4a] mb-12">Comment Ça Marche</h2>
-          <div className="grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-5 gap-6 relative">
+          <div className="grid grid-cols-2 lg:grid-cols-5 gap-6 relative">
             {/* connector line desktop */}
             <div className="hidden lg:block absolute top-8 left-[10%] right-[10%] h-0.5 bg-gray-200 z-0" />
             {steps.map((s, i) => (
-              <div key={i} className="flex flex-col items-center text-center relative z-10">
+              <div key={i} className={`flex flex-col items-center text-center relative z-10${steps.length % 2 !== 0 && i === steps.length - 1 ? " col-span-2 lg:col-span-1" : ""}`}>
                 <div className="w-16 h-16 rounded-full bg-[#F57C00] text-white flex items-center justify-center text-2xl font-bold shadow-md mb-4">
                   {s.n}
                 </div>
