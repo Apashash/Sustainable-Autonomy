@@ -26,15 +26,15 @@ import proj6Img   from "@assets/df0e837b-4930-429c-832d-8a8a6e78715c_17824526769
 // ─── Data ───────────────────────────────────────────────────────────────────
 
 const services = [
-  { icon: <Recycle size={28} />,   color: "#4CAF50", title: "Construction PLASTI-BUILD®",    desc: "Briques écologiques à partir de déchets plastiques recyclés pour une construction durable et économique." },
-  { icon: <Building2 size={28} />, color: "#8B1A1A", title: "Architecture & Art Époxy",       desc: "Revêtements époxy industriels, décoration murale et finitions architecturales haut de gamme." },
-  { icon: <Zap size={28} />,       color: "#F57C00", title: "Systèmes Énergétiques",           desc: "Installations solaires et hydrauliques souverains pour une autonomie énergétique totale." },
-  { icon: <Droplet size={28} />,   color: "#1565C0", title: "Traitement de l'Eau",             desc: "Systèmes de purification, stockage et distribution d'eau pour particuliers et collectivités." },
-  { icon: <Truck size={28} />,     color: "#1565C0", title: "Mobilité Industrielle",           desc: "Tricycles cargo électriques pour la logistique urbaine et transport de marchandises." },
-  { icon: <Factory size={28} />,   color: "#4CAF50", title: "H.E.R.O.® System",               desc: "Technologie brevetée de valorisation des déchets plastiques en matériaux de construction." },
-  { icon: <Sun size={28} />,       color: "#F57C00", title: "Pôle Énergie Renouvelable",       desc: "Études, conception et maintenance de centrales solaires et micro-hydrauliques." },
-  { icon: <TrendingUp size={28} />,color: "#8B1A1A", title: "Conseil & Investissement",        desc: "Accompagnement stratégique et opportunités d'investissement dans les secteurs porteurs d'Afrique." },
-  { icon: <Leaf size={28} />,      color: "#4CAF50", title: "Gestion des Déchets",             desc: "Collecte, tri et valorisation industrielle des déchets plastiques pour les villes et entreprises." },
+  { icon: <Recycle size={28} />,   color: "#4CAF50", title: "Construction PLASTI-BUILD®",    desc: "Briques et parpaings composite plastique-sable en système LEGO-BLOCK emboîtable sans mortier. Construction 5× plus rapide, 3× plus résistante que le béton, hydrofuge, ignifuge et parasismique." },
+  { icon: <Building2 size={28} />, color: "#8B1A1A", title: "Architecture & Art Époxy",       desc: "Plafonds artistiques en BA13, sols en résine époxy « Miroir » effet marbré, ébénisterie de prestige River Tables — le luxe structurel au service de l'esthétique royale." },
+  { icon: <Zap size={28} />,       color: "#F57C00", title: "PADESS-BIOFLOW POWER™",          desc: "Innovation de rupture : électricité microbienne (MFC) 24h/24 à partir des bactéries des sols et racines de raphia/mangrove. Zéro réseau, souveraineté totale." },
+  { icon: <Droplet size={28} />,   color: "#1565C0", title: "Forages & Eau Potable",          desc: "Forages intelligents et filtration ionique pour un accès permanent à l'eau de qualité supérieure, même en zone reculée." },
+  { icon: <Truck size={28} />,     color: "#1565C0", title: "Rétrofit & Mobilité Électrique", desc: "Conversion de véhicules thermiques en 100 % électrique. Tricycles cargo électriques pour la logistique urbaine et réduction totale du coût carburant." },
+  { icon: <Factory size={28} />,   color: "#4CAF50", title: "H.E.R.O.® System",               desc: "Habitation Écologique à Rendement Optimisé — assainissement Biofil zéro vidange à vie, fosses à transformation biologique, sans odeurs et sans entretien." },
+  { icon: <Sun size={28} />,       color: "#F57C00", title: "Biogaz & Micro-Hydroélectricité", desc: "Transformation des biodéchets en gaz de cuisson et exploitation des micro-courants d'eau locaux pour une indépendance énergétique complète et durable." },
+  { icon: <TrendingUp size={28} />,color: "#8B1A1A", title: "Conseil & Investissement",        desc: "Accompagnement stratégique, trading international et opportunités d'investissement à ROI de 18–30 mois dans les secteurs à forte croissance en Afrique." },
+  { icon: <Leaf size={28} />,      color: "#4CAF50", title: "Métallurgie & Recyclage",         desc: "Transformation des canettes aluminium en jantes de luxe et composants mécaniques. Mobilier de chantier indestructible en polymères renforcés pour conditions extrêmes." },
 ];
 
 const whyUs = [
@@ -218,6 +218,41 @@ export default function Home() {
         </div>
       </section>
 
+      {/* ══ VISION & DIRECTION ══════════════════════════════════════════════ */}
+      <section id="vision" className="py-16 bg-white">
+        <div className="max-w-7xl mx-auto px-4">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            <div>
+              <p className="text-[#F57C00] font-bold text-xs tracking-widest uppercase mb-2">VISION STRATÉGIQUE</p>
+              <h2 className="text-2xl md:text-3xl font-bold text-[#1a2b4a] mb-4">L'Ère de la Transformation</h2>
+              <p className="text-gray-600 text-sm leading-relaxed mb-6">
+                Sous la direction de <strong>M. Ahmed NCHANGE</strong>, Ingénieur en Procédés des Énergies Renouvelables et Trader-Broker International, et son équipe chevronnée, <strong>PADESS Engineering SARL</strong> ne se contente pas de construire : nous créons des systèmes de vie.
+              </p>
+              <p className="text-gray-600 text-sm leading-relaxed mb-8">
+                Nous transformons les passifs environnementaux — déchets plastiques, pollution organique, isolement — en actifs technologiques et financiers de haute performance.
+              </p>
+              <blockquote className="border-l-4 border-[#F57C00] pl-4 italic text-[#1a2b4a] text-sm leading-relaxed">
+                "Le déchet n'est pas une fin, c'est le gisement d'une nouvelle ère industrielle. Nous ne consommons pas le monde, nous l'ingénions."
+              </blockquote>
+            </div>
+            <div className="grid grid-cols-2 gap-4">
+              {[
+                { color: "#4CAF50", icon: "🏗️", title: "Construction Révolutionnaire", desc: "5× plus rapide que le béton traditionnel avec PLASTI-BUILD®" },
+                { color: "#F57C00", icon: "⚡", title: "Énergie Souveraine", desc: "PADESS-BIOFLOW POWER™ : électricité microbienne 24h/24" },
+                { color: "#1565C0", icon: "💧", title: "Eau Pure", desc: "Forages intelligents & filtration ionique même en zone reculée" },
+                { color: "#8B1A1A", icon: "♻️", title: "Zéro Déchet", desc: "Valorisation industrielle totale des plastiques et biodéchets" },
+              ].map((c, i) => (
+                <div key={i} className="p-4 rounded-xl border border-gray-100 shadow-sm hover:shadow-md transition-shadow">
+                  <div className="text-2xl mb-2">{c.icon}</div>
+                  <h4 className="font-bold text-xs text-gray-900 mb-1" style={{ color: c.color }}>{c.title}</h4>
+                  <p className="text-xs text-gray-500 leading-relaxed">{c.desc}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* ══ TRUST BADGES ════════════════════════════════════════════════════ */}
       <section className="bg-gray-50 border-y border-gray-200 py-6">
         <div className="max-w-7xl mx-auto px-4">
@@ -309,9 +344,23 @@ export default function Home() {
                 </ul>
               </div>
               <div className="mt-10 pt-8 border-t border-white/20 space-y-3 text-sm text-white/80">
-                <div className="flex items-center gap-2"><Phone size={14} className="text-[#F57C00]" /> +237 697 221 970</div>
-                <div className="flex items-center gap-2"><span className="text-[#F57C00]">✉</span> npadess@hoo.com</div>
-                <div className="flex items-center gap-2"><span className="text-[#F57C00]">📍</span> Douala, Cameroun</div>
+                <div className="flex items-start gap-2">
+                  <Phone size={14} className="text-[#F57C00] shrink-0 mt-0.5" />
+                  <div>
+                    <div>📲 WhatsApp : <a href="https://wa.me/237697221970" className="hover:text-[#F57C00]">+237 697 221 970</a></div>
+                    <div>📞 <a href="tel:+237658929070" className="hover:text-[#F57C00]">(+237) 658 92 90 70</a></div>
+                    <div>📞 <a href="tel:+237690389545" className="hover:text-[#F57C00]">(+237) 690 38 95 45</a></div>
+                  </div>
+                </div>
+                <div className="flex items-start gap-2">
+                  <span className="text-[#F57C00] shrink-0">✉</span>
+                  <div>
+                    <div>npadess@hoo.com</div>
+                    <div>padess@engineering.com</div>
+                    <div>ahmednchange@yahoo.com</div>
+                  </div>
+                </div>
+                <div className="flex items-center gap-2"><span className="text-[#F57C00]">📍</span> Siège Social : Douala, Cameroun</div>
               </div>
             </div>
             {/* Right — form */}
@@ -383,22 +432,43 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ══ ÉQUIPEMENTS & MATÉRIAUX ════════════════════════════════════════ */}
+      {/* ══ PLASTI-BUILD & H.E.R.O ══════════════════════════════════════════ */}
       <section id="about" className="py-16 bg-white">
-        <div className="max-w-7xl mx-auto px-4 grid grid-cols-1 md:grid-cols-2 gap-8">
-          <div className="relative rounded-xl overflow-hidden shadow-lg group">
-            <img src={equipImg} alt="Équipements PADESS" className="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-500" />
-            <div className="absolute inset-0 bg-[#1a2b4a]/60 flex flex-col justify-end p-6">
-              <h3 className="text-white font-bold text-xl">Équipements Industriels</h3>
-              <p className="text-white/80 text-sm mt-1">Machines et outils professionnels de dernière génération pour chaque chantier.</p>
+        <div className="max-w-7xl mx-auto px-4">
+          <div className="text-center mb-10">
+            <p className="text-[#F57C00] font-bold text-xs tracking-widest uppercase mb-2">PLASTI-BUILD® & H.E.R.O.®</p>
+            <h2 className="text-2xl md:text-3xl font-bold text-[#1a2b4a]">La Révolution de la Rapidité Fulgurante</h2>
+            <p className="text-gray-500 text-sm mt-3 max-w-2xl mx-auto">Le concept H.E.R.O.® (Habitation Écologique à Rendement Optimisé) redéfinit la vitesse de construction mondiale.</p>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-10">
+            <div className="relative rounded-xl overflow-hidden shadow-lg group">
+              <img src={equipImg} alt="Équipements PADESS" className="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-500" />
+              <div className="absolute inset-0 bg-[#1a2b4a]/60 flex flex-col justify-end p-6">
+                <h3 className="text-white font-bold text-xl">Équipements Industriels</h3>
+                <p className="text-white/80 text-sm mt-1">Machines et outils professionnels de dernière génération pour chaque chantier.</p>
+              </div>
+            </div>
+            <div className="relative rounded-xl overflow-hidden shadow-lg group">
+              <img src={matImg} alt="Matériaux PADESS" className="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-500" />
+              <div className="absolute inset-0 bg-[#4CAF50]/70 flex flex-col justify-end p-6">
+                <h3 className="text-white font-bold text-xl">Matériaux Écologiques PLASTI-BUILD®</h3>
+                <p className="text-white/80 text-sm mt-1">Briques certifiées en composite plastique-sable : hydrofuges, ignifuges et parasismiques.</p>
+              </div>
             </div>
           </div>
-          <div className="relative rounded-xl overflow-hidden shadow-lg group">
-            <img src={matImg} alt="Matériaux PADESS" className="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-500" />
-            <div className="absolute inset-0 bg-[#4CAF50]/70 flex flex-col justify-end p-6">
-              <h3 className="text-white font-bold text-xl">Matériaux Écologiques</h3>
-              <p className="text-white/80 text-sm mt-1">Briques PLASTI-BUILD® certifiées et matériaux durables pour vos constructions.</p>
-            </div>
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+            {[
+              { icon: "🧱", color: "#4CAF50", title: "Technologie LEGO-BLOCK", desc: "Emboîtement mâle-femelle sans mortier classique" },
+              { icon: "⚡", color: "#F57C00", title: "5× Plus Rapide", desc: "Temps de construction divisé par 5 vs béton traditionnel" },
+              { icon: "💪", color: "#8B1A1A", title: "3× Plus Résistant", desc: "Plus robuste que le béton, hydrofuge et ignifuge" },
+              { icon: "🚽", color: "#1565C0", title: "Assainissement Biofil", desc: "Zéro vidange à vie, sans odeurs, transformation biologique" },
+            ].map((f, i) => (
+              <div key={i} className="bg-gray-50 rounded-xl p-4 text-center border border-gray-100">
+                <div className="text-3xl mb-2">{f.icon}</div>
+                <h4 className="font-bold text-xs mb-1" style={{ color: f.color }}>{f.title}</h4>
+                <p className="text-xs text-gray-500 leading-relaxed">{f.desc}</p>
+              </div>
+            ))}
           </div>
         </div>
       </section>
@@ -458,17 +528,33 @@ export default function Home() {
             <h2 className="text-2xl md:text-3xl font-bold text-white">Espace Investisseurs</h2>
             <p className="text-white/60 mt-3 max-w-xl mx-auto text-sm">PADESS offre des opportunités d'investissement exceptionnelles dans des marchés en forte croissance en Afrique.</p>
           </div>
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-5 mb-10">
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-5 mb-8">
             {[
-              { val: "65%",    label: "Marges PLASTI-BUILD®",   color: "#4CAF50", desc: "Matière première à coût zéro — le déchet est notre ressource principale." },
-              { val: "18–30m", label: "ROI Projeté",             color: "#F57C00", desc: "Retour sur investissement en 18 à 30 mois selon les unités déployées." },
-              { val: "$/€",    label: "Trading International",   color: "#8B1A1A", desc: "Couverture naturelle contre les dévaluations monétaires locales." },
-              { val: "↑",      label: "Emplois Massifs",         color: "#1565C0", desc: "Création d'emplois locaux dans la collecte, transformation et construction." },
+              { val: "50–75%", label: "Marges Nettes",           color: "#4CAF50", desc: "PLASTI-BUILD® & Design Époxy — matière première gratuite (les déchets sont notre ressource)." },
+              { val: "18–30m", label: "ROI Projeté",             color: "#F57C00", desc: "Retour sur investissement en 18 à 30 mois grâce à une demande massive et sans concurrence." },
+              { val: "$/€",    label: "Trading International",   color: "#8B1A1A", desc: "Couverture naturelle contre les dévaluations monétaires locales via opérations internationales." },
+              { val: "↑🌍",   label: "Emplois & Impact Social",  color: "#1565C0", desc: "Création d'emplois locaux, lutte contre l'exode rural et dépollution des villes africaines." },
             ].map((c, i) => (
               <div key={i} className="bg-white/5 border border-white/10 rounded-xl p-6 text-center hover:bg-white/10 transition-colors">
-                <div className="text-4xl font-bold mb-2" style={{ color: c.color }}>{c.val}</div>
+                <div className="text-3xl font-bold mb-2" style={{ color: c.color }}>{c.val}</div>
                 <h4 className="font-bold text-white text-sm mb-2">{c.label}</h4>
                 <p className="text-white/50 text-xs">{c.desc}</p>
+              </div>
+            ))}
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-10">
+            {[
+              { n: "1", color: "#4CAF50", title: "Rentabilité Exceptionnelle", desc: "Notre matière première est gratuite (les déchets). Marges nettes sur PLASTI-BUILD® et Design Époxy entre 50% et 75%." },
+              { n: "2", color: "#F57C00", title: "ROI Rapide & Garanti", desc: "Retour sur investissement projeté entre 18 et 30 mois grâce à une demande massive et une absence de concurrence sur l'offre intégrée." },
+              { n: "3", color: "#8B1A1A", title: "Appui aux Gouvernements", desc: "Solution clé en main pour stopper l'exode rural, lutter contre l'immigration clandestine en créant des emplois locaux et dépolluer les villes." },
+              { n: "4", color: "#1565C0", title: "Souveraineté Nationale", desc: "Nous aidons les États à réduire leurs importations (ciment, pétrole) en utilisant le génie local et les ressources disponibles en Afrique." },
+            ].map((r, i) => (
+              <div key={i} className="flex gap-4 bg-white/5 border border-white/10 rounded-xl p-5">
+                <div className="w-8 h-8 rounded-full flex items-center justify-center text-sm font-bold shrink-0 text-white" style={{ backgroundColor: r.color }}>{r.n}</div>
+                <div>
+                  <h4 className="font-bold text-white text-sm mb-1">{r.title}</h4>
+                  <p className="text-white/60 text-xs leading-relaxed">{r.desc}</p>
+                </div>
               </div>
             ))}
           </div>
