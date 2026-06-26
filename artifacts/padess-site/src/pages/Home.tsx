@@ -51,8 +51,8 @@ export default function Home() {
       {/* HERO SECTION */}
       <section className="relative min-h-screen flex items-center pt-24" id="hero">
         <div className="absolute inset-0 z-0">
-          <div className="absolute inset-0 bg-gradient-to-r from-background via-background/80 to-transparent z-10" />
-          <div className="absolute inset-0 bg-gradient-to-b from-transparent via-background/20 to-background z-10" />
+          <div className="absolute inset-0 bg-black/65 z-10" />
+          <div className="absolute inset-0 bg-gradient-to-r from-[#070d18]/90 via-[#070d18]/50 to-transparent z-10" />
           <motion.img 
             initial={{ scale: 1.1 }}
             animate={{ scale: 1 }}
@@ -229,31 +229,31 @@ export default function Home() {
 
               <ul className="space-y-6">
                 <motion.li variants={fadeUp} className="flex gap-4">
-                  <div className="w-2 h-2 rounded-full bg-padess-green mt-2.5"></div>
+                  <div className="w-2 h-2 rounded-full bg-[#4CAF50] mt-2.5 shrink-0"></div>
                   <div>
-                    <strong className="text-white block mb-1">H.E.R.O.®️ (Habitation Écologique à Rendement Optimisé)</strong>
-                    <span className="text-foreground/70">Briques et parpaings en composite plastique-sable avec système d'emboîtement mécanique.</span>
+                    <strong className="text-gray-900 block mb-1">H.E.R.O.®️ (Habitation Écologique à Rendement Optimisé)</strong>
+                    <span className="text-gray-600">Briques et parpaings en composite plastique-sable avec système d'emboîtement mécanique.</span>
                   </div>
                 </motion.li>
                 <motion.li variants={fadeUp} className="flex gap-4">
-                  <div className="w-2 h-2 rounded-full bg-padess-green mt-2.5"></div>
+                  <div className="w-2 h-2 rounded-full bg-[#4CAF50] mt-2.5 shrink-0"></div>
                   <div>
-                    <strong className="text-white block mb-1">Vitesse sans précédent</strong>
-                    <span className="text-foreground/70">Assemblage sans mortier classique. Le temps de chantier est divisé par 5.</span>
+                    <strong className="text-gray-900 block mb-1">Vitesse sans précédent</strong>
+                    <span className="text-gray-600">Assemblage sans mortier classique. Le temps de chantier est divisé par 5.</span>
                   </div>
                 </motion.li>
                 <motion.li variants={fadeUp} className="flex gap-4">
-                  <div className="w-2 h-2 rounded-full bg-padess-green mt-2.5"></div>
+                  <div className="w-2 h-2 rounded-full bg-[#4CAF50] mt-2.5 shrink-0"></div>
                   <div>
-                    <strong className="text-white block mb-1">Robustesse Totale</strong>
-                    <span className="text-foreground/70">Matériaux 3x plus résistants que le béton, isolants thermiques, hydrofuges et ignifuges.</span>
+                    <strong className="text-gray-900 block mb-1">Robustesse Totale</strong>
+                    <span className="text-gray-600">Matériaux 3x plus résistants que le béton, isolants thermiques, hydrofuges et ignifuges.</span>
                   </div>
                 </motion.li>
                 <motion.li variants={fadeUp} className="flex gap-4">
-                  <div className="w-2 h-2 rounded-full bg-padess-green mt-2.5"></div>
+                  <div className="w-2 h-2 rounded-full bg-[#4CAF50] mt-2.5 shrink-0"></div>
                   <div>
-                    <strong className="text-white block mb-1">Assainissement Biofil</strong>
-                    <span className="text-foreground/70">Fosses à transformation biologique, zéro vidange à vie, sans odeurs, sans pollution des sols.</span>
+                    <strong className="text-gray-900 block mb-1">Assainissement Biofil</strong>
+                    <span className="text-gray-600">Fosses à transformation biologique, zéro vidange à vie, sans odeurs, sans pollution des sols.</span>
                   </div>
                 </motion.li>
               </ul>
@@ -280,30 +280,30 @@ export default function Home() {
           </motion.div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            <motion.div variants={fadeUp} className="bg-card border border-white/5 rounded-2xl overflow-hidden hover:border-padess-blue/50 transition-colors">
-              <img src={energieImg1} alt="Bioflow power" className="w-full h-56 object-cover border-b border-white/5" />
+            <motion.div variants={fadeUp} className="bg-white border border-gray-200 rounded-2xl overflow-hidden hover:border-[#1565C0]/40 hover:shadow-lg transition-all">
+              <img src={energieImg1} alt="Bioflow power" className="w-full h-56 object-cover border-b border-gray-100" />
               <div className="p-8">
-                <Zap className="text-padess-blue mb-4" size={32} />
-                <h4 className="text-xl font-bold mb-3">PADESS-BIOFLOW POWER™️</h4>
-                <p className="text-foreground/70">Innovation de rupture exploitant l'énergie microbienne (MFC) à partir des bactéries des sols et des racines. Électricité stable même par temps couvert ou sans vent.</p>
+                <Zap className="text-[#1565C0] mb-4" size={32} />
+                <h4 className="text-xl font-bold mb-3 text-gray-900">PADESS-BIOFLOW POWER™️</h4>
+                <p className="text-gray-600">Innovation de rupture exploitant l'énergie microbienne (MFC) à partir des bactéries des sols et des racines. Électricité stable même par temps couvert ou sans vent.</p>
               </div>
             </motion.div>
             
-            <motion.div variants={fadeUp} className="bg-card border border-white/5 rounded-2xl overflow-hidden hover:border-padess-blue/50 transition-colors">
-              <img src={energieImg3} alt="Biogas" className="w-full h-56 object-cover border-b border-white/5" />
+            <motion.div variants={fadeUp} className="bg-white border border-gray-200 rounded-2xl overflow-hidden hover:border-[#4CAF50]/40 hover:shadow-lg transition-all">
+              <img src={energieImg3} alt="Biogas" className="w-full h-56 object-cover border-b border-gray-100" />
               <div className="p-8">
-                <Leaf className="text-padess-green mb-4" size={32} />
-                <h4 className="text-xl font-bold mb-3">Biogaz Domestique</h4>
-                <p className="text-foreground/70">Transformation des biodéchets organiques en gaz de cuisson et en électricité stable pour une autonomie énergétique quotidienne.</p>
+                <Leaf className="text-[#4CAF50] mb-4" size={32} />
+                <h4 className="text-xl font-bold mb-3 text-gray-900">Biogaz Domestique</h4>
+                <p className="text-gray-600">Transformation des biodéchets organiques en gaz de cuisson et en électricité stable pour une autonomie énergétique quotidienne.</p>
               </div>
             </motion.div>
 
-            <motion.div variants={fadeUp} className="bg-card border border-white/5 rounded-2xl overflow-hidden hover:border-padess-blue/50 transition-colors">
-              <img src={energieImg2} alt="Water pump" className="w-full h-56 object-cover border-b border-white/5" />
+            <motion.div variants={fadeUp} className="bg-white border border-gray-200 rounded-2xl overflow-hidden hover:border-[#1565C0]/40 hover:shadow-lg transition-all">
+              <img src={energieImg2} alt="Water pump" className="w-full h-56 object-cover border-b border-gray-100" />
               <div className="p-8">
-                <Droplet className="text-padess-blue mb-4" size={32} />
-                <h4 className="text-xl font-bold mb-3">Forages & Filtration Ionique</h4>
-                <p className="text-foreground/70">Accès permanent à une eau potable de qualité supérieure via des systèmes de pompage autonomes intelligents.</p>
+                <Droplet className="text-[#1565C0] mb-4" size={32} />
+                <h4 className="text-xl font-bold mb-3 text-gray-900">Forages & Filtration Ionique</h4>
+                <p className="text-gray-600">Accès permanent à une eau potable de qualité supérieure via des systèmes de pompage autonomes intelligents.</p>
               </div>
             </motion.div>
           </div>
@@ -311,7 +311,7 @@ export default function Home() {
       </section>
 
       {/* INDUSTRIE CIRCULAIRE */}
-      <section className="py-32 relative" id="industrie">
+      <section className="py-32 relative bg-gray-50" id="industrie">
         <div className="container mx-auto px-4 md:px-6">
           <motion.div 
             initial="hidden"
@@ -321,21 +321,21 @@ export default function Home() {
             className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center"
           >
             <div>
-              <motion.h2 variants={fadeUp} className="text-padess-red font-bold tracking-widest text-sm mb-4">V. MOBILITÉ & INDUSTRIE CIRCULAIRE</motion.h2>
-              <motion.h3 variants={fadeUp} className="text-4xl md:text-5xl font-display font-bold mb-8">Rien ne se perd, <br/>tout se transforme.</motion.h3>
+              <motion.h2 variants={fadeUp} className="text-[#8B1A1A] font-bold tracking-widest text-sm mb-4">V. MOBILITÉ & INDUSTRIE CIRCULAIRE</motion.h2>
+              <motion.h3 variants={fadeUp} className="text-4xl md:text-5xl font-display font-bold mb-8 text-gray-900">Rien ne se perd, tout se transforme.</motion.h3>
               
               <div className="space-y-8">
-                <motion.div variants={fadeUp} className="border-l-2 border-padess-red pl-6">
-                  <h4 className="text-xl font-bold mb-2 flex items-center gap-2"><Recycle className="text-padess-red" size={20}/> Métallurgie de Recyclage</h4>
-                  <p className="text-foreground/70">Transformation des canettes en aluminium pour fabriquer des jantes de luxe et des composants mécaniques de haute précision.</p>
+                <motion.div variants={fadeUp} className="border-l-2 border-[#8B1A1A] pl-6">
+                  <h4 className="text-xl font-bold mb-2 flex items-center gap-2 text-gray-900"><Recycle className="text-[#8B1A1A]" size={20}/> Métallurgie de Recyclage</h4>
+                  <p className="text-gray-600">Transformation des canettes en aluminium pour fabriquer des jantes de luxe et des composants mécaniques de haute précision.</p>
                 </motion.div>
-                <motion.div variants={fadeUp} className="border-l-2 border-padess-red pl-6">
-                  <h4 className="text-xl font-bold mb-2 flex items-center gap-2"><Building className="text-padess-red" size={20}/> Mobilier Indestructible</h4>
-                  <p className="text-foreground/70">Brouettes et sanitaires en polymères renforcés, conçus pour résister aux conditions extrêmes des chantiers africains.</p>
+                <motion.div variants={fadeUp} className="border-l-2 border-[#8B1A1A] pl-6">
+                  <h4 className="text-xl font-bold mb-2 flex items-center gap-2 text-gray-900"><Building className="text-[#8B1A1A]" size={20}/> Mobilier Indestructible</h4>
+                  <p className="text-gray-600">Brouettes et sanitaires en polymères renforcés, conçus pour résister aux conditions extrêmes des chantiers africains.</p>
                 </motion.div>
-                <motion.div variants={fadeUp} className="border-l-2 border-padess-red pl-6">
-                  <h4 className="text-xl font-bold mb-2 flex items-center gap-2"><Zap className="text-padess-red" size={20}/> Rétrofit Électrique</h4>
-                  <p className="text-foreground/70">Conversion de véhicules thermiques en 100% électriques pour supprimer définitivement la dépendance aux hydrocarbures.</p>
+                <motion.div variants={fadeUp} className="border-l-2 border-[#8B1A1A] pl-6">
+                  <h4 className="text-xl font-bold mb-2 flex items-center gap-2 text-gray-900"><Zap className="text-[#8B1A1A]" size={20}/> Rétrofit Électrique</h4>
+                  <p className="text-gray-600">Conversion de véhicules thermiques en 100% électriques pour supprimer définitivement la dépendance aux hydrocarbures.</p>
                 </motion.div>
               </div>
             </div>
@@ -349,8 +349,8 @@ export default function Home() {
       </section>
 
       {/* INVESTISSEURS */}
-      <section className="py-32 bg-card relative overflow-hidden" id="investisseurs">
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-padess-gold/5 rounded-full blur-[100px] pointer-events-none"></div>
+      <section className="py-32 bg-[#0a0f1a] relative overflow-hidden" id="investisseurs">
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-[#D4AF37]/5 rounded-full blur-[100px] pointer-events-none"></div>
         <div className="container mx-auto px-4 md:px-6 relative z-10">
           <motion.div 
             initial="hidden"
@@ -359,9 +359,9 @@ export default function Home() {
             variants={staggerContainer}
             className="text-center max-w-4xl mx-auto mb-16"
           >
-            <motion.h2 variants={fadeUp} className="text-padess-gold font-bold tracking-widest text-sm mb-4">VI. ESPACE INVESTISSEURS</motion.h2>
-            <motion.h3 variants={fadeUp} className="text-4xl md:text-6xl font-display font-bold mb-6">PERFORMANCE & RENDEMENTS</motion.h3>
-            <motion.p variants={fadeUp} className="text-xl text-padess-gold/90 font-medium">
+            <motion.h2 variants={fadeUp} className="text-[#D4AF37] font-bold tracking-widest text-sm mb-4">VI. ESPACE INVESTISSEURS</motion.h2>
+            <motion.h3 variants={fadeUp} className="text-4xl md:text-6xl font-display font-bold mb-6 text-white">PERFORMANCE & RENDEMENTS</motion.h3>
+            <motion.p variants={fadeUp} className="text-xl text-[#D4AF37]/90 font-medium">
               Pourquoi PADESS ENGINEERING est l'investissement le plus stratégique du continent ?
             </motion.p>
           </motion.div>
@@ -373,31 +373,31 @@ export default function Home() {
             variants={staggerContainer}
             className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-16"
           >
-            <motion.div variants={fadeUp} className="bg-background border border-padess-gold/20 p-8 rounded-2xl text-center">
-              <div className="text-5xl font-display font-bold text-padess-gold mb-4">65%</div>
-              <h4 className="text-lg font-bold mb-2">Marges PLASTI-BUILD®️</h4>
-              <p className="text-sm text-foreground/60">Matière première à coût zéro : notre ressource principale est le déchet.</p>
+            <motion.div variants={fadeUp} className="bg-white/5 border border-[#D4AF37]/25 p-8 rounded-2xl text-center">
+              <div className="text-5xl font-display font-bold text-[#D4AF37] mb-4">65%</div>
+              <h4 className="text-lg font-bold mb-2 text-white">Marges PLASTI-BUILD®️</h4>
+              <p className="text-sm text-white/60">Matière première à coût zéro : notre ressource principale est le déchet.</p>
             </motion.div>
-            <motion.div variants={fadeUp} className="bg-background border border-padess-gold/20 p-8 rounded-2xl text-center">
-              <div className="text-5xl font-display font-bold text-padess-gold mb-4">18-30<span className="text-2xl">m</span></div>
-              <h4 className="text-lg font-bold mb-2">ROI Projeté</h4>
-              <p className="text-sm text-foreground/60">Selon les unités industrielles déployées sur le territoire.</p>
+            <motion.div variants={fadeUp} className="bg-white/5 border border-[#D4AF37]/25 p-8 rounded-2xl text-center">
+              <div className="text-5xl font-display font-bold text-[#D4AF37] mb-4">18-30<span className="text-2xl">m</span></div>
+              <h4 className="text-lg font-bold mb-2 text-white">ROI Projeté</h4>
+              <p className="text-sm text-white/60">Selon les unités industrielles déployées sur le territoire.</p>
             </motion.div>
-            <motion.div variants={fadeUp} className="bg-background border border-padess-gold/20 p-8 rounded-2xl text-center">
-              <div className="text-5xl font-display font-bold text-padess-gold mb-4">$/€</div>
-              <h4 className="text-lg font-bold mb-2">Trading International</h4>
-              <p className="text-sm text-foreground/60">Couverture naturelle contre les dévaluations monétaires locales.</p>
+            <motion.div variants={fadeUp} className="bg-white/5 border border-[#D4AF37]/25 p-8 rounded-2xl text-center">
+              <div className="text-5xl font-display font-bold text-[#D4AF37] mb-4">$/€</div>
+              <h4 className="text-lg font-bold mb-2 text-white">Trading International</h4>
+              <p className="text-sm text-white/60">Couverture naturelle contre les dévaluations monétaires locales.</p>
             </motion.div>
-            <motion.div variants={fadeUp} className="bg-background border border-padess-gold/20 p-8 rounded-2xl text-center">
-              <div className="text-5xl font-display font-bold text-padess-gold mb-4"><TrendingUp className="mx-auto" size={48}/></div>
-              <h4 className="text-lg font-bold mb-2">Emplois Massifs</h4>
-              <p className="text-sm text-foreground/60">Création d'emplois locaux dans la collecte, transformation et construction.</p>
+            <motion.div variants={fadeUp} className="bg-white/5 border border-[#D4AF37]/25 p-8 rounded-2xl text-center">
+              <div className="text-5xl font-display font-bold text-[#D4AF37] mb-4"><TrendingUp className="mx-auto" size={48}/></div>
+              <h4 className="text-lg font-bold mb-2 text-white">Emplois Massifs</h4>
+              <p className="text-sm text-white/60">Création d'emplois locaux dans la collecte, transformation et construction.</p>
             </motion.div>
           </motion.div>
 
-          <motion.div variants={fadeUp} className="max-w-4xl mx-auto bg-background p-8 border border-white/10 rounded-2xl">
-            <h4 className="text-xl font-bold mb-4">PROJECTION FINANCIÈRE & SOUVERAINETÉ</h4>
-            <p className="text-foreground/80 mb-4">
+          <motion.div variants={fadeUp} className="max-w-4xl mx-auto bg-white/5 p-8 border border-[#D4AF37]/20 rounded-2xl">
+            <h4 className="text-xl font-bold mb-4 text-white">PROJECTION FINANCIÈRE & SOUVERAINETÉ</h4>
+            <p className="text-white/75 mb-4">
               Cluster industriel H.E.R.O.®️ permettant de capter des marchés publics et privés en millions d'euros/dollars et dizaines de milliards de FCFA. Solution clé en main pour stopper l'exode rural, réduire les importations et dépolluer les métropoles.
             </p>
           </motion.div>
@@ -405,7 +405,7 @@ export default function Home() {
       </section>
 
       {/* CONTACT */}
-      <section className="py-32 relative" id="contact">
+      <section className="py-32 relative bg-white" id="contact">
         <div className="container mx-auto px-4 md:px-6">
           <motion.div 
             initial="hidden"
@@ -415,69 +415,69 @@ export default function Home() {
             className="grid grid-cols-1 lg:grid-cols-2 gap-16"
           >
             <div>
-              <motion.h2 variants={fadeUp} className="text-padess-orange font-bold tracking-widest text-sm mb-4">CONTACT & EXPERTISE</motion.h2>
-              <motion.h3 variants={fadeUp} className="text-4xl md:text-5xl font-display font-bold mb-6">Prêt à inventer l'avenir ?</motion.h3>
-              <motion.p variants={fadeUp} className="text-lg text-foreground/70 mb-10">
+              <motion.h2 variants={fadeUp} className="text-[#F57C00] font-bold tracking-widest text-sm mb-4">CONTACT & EXPERTISE</motion.h2>
+              <motion.h3 variants={fadeUp} className="text-4xl md:text-5xl font-display font-bold mb-6 text-gray-900">Prêt à inventer l'avenir ?</motion.h3>
+              <motion.p variants={fadeUp} className="text-lg text-gray-600 mb-10">
                 Chaque demande est traitée avec la rigueur d'un cabinet de conseil international.
               </motion.p>
               
               <div className="space-y-6">
                 <motion.div variants={fadeUp} className="flex items-start gap-4">
-                  <div className="bg-padess-green/20 p-4 rounded-xl text-padess-green">
+                  <div className="bg-[#4CAF50]/15 p-4 rounded-xl text-[#4CAF50]">
                     <Phone size={24} />
                   </div>
                   <div>
-                    <h4 className="text-lg font-bold">Téléphone & WhatsApp</h4>
-                    <p className="text-foreground/70 mt-1">WhatsApp / Expertise : +237 697 221 970</p>
-                    <p className="text-foreground/70">Appels Directs : (+237) 658 92 90 70 | (+237) 690 38 95 45</p>
+                    <h4 className="text-lg font-bold text-gray-900">Téléphone & WhatsApp</h4>
+                    <p className="text-gray-600 mt-1">WhatsApp / Expertise : +237 697 221 970</p>
+                    <p className="text-gray-600">Appels Directs : (+237) 658 92 90 70 | (+237) 690 38 95 45</p>
                   </div>
                 </motion.div>
                 
                 <motion.div variants={fadeUp} className="flex items-start gap-4">
-                  <div className="bg-padess-blue/20 p-4 rounded-xl text-padess-blue">
+                  <div className="bg-[#1565C0]/15 p-4 rounded-xl text-[#1565C0]">
                     <Mail size={24} />
                   </div>
                   <div>
-                    <h4 className="text-lg font-bold">Email</h4>
-                    <p className="text-foreground/70 mt-1">npadess@hoo.com</p>
-                    <p className="text-foreground/70">padess@engineering.com</p>
-                    <p className="text-foreground/70">ahmednchange@yahoo.com</p>
+                    <h4 className="text-lg font-bold text-gray-900">Email</h4>
+                    <p className="text-gray-600 mt-1">npadess@hoo.com</p>
+                    <p className="text-gray-600">padess@engineering.com</p>
+                    <p className="text-gray-600">ahmednchange@yahoo.com</p>
                   </div>
                 </motion.div>
 
                 <motion.div variants={fadeUp} className="flex items-start gap-4">
-                  <div className="bg-padess-orange/20 p-4 rounded-xl text-padess-orange">
+                  <div className="bg-[#F57C00]/15 p-4 rounded-xl text-[#F57C00]">
                     <MapPin size={24} />
                   </div>
                   <div>
-                    <h4 className="text-lg font-bold">Siège Social</h4>
-                    <p className="text-foreground/70 mt-1">Douala, Cameroun</p>
+                    <h4 className="text-lg font-bold text-gray-900">Siège Social</h4>
+                    <p className="text-gray-600 mt-1">Douala, Cameroun</p>
                   </div>
                 </motion.div>
               </div>
             </div>
 
-            <motion.div variants={fadeUp} className="bg-card p-8 rounded-3xl border border-white/10 shadow-2xl">
+            <motion.div variants={fadeUp} className="bg-gray-50 p-8 rounded-3xl border border-gray-200 shadow-lg">
               <form className="space-y-6" onSubmit={(e) => e.preventDefault()}>
                 <div>
-                  <label className="block text-sm font-medium mb-2 text-foreground/80">Nom complet ou Entreprise</label>
-                  <Input placeholder="Votre nom" className="bg-background/50 h-12 border-white/10" />
+                  <label className="block text-sm font-medium mb-2 text-gray-700">Nom complet ou Entreprise</label>
+                  <Input placeholder="Votre nom" className="bg-white h-12 border-gray-300 text-gray-900" />
                 </div>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div>
-                    <label className="block text-sm font-medium mb-2 text-foreground/80">Email</label>
-                    <Input type="email" placeholder="votre@email.com" className="bg-background/50 h-12 border-white/10" />
+                    <label className="block text-sm font-medium mb-2 text-gray-700">Email</label>
+                    <Input type="email" placeholder="votre@email.com" className="bg-white h-12 border-gray-300 text-gray-900" />
                   </div>
                   <div>
-                    <label className="block text-sm font-medium mb-2 text-foreground/80">Téléphone</label>
-                    <Input placeholder="+237 ..." className="bg-background/50 h-12 border-white/10" />
+                    <label className="block text-sm font-medium mb-2 text-gray-700">Téléphone</label>
+                    <Input placeholder="+237 ..." className="bg-white h-12 border-gray-300 text-gray-900" />
                   </div>
                 </div>
                 <div>
-                  <label className="block text-sm font-medium mb-2 text-foreground/80">Votre Projet / Message</label>
-                  <Textarea placeholder="Décrivez vos besoins d'ingénierie, d'investissement ou de partenariat..." className="bg-background/50 min-h-[150px] border-white/10 resize-y" />
+                  <label className="block text-sm font-medium mb-2 text-gray-700">Votre Projet / Message</label>
+                  <Textarea placeholder="Décrivez vos besoins d'ingénierie, d'investissement ou de partenariat..." className="bg-white min-h-[150px] border-gray-300 resize-y text-gray-900" />
                 </div>
-                <Button className="w-full h-14 text-lg font-bold bg-padess-orange hover:bg-padess-orange/90 text-white">
+                <Button className="w-full h-14 text-lg font-bold bg-[#F57C00] hover:bg-[#E65100] text-white">
                   Envoyer ma demande
                 </Button>
               </form>
