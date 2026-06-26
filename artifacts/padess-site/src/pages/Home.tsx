@@ -456,6 +456,50 @@ export default function Home() {
         </div>
       </section>
 
+      {/* ══ VIDÉOS TERRAIN ══════════════════════════════════════════════════ */}
+      <section className="py-14 bg-[#1a2b4a]">
+        <div className="max-w-7xl mx-auto px-4">
+          <div className="text-center mb-8">
+            <p className="sr-up text-[#F57C00] font-bold text-xs tracking-widest uppercase mb-2">NOS TRAVAUX EN ACTION</p>
+            <h2 className="sr-up sr-d1 text-2xl md:text-3xl font-bold text-white">Voir par vous-même</h2>
+          </div>
+
+          {/* Vidéos */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
+            {[
+              { src: "/media/video1.mp4", type: "video/mp4" },
+              { src: "/media/video2.mov", type: "video/quicktime" },
+              { src: "/media/video3.mov", type: "video/quicktime" },
+            ].map((v, i) => (
+              <div key={i} className="rounded-xl overflow-hidden shadow-lg aspect-video bg-black">
+                <video
+                  className="w-full h-full object-cover"
+                  autoPlay
+                  muted
+                  loop
+                  playsInline
+                >
+                  <source src={v.src} type={v.type} />
+                  <source src={v.src} type="video/mp4" />
+                </video>
+              </div>
+            ))}
+          </div>
+
+          {/* Photo Before/After */}
+          <div className="rounded-xl overflow-hidden shadow-lg max-w-xl mx-auto">
+            <img
+              src="/media/before-after.jpeg"
+              alt="Avant / Après — Sol Époxy PADESS"
+              className="w-full object-cover"
+            />
+            <div className="bg-[#F57C00] text-white text-center py-2 text-xs font-bold tracking-widest uppercase">
+              Avant / Après — Sol Époxy PADESS
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* ══ PÔLE ÉNERGIE & EAU ══════════════════════════════════════════════ */}
       <section id="energie" className="py-16 bg-white">
         <div className="max-w-7xl mx-auto px-4">
