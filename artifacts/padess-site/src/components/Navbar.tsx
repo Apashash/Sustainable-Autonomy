@@ -71,7 +71,7 @@ export default function Navbar() {
 
           {/* Mobile Menu Toggle */}
           <button
-            className="lg:hidden text-gray-800 z-50 p-2"
+            className="lg:hidden text-gray-800 z-[110] relative p-2"
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
             data-testid="button-mobile-menu"
             aria-label="Menu"
@@ -81,7 +81,7 @@ export default function Navbar() {
 
           {/* Mobile Menu Overlay — light theme */}
           <div
-            className={`fixed inset-0 bg-white flex flex-col items-center justify-center gap-6 transition-transform duration-300 lg:hidden ${
+            className={`fixed inset-0 bg-white z-[100] flex flex-col items-center justify-center gap-6 transition-transform duration-300 lg:hidden overflow-y-auto ${
               mobileMenuOpen ? "translate-x-0" : "translate-x-full"
             }`}
           >
