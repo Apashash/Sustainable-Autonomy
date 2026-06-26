@@ -73,15 +73,26 @@ const realizations = [
 
 function TestimonialsCarousel() {
   const track = useRef<HTMLDivElement>(null);
-  // Duplicate for infinite loop
+  const [paused, setPaused] = useState(false);
   const items = [...testimonials, ...testimonials, ...testimonials];
 
   return (
-    <div className="overflow-hidden w-full" style={{ WebkitMaskImage: "linear-gradient(to right, transparent, black 8%, black 92%, transparent)" }}>
+    <div
+      className="overflow-hidden w-full relative"
+      style={{ WebkitMaskImage: "linear-gradient(to right, transparent, black 8%, black 92%, transparent)" }}
+      onMouseEnter={() => setPaused(true)}
+      onMouseLeave={() => setPaused(false)}
+      onTouchStart={() => setPaused(true)}
+      onTouchEnd={() => setPaused(false)}
+    >
       <div
         ref={track}
         className="flex gap-5"
-        style={{ animation: "scrollLeft 28s linear infinite", width: "max-content" }}
+        style={{
+          animation: `scrollLeft 28s linear infinite`,
+          animationPlayState: paused ? "paused" : "running",
+          width: "max-content",
+        }}
       >
         {items.map((t, i) => (
           <div key={i} className="bg-white border border-gray-100 rounded-xl p-6 shadow-sm flex-shrink-0" style={{ width: "300px" }}>
@@ -101,6 +112,11 @@ function TestimonialsCarousel() {
           </div>
         ))}
       </div>
+      {paused && (
+        <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+          <span className="bg-black/40 text-white text-xs px-3 py-1 rounded-full">⏸ En pause</span>
+        </div>
+      )}
       <style>{`
         @keyframes scrollLeft {
           0%   { transform: translateX(0); }
