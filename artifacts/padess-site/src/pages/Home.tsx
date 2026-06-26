@@ -30,15 +30,69 @@ import proj6Img   from "@assets/df0e837b-4930-429c-832d-8a8a6e78715c_17824526769
 // ─── Data ───────────────────────────────────────────────────────────────────
 
 const services = [
-  { icon: <Recycle size={28} />,   color: "#4CAF50", title: "Construction PLASTI-BUILD®",    desc: "Briques et parpaings composite plastique-sable en système LEGO-BLOCK emboîtable sans mortier. Construction 5× plus rapide, 3× plus résistante que le béton, hydrofuge, ignifuge et parasismique." },
-  { icon: <Building2 size={28} />, color: "#8B1A1A", title: "Architecture & Art Époxy",       desc: "Plafonds artistiques en BA13, sols en résine époxy « Miroir » effet marbré, ébénisterie de prestige River Tables — le luxe structurel au service de l'esthétique royale." },
-  { icon: <Zap size={28} />,       color: "#F57C00", title: "PADESS-BIOFLOW POWER™",          desc: "Innovation de rupture : électricité microbienne (MFC) 24h/24 à partir des bactéries des sols et racines de raphia/mangrove. Zéro réseau, souveraineté totale." },
-  { icon: <Droplet size={28} />,   color: "#1565C0", title: "Forages & Eau Potable",          desc: "Forages intelligents et filtration ionique pour un accès permanent à l'eau de qualité supérieure, même en zone reculée." },
-  { icon: <Truck size={28} />,     color: "#1565C0", title: "Rétrofit & Mobilité Électrique", desc: "Conversion de véhicules thermiques en 100 % électrique. Tricycles cargo électriques pour la logistique urbaine et réduction totale du coût carburant." },
-  { icon: <Factory size={28} />,   color: "#4CAF50", title: "H.E.R.O.® System",               desc: "Habitation Écologique à Rendement Optimisé — assainissement Biofil zéro vidange à vie, fosses à transformation biologique, sans odeurs et sans entretien." },
-  { icon: <Sun size={28} />,       color: "#F57C00", title: "Biogaz & Micro-Hydroélectricité", desc: "Transformation des biodéchets en gaz de cuisson et exploitation des micro-courants d'eau locaux pour une indépendance énergétique complète et durable." },
-  { icon: <TrendingUp size={28} />,color: "#8B1A1A", title: "Conseil & Investissement",        desc: "Accompagnement stratégique, trading international et opportunités d'investissement à ROI de 18–30 mois dans les secteurs à forte croissance en Afrique." },
-  { icon: <Leaf size={28} />,      color: "#4CAF50", title: "Métallurgie & Recyclage",         desc: "Transformation des canettes aluminium en jantes de luxe et composants mécaniques. Mobilier de chantier indestructible en polymères renforcés pour conditions extrêmes." },
+  {
+    icon: <Recycle size={28} />, color: "#4CAF50",
+    title: "Construction PLASTI-BUILD®",
+    desc: "Briques et parpaings composite plastique-sable en système LEGO-BLOCK emboîtable sans mortier. Construction 5× plus rapide, 3× plus résistante que le béton, hydrofuge, ignifuge et parasismique. Toitures, pavages, sanitaires et cuisines — tout en matériaux recyclés certifiés.",
+    bullets: ["Technologie LEGO-BLOCK sans mortier", "5× plus rapide que le béton classique", "Hydrofuge, ignifuge et parasismique", "Tuiles, pavés, sanitaires recyclés"],
+    photos: ["/realisations/plastibuild-team.jpeg", "/realisations/paving-colorful-house.jpeg", "/realisations/roof-tiles-on-house.jpeg"],
+  },
+  {
+    icon: <Building2 size={28} />, color: "#8B1A1A",
+    title: "Architecture & Art Époxy",
+    desc: "Plafonds artistiques en BA13 avec jeux de lumières, sols en résine époxy « Miroir » aux effets marbrés profonds, ébénisterie de prestige River Tables — le luxe structurel au service d'une esthétique royale et personnalisée.",
+    bullets: ["Plafonds BA13 sculptés & éclairés", "Sols époxy miroir incassables", "River Tables bois noble & résine", "Mobilier & lampes art époxy"],
+    photos: ["/realisations/padess-showroom-epoxy.jpeg", "/realisations/epoxy-living-blue-wood.jpeg", "/realisations/workshop-epoxy-tables.jpeg"],
+  },
+  {
+    icon: <Zap size={28} />, color: "#F57C00",
+    title: "PADESS-BIOFLOW POWER™",
+    desc: "Innovation de rupture exploitant l'énergie microbienne (MFC) à partir des bactéries des sols et racines de raphia/mangrove. Électricité stable 24h/24, même par temps couvert. Zéro réseau, souveraineté énergétique totale.",
+    bullets: ["Électricité microbienne 24h/24", "Aucun réseau électrique requis", "Source : bactéries du sol & racines", "Stable par temps couvert ou sans vent"],
+    photos: ["/media/before-after.jpeg", "/realisations/factory-workers.jpeg", "/realisations/waste-raw-material.jpeg"],
+  },
+  {
+    icon: <Droplet size={28} />, color: "#1565C0",
+    title: "Forages & Eau Potable",
+    desc: "Forages intelligents et systèmes de filtration ionique pour un accès permanent à une eau potable de qualité supérieure, même en zone reculée. Pompage autonome, zéro dépendance au réseau public.",
+    bullets: ["Forage jusqu'en zones reculées", "Filtration ionique — eau pure certifiée", "Pompage solaire autonome", "Installation clé en main"],
+    photos: ["/realisations/kitchen-sink-unit.jpeg", "/realisations/sink-closeup.jpeg", "/realisations/bathroom-pods.jpeg"],
+  },
+  {
+    icon: <Truck size={28} />, color: "#1565C0",
+    title: "Rétrofit & Mobilité Électrique",
+    desc: "Conversion de véhicules thermiques en 100 % électriques pour une économie totale de carburant. Tricycles cargo électriques pour la logistique urbaine. Réduction des coûts d'exploitation jusqu'à 80 %.",
+    bullets: ["Conversion thermique → 100% électrique", "Tricycles cargo pour logistique", "Économie carburant jusqu'à 80%", "Entretien simplifié & durable"],
+    photos: ["/realisations/retrofit-workshop.jpeg", "/realisations/wheels-showroom.jpeg", "/realisations/wheels-red.jpeg"],
+  },
+  {
+    icon: <Factory size={28} />, color: "#4CAF50",
+    title: "H.E.R.O.® System",
+    desc: "Habitation Écologique à Rendement Optimisé — assainissement Biofil par biocompostage zéro vidange à vie, sans odeurs, sans entretien. Le système transforme les déchets biologiques en ressource, même en milieu rural.",
+    bullets: ["Assainissement Biofil zéro vidange", "Biocompostage intégré & sans odeurs", "Applicable en milieu rural isolé", "Zéro pollution des sols"],
+    photos: ["/realisations/factory-brouettes.jpeg", "/realisations/plastibuild-team.jpeg", "/realisations/waste-raw-material.jpeg"],
+  },
+  {
+    icon: <Sun size={28} />, color: "#F57C00",
+    title: "Biogaz & Micro-Hydroélectricité",
+    desc: "Transformation des biodéchets organiques en gaz de cuisson et en électricité stable. Exploitation des micro-courants d'eau locaux pour une indépendance énergétique complète, durable et sans coût de carburant.",
+    bullets: ["Biodéchets → gaz de cuisson", "Micro-courants → électricité locale", "Zéro intrant, zéro facture énergie", "Adapté aux ménages & industries"],
+    photos: ["/realisations/factory-workers.jpeg", "/realisations/factory-brouettes-2.jpeg", "/realisations/waste-raw-material.jpeg"],
+  },
+  {
+    icon: <TrendingUp size={28} />, color: "#8B1A1A",
+    title: "Conseil & Investissement",
+    desc: "Accompagnement stratégique, trading international de matières premières africaines et opportunités d'investissement à ROI de 18–30 mois. Marges nettes 50–75 % sur les pôles PLASTI-BUILD® et Design Époxy.",
+    bullets: ["ROI projeté 18–30 mois", "Trading international $/€", "Marges nettes 50–75%", "Dossiers d'investissement sur mesure"],
+    photos: ["/realisations/padess-meeting-room.jpeg", "/realisations/padess-reception-stars.jpeg", "/realisations/epoxy-large-team.jpeg"],
+  },
+  {
+    icon: <Leaf size={28} />, color: "#4CAF50",
+    title: "Métallurgie & Recyclage",
+    desc: "Transformation des canettes en aluminium pour fabriquer des jantes de luxe et des composants mécaniques haute performance. Mobilier de chantier indestructible en polymères renforcés, conçus pour les conditions extrêmes.",
+    bullets: ["Canettes → jantes de luxe", "Composants mécaniques recyclés", "Brouettes en polymères renforcés", "Mobilier de chantier indestructible"],
+    photos: ["/realisations/wheels-center.jpeg", "/realisations/factory-brouettes-2.jpeg", "/realisations/wheels-showroom.jpeg"],
+  },
 ];
 
 const whyUs = [
@@ -378,21 +432,48 @@ export default function Home() {
               <span className="text-[#F57C00]">pour Particuliers & Entreprises</span>
             </h2>
           </div>
-          <div className="grid grid-cols-2 lg:grid-cols-3 gap-4">
+          <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-5">
             {services.map((s, i) => (
-              <div key={i} className={`sr-up sr-d${Math.min(i + 1, 6)} flex flex-col gap-2 p-4 rounded-lg hover:shadow-lg transition-shadow group relative`} style={{ backgroundColor: s.color }}>
-                {/* Numéro */}
-                <div className="absolute top-3 right-3 w-6 h-6 rounded-full bg-white/25 flex items-center justify-center text-white font-bold text-[11px] shrink-0">
-                  {i + 1}
+              <div key={i} className={`sr-up sr-d${Math.min(i + 1, 6)} flex flex-col rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-shadow`}>
+                {/* Header coloré */}
+                <div className="relative p-5 flex items-start gap-3" style={{ backgroundColor: s.color }}>
+                  <div className="w-12 h-12 rounded-xl flex items-center justify-center text-white shrink-0 bg-white/20">
+                    {s.icon}
+                  </div>
+                  <div className="flex-1 min-w-0">
+                    <h3 className="font-bold text-white text-sm leading-snug pr-8">{s.title}</h3>
+                  </div>
+                  {/* Badge numéro */}
+                  <div className="absolute top-3 right-3 w-7 h-7 rounded-full bg-white/25 flex items-center justify-center text-white font-bold text-xs border border-white/40">
+                    {i + 1}
+                  </div>
                 </div>
-                <div className="w-11 h-11 rounded-lg flex items-center justify-center text-white shrink-0 bg-white/20">
-                  {s.icon}
+
+                {/* Corps blanc */}
+                <div className="bg-white flex flex-col flex-1 p-4 gap-3">
+                  <p className="text-gray-600 text-xs leading-relaxed">{s.desc}</p>
+                  <ul className="space-y-1">
+                    {s.bullets.map((b, j) => (
+                      <li key={j} className="flex items-start gap-2 text-xs text-gray-700">
+                        <CheckCircle size={12} className="shrink-0 mt-0.5" style={{ color: s.color }} />
+                        {b}
+                      </li>
+                    ))}
+                  </ul>
+
+                  {/* Mini galerie photos */}
+                  <div className="grid grid-cols-3 gap-1 mt-auto pt-2">
+                    {s.photos.map((src, j) => (
+                      <div key={j} className="aspect-square rounded-md overflow-hidden bg-gray-100">
+                        <img src={src} alt="" className="w-full h-full object-cover hover:scale-105 transition-transform duration-300" />
+                      </div>
+                    ))}
+                  </div>
+
+                  <a href="#contact" className="inline-flex items-center gap-1 text-xs font-bold hover:underline transition-colors mt-1" style={{ color: s.color }}>
+                    DEMANDER UN DEVIS <ArrowRight size={11} />
+                  </a>
                 </div>
-                <h3 className="font-bold text-white text-xs leading-tight pr-6">{s.title}</h3>
-                <p className="text-white/80 text-[11px] leading-relaxed hidden sm:block">{s.desc}</p>
-                <a href="#contact" className="inline-flex items-center gap-1 text-[11px] font-bold text-white/90 hover:text-white transition-colors">
-                  EN SAVOIR PLUS <ArrowRight size={10} />
-                </a>
               </div>
             ))}
           </div>
