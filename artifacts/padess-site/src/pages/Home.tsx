@@ -5,7 +5,9 @@ import {
   ArrowRight, CheckCircle, Star, Shield, Clock, ThumbsUp,
   Recycle, Zap, Building2, Truck, Droplet, Factory,
   Award, Users, Wrench, Leaf, TrendingUp, Sun,
-  ChevronRight, Phone
+  ChevronRight, Phone, Landmark, Flame, Car, Sparkles,
+  TreePine, Lightbulb, Smartphone, Mail, MapPin, Lock,
+  HardHat, FlaskConical
 } from "lucide-react";
 
 import heroImg    from "@assets/feceb23a-4a60-414a-943f-282e1c2ab911_1782452676920.jpeg";
@@ -237,13 +239,13 @@ export default function Home() {
             </div>
             <div className="grid grid-cols-2 gap-4">
               {[
-                { color: "#4CAF50", icon: "🏗️", title: "Construction Révolutionnaire", desc: "5× plus rapide que le béton traditionnel avec PLASTI-BUILD®" },
-                { color: "#F57C00", icon: "⚡", title: "Énergie Souveraine", desc: "PADESS-BIOFLOW POWER™ : électricité microbienne 24h/24" },
-                { color: "#1565C0", icon: "💧", title: "Eau Pure", desc: "Forages intelligents & filtration ionique même en zone reculée" },
-                { color: "#8B1A1A", icon: "♻️", title: "Zéro Déchet", desc: "Valorisation industrielle totale des plastiques et biodéchets" },
+                { color: "#4CAF50", icon: <HardHat size={22} />, title: "Construction Révolutionnaire", desc: "5× plus rapide que le béton avec PLASTI-BUILD®" },
+                { color: "#F57C00", icon: <Zap size={22} />, title: "Énergie Souveraine", desc: "Électricité microbienne BIOFLOW™ 24h/24" },
+                { color: "#1565C0", icon: <Droplet size={22} />, title: "Eau Pure", desc: "Forages & filtration ionique partout" },
+                { color: "#8B1A1A", icon: <Recycle size={22} />, title: "Zéro Déchet", desc: "Plastiques et biodéchets valorisés à 100%" },
               ].map((c, i) => (
                 <div key={i} className="p-4 rounded-xl border border-gray-100 shadow-sm hover:shadow-md transition-shadow">
-                  <div className="text-2xl mb-2">{c.icon}</div>
+                  <div className="mb-2" style={{ color: c.color }}>{c.icon}</div>
                   <h4 className="font-bold text-xs text-gray-900 mb-1" style={{ color: c.color }}>{c.title}</h4>
                   <p className="text-xs text-gray-500 leading-relaxed">{c.desc}</p>
                 </div>
@@ -263,28 +265,28 @@ export default function Home() {
           <div className="grid grid-cols-2 gap-5">
             {[
               {
-                icon: "🏛️", bg: "#4CAF50",
-                title: "Hub de l'Autonomie Territoriale",
-                desc: "Nous ne vendons pas des produits, nous installons des systèmes souverains. De l'énergie puisée dans les racines du sol à l'habitat érigé en un temps record, PADESS transforme chaque mètre carré en unité de production de richesse.",
+                icon: <Landmark size={28} />, bg: "#4CAF50",
+                title: "Autonomie Territoriale",
+                desc: "Systèmes souverains clé-en-main : habitat, énergie, eau. Chaque mètre carré devient une unité productive.",
               },
               {
-                icon: "📈", bg: "#F57C00",
-                title: "Levier du Trading Stratégique",
-                desc: "Connecter le génie local aux flux financiers mondiaux. En tant que Broker-Trader International, nous sécurisons les chaînes d'approvisionnement et valorisons les matières premières critiques pour une croissance sans frontières.",
+                icon: <TrendingUp size={28} />, bg: "#F57C00",
+                title: "Trading Stratégique",
+                desc: "Broker international : chaînes d'approvisionnement sécurisées, matières premières africaines valorisées mondialmente.",
               },
               {
-                icon: "🔬", bg: "#8B1A1A",
+                icon: <FlaskConical size={28} />, bg: "#8B1A1A",
                 title: "Ingénierie du Futur (R&D)",
-                desc: "Pionnier du concept H.E.R.O.® et de la technologie PLASTI-BUILD®, PADESS Engineering efface la notion de déchet pour instaurer celle de ressource éternelle.",
+                desc: "Pionniers de H.E.R.O.® et PLASTI-BUILD® — le déchet devient ressource éternelle.",
               },
               {
-                icon: "♻️", bg: "#1565C0",
+                icon: <Recycle size={28} />, bg: "#1565C0",
                 title: "Zéro Déchet, 100% Valeur",
-                desc: "Chaque déchet plastique, organique ou métallique devient une matière première. PADESS transforme les passifs environnementaux en actifs technologiques et financiers à haute performance.",
+                desc: "Plastiques, biodéchets, métaux — transformés en actifs industriels à haute performance.",
               },
             ].map((p, i) => (
               <div key={i} className="rounded-2xl p-6 flex flex-col gap-3 shadow-md hover:shadow-lg transition-shadow" style={{ backgroundColor: p.bg }}>
-                <div className="text-3xl">{p.icon}</div>
+                <div className="text-white">{p.icon}</div>
                 <h3 className="font-bold text-base text-white leading-snug">{p.title}</h3>
                 <p className="text-white/80 text-sm leading-relaxed">{p.desc}</p>
               </div>
@@ -353,30 +355,30 @@ export default function Home() {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
             {[
               {
-                icon: "🏛️", color: "#8B1A1A",
+                icon: <Landmark size={28} />, color: "#8B1A1A",
                 title: "Plafonds Artistiques (BA13)",
-                desc: "Conceptions sculptées complexes, motifs géométriques et artistiques avec intégration de jeux de lumières indirectes pour une atmosphère royale.",
+                desc: "Sculptures géométriques, lumières indirectes — une atmosphère de palace sur mesure.",
               },
               {
-                icon: "✨", color: "#F57C00",
+                icon: <Sparkles size={28} />, color: "#F57C00",
                 title: 'Sols Époxy "Miroir"',
-                desc: "Finition monolithique aux effets marbrés profonds, incassable, antibactérienne et d'un éclat incomparable. Hygiénique et éternel.",
+                desc: "Finition marbrée monolithique : incassable, antibactérienne, d'un éclat éternel.",
               },
               {
-                icon: "🪵", color: "#4CAF50",
+                icon: <TreePine size={28} />, color: "#4CAF50",
                 title: "Ébénisterie Bois & Époxy",
-                desc: 'Création de "River Tables" et mobiliers de luxe fusionnant des essences nobles (ébène, bubinga) avec de la résine cristalline.',
+                desc: 'River Tables et mobiliers de luxe — essences nobles fusionnées à la résine cristalline.',
               },
             ].map((a, i) => (
               <div key={i} className="bg-white rounded-xl border border-gray-100 shadow-sm p-6 hover:shadow-md transition-shadow">
-                <div className="text-4xl mb-3">{a.icon}</div>
+                <div className="mb-3" style={{ color: a.color }}>{a.icon}</div>
                 <h3 className="font-bold text-gray-900 mb-2" style={{ color: a.color }}>{a.title}</h3>
                 <p className="text-gray-500 text-sm leading-relaxed">{a.desc}</p>
               </div>
             ))}
           </div>
           <div className="bg-[#1a2b4a] rounded-xl p-6 flex items-start gap-4">
-            <span className="text-2xl shrink-0">💡</span>
+            <Lightbulb size={22} className="text-[#F57C00] shrink-0 mt-0.5" />
             <div>
               <h4 className="font-bold text-[#F57C00] text-sm uppercase tracking-wide mb-1">Projection VIP</h4>
               <p className="text-white/80 text-sm leading-relaxed">Une résidence VIP où le mobilier semble flotter sur un sol de quartz liquide, chaque pièce étant numérotée et personnalisée selon l'identité du propriétaire.</p>
@@ -395,13 +397,13 @@ export default function Home() {
           </div>
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
             {[
-              { icon: "⚡", color: "#F57C00", title: "PADESS-BIOFLOW POWER™", desc: "Énergie microbienne (MFC) — électricité stable même par temps couvert ou sans vent." },
-              { icon: "🔥", color: "#8B1A1A", title: "Biogaz Domestique & Industriel", desc: "Biodéchets transformés en gaz de cuisson et électricité stable." },
-              { icon: "💧", color: "#1565C0", title: "Forages & Filtration Ionique", desc: "Eau potable de qualité supérieure en zone reculée, 24h/24." },
-              { icon: "🚗", color: "#4CAF50", title: "Rétrofit Électrique", desc: "Véhicules thermiques convertis en 100% électrique — zéro carburant." },
+              { icon: <Zap size={22} />, color: "#F57C00", title: "PADESS-BIOFLOW POWER™", desc: "Électricité microbienne 24h/24 — aucun réseau requis." },
+              { icon: <Flame size={22} />, color: "#8B1A1A", title: "Biogaz Domestique & Industriel", desc: "Biodéchets → gaz de cuisson et électricité stable." },
+              { icon: <Droplet size={22} />, color: "#1565C0", title: "Forages & Filtration Ionique", desc: "Eau potable de qualité supérieure, partout, 24h/24." },
+              { icon: <Car size={22} />, color: "#4CAF50", title: "Rétrofit Électrique", desc: "Véhicules thermiques convertis en 100% électrique." },
             ].map((e, i) => (
               <div key={i} className="rounded-xl border border-gray-100 p-4 hover:shadow-md transition-shadow bg-white">
-                <div className="text-2xl mb-2">{e.icon}</div>
+                <div className="mb-2" style={{ color: e.color }}>{e.icon}</div>
                 <h3 className="font-bold text-xs mb-1" style={{ color: e.color }}>{e.title}</h3>
                 <p className="text-gray-500 text-[11px] leading-relaxed">{e.desc}</p>
               </div>
@@ -632,22 +634,22 @@ export default function Home() {
               </div>
               <div className="mt-10 pt-8 border-t border-white/20 space-y-3 text-sm text-white/80">
                 <div className="flex items-start gap-2">
-                  <Phone size={14} className="text-[#F57C00] shrink-0 mt-0.5" />
+                  <Smartphone size={14} className="text-[#F57C00] shrink-0 mt-0.5" />
                   <div>
-                    <div>📲 WhatsApp : <a href="https://wa.me/237697221970" className="hover:text-[#F57C00]">+237 697 221 970</a></div>
-                    <div>📞 <a href="tel:+237658929070" className="hover:text-[#F57C00]">(+237) 658 92 90 70</a></div>
-                    <div>📞 <a href="tel:+237690389545" className="hover:text-[#F57C00]">(+237) 690 38 95 45</a></div>
+                    <div>WhatsApp : <a href="https://wa.me/237697221970" className="hover:text-[#F57C00]">+237 697 221 970</a></div>
+                    <div><a href="tel:+237658929070" className="hover:text-[#F57C00]">(+237) 658 92 90 70</a></div>
+                    <div><a href="tel:+237690389545" className="hover:text-[#F57C00]">(+237) 690 38 95 45</a></div>
                   </div>
                 </div>
                 <div className="flex items-start gap-2">
-                  <span className="text-[#F57C00] shrink-0">✉</span>
+                  <Mail size={14} className="text-[#F57C00] shrink-0 mt-0.5" />
                   <div>
                     <div>npadess@hoo.com</div>
                     <div>padess@engineering.com</div>
                     <div>ahmednchange@yahoo.com</div>
                   </div>
                 </div>
-                <div className="flex items-center gap-2"><span className="text-[#F57C00]">📍</span> Siège Social : Douala, Cameroun</div>
+                <div className="flex items-center gap-2"><MapPin size={14} className="text-[#F57C00] shrink-0" /> Siège Social : Douala, Cameroun</div>
               </div>
             </div>
             {/* Right — form */}
@@ -689,7 +691,7 @@ export default function Home() {
                 <button type="submit" className="w-full bg-[#F57C00] hover:bg-[#E65100] text-white font-bold py-3.5 rounded transition-colors text-sm tracking-wide shadow-md">
                   OBTENIR MON DEVIS GRATUIT →
                 </button>
-                <p className="text-center text-xs text-gray-400">🔒 Vos données sont confidentielles et sécurisées.</p>
+                <p className="text-center text-xs text-gray-400 flex items-center justify-center gap-1"><Lock size={11} /> Vos données sont confidentielles et sécurisées.</p>
               </form>
             </div>
           </div>
