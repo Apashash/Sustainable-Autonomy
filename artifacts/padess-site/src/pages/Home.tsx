@@ -253,35 +253,40 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ══ 3 PILIERS DE LA DISRUPTION ══════════════════════════════════════ */}
-      <section className="py-14 bg-gray-50 border-y border-gray-200">
+      {/* ══ 4 PILIERS DE LA DISRUPTION ══════════════════════════════════════ */}
+      <section className="py-14 bg-white">
         <div className="max-w-7xl mx-auto px-4">
           <div className="text-center mb-10">
             <p className="text-[#F57C00] font-bold text-xs tracking-widest uppercase mb-2">VITRINE PRIMAIRE</p>
             <h2 className="text-2xl md:text-3xl font-bold text-[#1a2b4a]">Les Piliers de la Disruption</h2>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div className="grid grid-cols-2 gap-5">
             {[
               {
-                icon: "🏛️", color: "#4CAF50",
+                icon: "🏛️", bg: "#4CAF50",
                 title: "Hub de l'Autonomie Territoriale",
                 desc: "Nous ne vendons pas des produits, nous installons des systèmes souverains. De l'énergie puisée dans les racines du sol à l'habitat érigé en un temps record, PADESS transforme chaque mètre carré en unité de production de richesse.",
               },
               {
-                icon: "📈", color: "#F57C00",
+                icon: "📈", bg: "#F57C00",
                 title: "Levier du Trading Stratégique",
                 desc: "Connecter le génie local aux flux financiers mondiaux. En tant que Broker-Trader International, nous sécurisons les chaînes d'approvisionnement et valorisons les matières premières critiques pour une croissance sans frontières.",
               },
               {
-                icon: "🔬", color: "#1565C0",
+                icon: "🔬", bg: "#8B1A1A",
                 title: "Ingénierie du Futur (R&D)",
                 desc: "Pionnier du concept H.E.R.O.® et de la technologie PLASTI-BUILD®, PADESS Engineering efface la notion de déchet pour instaurer celle de ressource éternelle.",
               },
+              {
+                icon: "♻️", bg: "#1565C0",
+                title: "Zéro Déchet, 100% Valeur",
+                desc: "Chaque déchet plastique, organique ou métallique devient une matière première. PADESS transforme les passifs environnementaux en actifs technologiques et financiers à haute performance.",
+              },
             ].map((p, i) => (
-              <div key={i} className="bg-white border border-gray-100 rounded-xl p-6 shadow-sm hover:shadow-md transition-shadow">
-                <div className="text-3xl mb-3">{p.icon}</div>
-                <h3 className="font-bold text-base mb-3" style={{ color: p.color }}>{p.title}</h3>
-                <p className="text-gray-600 text-sm leading-relaxed">{p.desc}</p>
+              <div key={i} className="rounded-2xl p-6 flex flex-col gap-3 shadow-md hover:shadow-lg transition-shadow" style={{ backgroundColor: p.bg }}>
+                <div className="text-3xl">{p.icon}</div>
+                <h3 className="font-bold text-base text-white leading-snug">{p.title}</h3>
+                <p className="text-white/80 text-sm leading-relaxed">{p.desc}</p>
               </div>
             ))}
           </div>
