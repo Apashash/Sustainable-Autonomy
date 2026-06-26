@@ -9,6 +9,7 @@ import {
 } from "lucide-react";
 
 import heroImg    from "@assets/feceb23a-4a60-414a-943f-282e1c2ab911_1782452676920.jpeg";
+import heroBgImg  from "@assets/71b93d8a-1e71-46c9-8664-998421ba93d8_1782460261138.jpeg";
 import aboutImg   from "@assets/efcd27e7-9cc0-41fe-8c8e-a590ec77c2a6_1782452676920.jpeg";
 import svc1Img    from "@assets/8486619a-4af6-478a-8ed2-b378cd2cf4e3_1782452676920.jpeg";
 import svc2Img    from "@assets/a22b47b7-9012-4f22-93f7-9019ab75b306_1782452676920.jpeg";
@@ -186,33 +187,33 @@ export default function Home() {
       <div className="h-[6.5rem]" />
 
       {/* ══ HERO ═══════════════════════════════════════════════════════════ */}
-      <section className="bg-white py-12 lg:py-0 overflow-hidden">
-        <div className="max-w-7xl mx-auto px-4 lg:flex lg:items-stretch lg:min-h-[560px]">
-          {/* Left — text */}
-          <div className="flex flex-col justify-center lg:w-1/2 lg:pr-12 py-10">
-            <h1 className="font-bold leading-snug mb-5 text-[#1a2b4a] tracking-normal" style={{ fontSize: "clamp(1.6rem,3.5vw,2.6rem)" }}>
-              Services d'Ingénierie<br />
-              <span className="text-[#F57C00]">Innovants & Durables</span><br />
-              pour l'Afrique
-            </h1>
-            <p className="text-gray-500 text-base mb-8 max-w-lg">
-              Construction écologique PLASTI-BUILD®, systèmes énergétiques souverains, art époxy, mobilité industrielle et bien plus encore — des solutions complètes de confiance pour vos projets en Afrique.
-            </p>
-            <div className="flex flex-wrap gap-3">
-              <a href="#contact" className="inline-flex items-center gap-2 bg-[#F57C00] hover:bg-[#E65100] text-white font-bold px-6 py-3.5 rounded transition-colors shadow-md text-sm">
-                OBTENIR UN DEVIS <ChevronRight size={16} />
-              </a>
-              <a href="#services" className="inline-flex items-center gap-2 border-2 border-[#1a2b4a] text-[#1a2b4a] hover:bg-[#1a2b4a] hover:text-white font-bold px-6 py-3.5 rounded transition-colors text-sm">
-                VOIR NOS SERVICES
-              </a>
-            </div>
-          </div>
-          {/* Right — image */}
-          <div className="lg:w-1/2 relative mt-6 lg:mt-0">
-            <div className="h-72 lg:h-full w-full overflow-hidden lg:rounded-none rounded-xl">
-              <img src={heroImg} alt="PADESS Engineering Team" className="w-full h-full object-cover" />
-              <div className="absolute inset-0 bg-gradient-to-r from-white/30 to-transparent lg:from-white/10" />
-            </div>
+      <section
+        className="relative overflow-hidden"
+        style={{
+          backgroundImage: `url(${heroBgImg})`,
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+          minHeight: "560px",
+        }}
+      >
+        {/* Dark overlay for readability */}
+        <div className="absolute inset-0 bg-[#1a2b4a]/65" />
+        <div className="relative z-10 max-w-7xl mx-auto px-4 py-20 lg:py-28 flex flex-col justify-center min-h-[560px]">
+          <h1 className="font-bold leading-snug mb-5 text-white tracking-normal" style={{ fontSize: "clamp(1.6rem,3.5vw,2.8rem)" }}>
+            Services d'Ingénierie<br />
+            <span className="text-[#F57C00]">Innovants & Durables</span><br />
+            pour l'Afrique
+          </h1>
+          <p className="text-white/80 text-base mb-8 max-w-xl">
+            Construction écologique PLASTI-BUILD®, systèmes énergétiques souverains, art époxy, mobilité industrielle et bien plus encore — des solutions complètes de confiance pour vos projets en Afrique.
+          </p>
+          <div className="flex flex-wrap gap-3">
+            <a href="#contact" className="inline-flex items-center gap-2 bg-[#F57C00] hover:bg-[#E65100] text-white font-bold px-6 py-3.5 rounded transition-colors shadow-md text-sm">
+              OBTENIR UN DEVIS <ChevronRight size={16} />
+            </a>
+            <a href="#services" className="inline-flex items-center gap-2 border-2 border-white text-white hover:bg-white hover:text-[#1a2b4a] font-bold px-6 py-3.5 rounded transition-colors text-sm">
+              VOIR NOS SERVICES
+            </a>
           </div>
         </div>
       </section>
