@@ -253,6 +253,41 @@ export default function Home() {
         </div>
       </section>
 
+      {/* ══ 3 PILIERS DE LA DISRUPTION ══════════════════════════════════════ */}
+      <section className="py-14 bg-[#1a2b4a]">
+        <div className="max-w-7xl mx-auto px-4">
+          <div className="text-center mb-10">
+            <p className="text-[#F57C00] font-bold text-xs tracking-widest uppercase mb-2">VITRINE PRIMAIRE</p>
+            <h2 className="text-2xl md:text-3xl font-bold text-white">Les Piliers de la Disruption</h2>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            {[
+              {
+                icon: "🏛️", color: "#4CAF50",
+                title: "Hub de l'Autonomie Territoriale",
+                desc: "Nous ne vendons pas des produits, nous installons des systèmes souverains. De l'énergie puisée dans les racines du sol à l'habitat érigé en un temps record, PADESS transforme chaque mètre carré en unité de production de richesse.",
+              },
+              {
+                icon: "📈", color: "#F57C00",
+                title: "Levier du Trading Stratégique",
+                desc: "Connecter le génie local aux flux financiers mondiaux. En tant que Broker-Trader International, nous sécurisons les chaînes d'approvisionnement et valorisons les matières premières critiques pour une croissance sans frontières.",
+              },
+              {
+                icon: "🔬", color: "#1565C0",
+                title: "Ingénierie du Futur (R&D)",
+                desc: "Pionnier du concept H.E.R.O.® et de la technologie PLASTI-BUILD®, PADESS Engineering efface la notion de déchet pour instaurer celle de ressource éternelle.",
+              },
+            ].map((p, i) => (
+              <div key={i} className="bg-white/5 border border-white/10 rounded-xl p-6 hover:bg-white/10 transition-colors">
+                <div className="text-3xl mb-3">{p.icon}</div>
+                <h3 className="font-bold text-base mb-3" style={{ color: p.color }}>{p.title}</h3>
+                <p className="text-white/70 text-sm leading-relaxed">{p.desc}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* ══ TRUST BADGES ════════════════════════════════════════════════════ */}
       <section className="bg-gray-50 border-y border-gray-200 py-6">
         <div className="max-w-7xl mx-auto px-4">
@@ -298,6 +333,74 @@ export default function Home() {
                     EN SAVOIR PLUS <ArrowRight size={12} />
                   </a>
                 </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ══ ARCHITECTURE HAUTE COUTURE ══════════════════════════════════════ */}
+      <section id="architecture" className="py-16 bg-gray-50">
+        <div className="max-w-7xl mx-auto px-4">
+          <div className="text-center mb-10">
+            <p className="text-[#F57C00] font-bold text-xs tracking-widest uppercase mb-2">ARCHITECTURE & DESIGN</p>
+            <h2 className="text-2xl md:text-3xl font-bold text-[#1a2b4a]">Haute Couture & Art Époxy</h2>
+            <p className="text-gray-500 text-sm mt-3 max-w-2xl mx-auto">L'espace devient une œuvre d'art fonctionnelle. Nous fusionnons la solidité structurelle avec une esthétique de palace.</p>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+            {[
+              {
+                icon: "🏛️", color: "#8B1A1A",
+                title: "Plafonds Artistiques (BA13)",
+                desc: "Conceptions sculptées complexes, motifs géométriques et artistiques avec intégration de jeux de lumières indirectes pour une atmosphère royale.",
+              },
+              {
+                icon: "✨", color: "#F57C00",
+                title: 'Sols Époxy "Miroir"',
+                desc: "Finition monolithique aux effets marbrés profonds, incassable, antibactérienne et d'un éclat incomparable. Hygiénique et éternel.",
+              },
+              {
+                icon: "🪵", color: "#4CAF50",
+                title: "Ébénisterie Bois & Époxy",
+                desc: 'Création de "River Tables" et mobiliers de luxe fusionnant des essences nobles (ébène, bubinga) avec de la résine cristalline.',
+              },
+            ].map((a, i) => (
+              <div key={i} className="bg-white rounded-xl border border-gray-100 shadow-sm p-6 hover:shadow-md transition-shadow">
+                <div className="text-4xl mb-3">{a.icon}</div>
+                <h3 className="font-bold text-gray-900 mb-2" style={{ color: a.color }}>{a.title}</h3>
+                <p className="text-gray-500 text-sm leading-relaxed">{a.desc}</p>
+              </div>
+            ))}
+          </div>
+          <div className="bg-[#1a2b4a] rounded-xl p-6 flex items-start gap-4">
+            <span className="text-2xl shrink-0">💡</span>
+            <div>
+              <h4 className="font-bold text-[#F57C00] text-sm uppercase tracking-wide mb-1">Projection VIP</h4>
+              <p className="text-white/80 text-sm leading-relaxed">Une résidence VIP où le mobilier semble flotter sur un sol de quartz liquide, chaque pièce étant numérotée et personnalisée selon l'identité du propriétaire.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ══ PÔLE ÉNERGIE & EAU ══════════════════════════════════════════════ */}
+      <section id="energie" className="py-16 bg-white">
+        <div className="max-w-7xl mx-auto px-4">
+          <div className="text-center mb-10">
+            <p className="text-[#F57C00] font-bold text-xs tracking-widest uppercase mb-2">ÉNERGIE & EAU</p>
+            <h2 className="text-2xl md:text-3xl font-bold text-[#1a2b4a]">L'Indépendance Totale</h2>
+            <p className="text-gray-500 text-sm mt-3 max-w-2xl mx-auto">Interconnexion intelligente multi-sources pour une résilience 24h/24. Nous brisons la dépendance aux réseaux.</p>
+          </div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+            {[
+              { icon: "⚡", color: "#F57C00", title: "PADESS-BIOFLOW POWER™", desc: "Énergie microbienne (MFC) à partir des bactéries des sols et racines de mangrove/raphia. Électricité stable même par temps couvert ou sans vent." },
+              { icon: "🔥", color: "#8B1A1A", title: "Biogaz Domestique & Industriel", desc: "Transformation des biodéchets organiques en gaz de cuisson et en électricité stable pour l'habitat et l'industrie." },
+              { icon: "💧", color: "#1565C0", title: "Forages & Filtration Ionique", desc: "Accès permanent à une eau potable de qualité supérieure via des systèmes de pompage autonomes, même en zone reculée." },
+              { icon: "🚗", color: "#4CAF50", title: "Rétrofit Électrique", desc: "Conversion de véhicules thermiques en 100% électriques. Suppression totale de la dépendance aux hydrocarbures et réduction des coûts." },
+            ].map((e, i) => (
+              <div key={i} className="rounded-xl border border-gray-100 p-5 hover:shadow-md transition-shadow bg-white">
+                <div className="text-3xl mb-3">{e.icon}</div>
+                <h3 className="font-bold text-sm mb-2" style={{ color: e.color }}>{e.title}</h3>
+                <p className="text-gray-500 text-xs leading-relaxed">{e.desc}</p>
               </div>
             ))}
           </div>
@@ -456,12 +559,12 @@ export default function Home() {
               </div>
             </div>
           </div>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
             {[
-              { icon: "🧱", color: "#4CAF50", title: "Technologie LEGO-BLOCK", desc: "Emboîtement mâle-femelle sans mortier classique" },
-              { icon: "⚡", color: "#F57C00", title: "5× Plus Rapide", desc: "Temps de construction divisé par 5 vs béton traditionnel" },
-              { icon: "💪", color: "#8B1A1A", title: "3× Plus Résistant", desc: "Plus robuste que le béton, hydrofuge et ignifuge" },
-              { icon: "🚽", color: "#1565C0", title: "Assainissement Biofil", desc: "Zéro vidange à vie, sans odeurs, transformation biologique" },
+              { icon: "🧱", color: "#4CAF50", title: "Technologie LEGO-BLOCK", desc: "Emboîtement mécanique mâle-femelle sans mortier classique" },
+              { icon: "⚡", color: "#F57C00", title: "5× Plus Rapide", desc: "Temps de chantier divisé par 5 — isolation thermique native" },
+              { icon: "💪", color: "#8B1A1A", title: "3× Plus Résistant", desc: "Plus robuste que le béton, hydrofuge, ignifuge, parasismique" },
+              { icon: "🌿", color: "#1565C0", title: "Assainissement Biofil", desc: "Biocompostage intégré — zéro vidange à vie, zéro odeur" },
             ].map((f, i) => (
               <div key={i} className="bg-gray-50 rounded-xl p-4 text-center border border-gray-100">
                 <div className="text-3xl mb-2">{f.icon}</div>
@@ -469,6 +572,13 @@ export default function Home() {
                 <p className="text-xs text-gray-500 leading-relaxed">{f.desc}</p>
               </div>
             ))}
+          </div>
+          <div className="bg-[#1a2b4a] rounded-xl p-6 flex items-start gap-4">
+            <span className="text-2xl shrink-0">💡</span>
+            <div>
+              <h4 className="font-bold text-[#F57C00] text-sm uppercase tracking-wide mb-1">Projection Chantier</h4>
+              <p className="text-white/80 text-sm leading-relaxed">L'érection d'une cité ouvrière ou d'un complexe scolaire de <strong className="text-white">20 bâtiments en seulement 30 jours</strong>, avec une isolation thermique native supprimant le besoin de climatisation énergivore.</p>
+            </div>
           </div>
         </div>
       </section>
