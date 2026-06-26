@@ -466,11 +466,7 @@ export default function Home() {
 
           {/* Vidéos */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
-            {[
-              { src: "/media/video1.mp4", type: "video/mp4" },
-              { src: "/media/video2.mov", type: "video/quicktime" },
-              { src: "/media/video3.mov", type: "video/quicktime" },
-            ].map((v, i) => (
+            {["/media/video1.mp4", "/media/video2.mp4", "/media/video3.mp4"].map((src, i) => (
               <div key={i} className="rounded-xl overflow-hidden shadow-lg aspect-video bg-black">
                 <video
                   className="w-full h-full object-cover"
@@ -479,8 +475,7 @@ export default function Home() {
                   loop
                   playsInline
                 >
-                  <source src={v.src} type={v.type} />
-                  <source src={v.src} type="video/mp4" />
+                  <source src={src} type="video/mp4" />
                 </video>
               </div>
             ))}
