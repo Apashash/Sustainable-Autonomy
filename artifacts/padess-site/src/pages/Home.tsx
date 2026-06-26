@@ -251,8 +251,8 @@ export default function Home() {
     <div className="bg-white text-gray-800 font-sans">
       <Navbar />
 
-      {/* spacer for fixed bars */}
-      <div className="h-[6.5rem]" />
+      {/* spacer for fixed bars — mobile 2-line topbar ≈ 96px, desktop 1-line ≈ 88px */}
+      <div className="h-24 sm:h-[5.5rem]" />
 
       {/* ══ HERO ═══════════════════════════════════════════════════════════ */}
       <section
@@ -351,7 +351,7 @@ export default function Home() {
                 desc: "Plastiques, biodéchets, métaux — transformés en actifs industriels à haute performance.",
               },
             ].map((p, i) => (
-              <div key={i} className="rounded-2xl p-6 flex flex-col gap-3 shadow-md hover:shadow-lg transition-shadow" style={{ backgroundColor: p.bg }}>
+              <div key={i} className="rounded-2xl p-4 sm:p-6 flex flex-col gap-2 sm:gap-3 shadow-md hover:shadow-lg transition-shadow" style={{ backgroundColor: p.bg }}>
                 <div className="text-white">{p.icon}</div>
                 <h3 className="font-bold text-base text-white leading-snug">{p.title}</h3>
                 <p className="text-white/80 text-sm leading-relaxed">{p.desc}</p>
@@ -482,7 +482,7 @@ export default function Home() {
       <section className="py-12 bg-gray-50 border-y border-gray-200">
         <div className="max-w-7xl mx-auto px-4">
           <h2 className="text-center text-2xl md:text-3xl font-bold text-[#1a2b4a] mb-8">Pourquoi Nos Clients Nous Choisissent</h2>
-          <div className="grid grid-cols-3 sm:grid-cols-4 lg:grid-cols-7 gap-4 text-center">
+          <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-7 gap-4 text-center">
             {whyUs.map((w, i) => (
               <div key={i} className="flex flex-col items-center gap-2">
                 <div className="w-14 h-14 rounded-full bg-[#1a2b4a] text-white flex items-center justify-center">
@@ -681,7 +681,7 @@ export default function Home() {
         <div className="max-w-7xl mx-auto px-4">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-0 rounded-xl overflow-hidden shadow-xl">
             {/* Left — dark info panel */}
-            <div className="bg-[#1a2b4a] text-white p-10 flex flex-col justify-between">
+            <div className="bg-[#1a2b4a] text-white p-6 lg:p-10 flex flex-col justify-between">
               <div>
                 <p className="text-[#F57C00] font-bold text-xs tracking-widest uppercase mb-3">CONTACTEZ-NOUS</p>
                 <h2 className="text-2xl font-bold mb-4 leading-tight">
@@ -720,7 +720,7 @@ export default function Home() {
               </div>
             </div>
             {/* Right — form */}
-            <div className="bg-gray-50 p-10">
+            <div className="bg-gray-50 p-6 lg:p-10">
               <form className="space-y-4" onSubmit={(e) => e.preventDefault()}>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <div>
@@ -814,20 +814,20 @@ export default function Home() {
           </div>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
             {[
-              { icon: "🧱", color: "#4CAF50", title: "Technologie LEGO-BLOCK", desc: "Emboîtement mécanique mâle-femelle sans mortier classique" },
-              { icon: "⚡", color: "#F57C00", title: "5× Plus Rapide", desc: "Temps de chantier divisé par 5 — isolation thermique native" },
-              { icon: "💪", color: "#8B1A1A", title: "3× Plus Résistant", desc: "Plus robuste que le béton, hydrofuge, ignifuge, parasismique" },
-              { icon: "🌿", color: "#1565C0", title: "Assainissement Biofil", desc: "Biocompostage intégré — zéro vidange à vie, zéro odeur" },
+              { icon: <HardHat size={24} />, color: "#4CAF50", title: "Technologie LEGO-BLOCK", desc: "Emboîtement mécanique mâle-femelle sans mortier classique" },
+              { icon: <Zap size={24} />, color: "#F57C00", title: "5× Plus Rapide", desc: "Temps de chantier divisé par 5 — isolation thermique native" },
+              { icon: <Shield size={24} />, color: "#8B1A1A", title: "3× Plus Résistant", desc: "Plus robuste que le béton, hydrofuge, ignifuge, parasismique" },
+              { icon: <Leaf size={24} />, color: "#1565C0", title: "Assainissement Biofil", desc: "Biocompostage intégré — zéro vidange à vie, zéro odeur" },
             ].map((f, i) => (
-              <div key={i} className="bg-gray-50 rounded-xl p-4 text-center border border-gray-100">
-                <div className="text-3xl mb-2">{f.icon}</div>
+              <div key={i} className="bg-gray-50 rounded-xl p-4 text-center border border-gray-100 flex flex-col items-center">
+                <div className="mb-2" style={{ color: f.color }}>{f.icon}</div>
                 <h4 className="font-bold text-xs mb-1" style={{ color: f.color }}>{f.title}</h4>
                 <p className="text-xs text-gray-500 leading-relaxed">{f.desc}</p>
               </div>
             ))}
           </div>
           <div className="bg-[#1a2b4a] rounded-xl p-6 flex items-start gap-4">
-            <span className="text-2xl shrink-0">💡</span>
+            <Lightbulb size={22} className="text-[#F57C00] shrink-0 mt-0.5" />
             <div>
               <h4 className="font-bold text-[#F57C00] text-sm uppercase tracking-wide mb-1">Projection Chantier</h4>
               <p className="text-white/80 text-sm leading-relaxed">L'érection d'une cité ouvrière ou d'un complexe scolaire de <strong className="text-white">20 bâtiments en seulement 30 jours</strong>, avec une isolation thermique native supprimant le besoin de climatisation énergivore.</p>
@@ -840,7 +840,7 @@ export default function Home() {
       <section className="py-16 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4">
           <h2 className="text-center text-2xl md:text-3xl font-bold text-[#1a2b4a] mb-12">Comment Ça Marche</h2>
-          <div className="grid grid-cols-2 lg:grid-cols-5 gap-6 relative">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6 relative">
             {/* connector line desktop */}
             <div className="hidden lg:block absolute top-8 left-[10%] right-[10%] h-0.5 bg-gray-200 z-0" />
             {steps.map((s, i) => (
@@ -896,9 +896,9 @@ export default function Home() {
               { val: "50–75%", label: "Marges Nettes",           color: "#4CAF50", desc: "PLASTI-BUILD® & Design Époxy — matière première gratuite (les déchets sont notre ressource)." },
               { val: "18–30m", label: "ROI Projeté",             color: "#F57C00", desc: "Retour sur investissement en 18 à 30 mois grâce à une demande massive et sans concurrence." },
               { val: "$/€",    label: "Trading International",   color: "#8B1A1A", desc: "Couverture naturelle contre les dévaluations monétaires locales via opérations internationales." },
-              { val: "↑🌍",   label: "Emplois & Impact Social",  color: "#1565C0", desc: "Création d'emplois locaux, lutte contre l'exode rural et dépollution des villes africaines." },
+              { val: "+500",  label: "Emplois & Impact Social",  color: "#1565C0", desc: "Création d'emplois locaux, lutte contre l'exode rural et dépollution des villes africaines." },
             ].map((c, i) => (
-              <div key={i} className="bg-white border border-gray-100 rounded-xl p-6 text-center hover:shadow-md transition-shadow shadow-sm">
+              <div key={i} className="bg-white border border-gray-100 rounded-xl p-4 sm:p-6 text-center hover:shadow-md transition-shadow shadow-sm">
                 <div className="text-3xl font-bold mb-2" style={{ color: c.color }}>{c.val}</div>
                 <h4 className="font-bold text-gray-900 text-sm mb-2">{c.label}</h4>
                 <p className="text-gray-500 text-xs">{c.desc}</p>
