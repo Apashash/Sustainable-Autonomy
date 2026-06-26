@@ -1,5 +1,5 @@
 import React from "react";
-import logo from "@assets/b92fe1f4-ff1b-4b54-b8d0-81f6ef9fe088_1782452359768.jpeg";
+import logo from "@assets/padess-logo-transparent.png";
 import { Mail, Phone, MapPin } from "lucide-react";
 
 export default function Footer() {
