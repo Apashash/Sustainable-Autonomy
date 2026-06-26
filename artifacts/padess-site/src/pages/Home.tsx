@@ -1,6 +1,7 @@
 import React, { useState, useRef } from "react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import { useScrollReveal } from "@/hooks/useScrollReveal";
 import {
   ArrowRight, CheckCircle, Star, Shield, Clock, ThumbsUp,
   Recycle, Zap, Building2, Truck, Droplet, Factory,
@@ -245,6 +246,7 @@ function TestimonialsCarousel() {
 }
 
 export default function Home() {
+  useScrollReveal();
   const [form, setForm] = useState({ nom: "", tel: "", email: "", service: "", message: "" });
 
   return (
@@ -291,15 +293,15 @@ export default function Home() {
         <div className="max-w-7xl mx-auto px-4">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div>
-              <p className="text-[#F57C00] font-bold text-xs tracking-widest uppercase mb-2">VISION STRATÉGIQUE</p>
-              <h2 className="text-2xl md:text-3xl font-bold text-[#1a2b4a] mb-4">L'Ère de la Transformation</h2>
-              <p className="text-gray-600 text-sm leading-relaxed mb-6">
+              <p className="sr-left text-[#F57C00] font-bold text-xs tracking-widest uppercase mb-2">VISION STRATÉGIQUE</p>
+              <h2 className="sr-left sr-d1 text-2xl md:text-3xl font-bold text-[#1a2b4a] mb-4">L'Ère de la Transformation</h2>
+              <p className="sr-left sr-d2 text-gray-600 text-sm leading-relaxed mb-6">
                 Sous la direction de <strong>M. Ahmed NCHANGE</strong>, Ingénieur en Procédés des Énergies Renouvelables et Trader-Broker International, et son équipe chevronnée, <strong>PADESS Engineering SARL</strong> ne se contente pas de construire : nous créons des systèmes de vie.
               </p>
-              <p className="text-gray-600 text-sm leading-relaxed mb-8">
+              <p className="sr-left sr-d3 text-gray-600 text-sm leading-relaxed mb-8">
                 Nous transformons les passifs environnementaux — déchets plastiques, pollution organique, isolement — en actifs technologiques et financiers de haute performance.
               </p>
-              <blockquote className="border-l-4 border-[#F57C00] pl-4 italic text-[#1a2b4a] text-sm leading-relaxed">
+              <blockquote className="sr-left sr-d4 border-l-4 border-[#F57C00] pl-4 italic text-[#1a2b4a] text-sm leading-relaxed">
                 "Le déchet n'est pas une fin, c'est le gisement d'une nouvelle ère industrielle. Nous ne consommons pas le monde, nous l'ingénions."
               </blockquote>
             </div>
@@ -310,7 +312,7 @@ export default function Home() {
                 { color: "#1565C0", icon: <Droplet size={22} />, title: "Eau Pure", desc: "Forages & filtration ionique partout" },
                 { color: "#8B1A1A", icon: <Recycle size={22} />, title: "Zéro Déchet", desc: "Plastiques et biodéchets valorisés à 100%" },
               ].map((c, i) => (
-                <div key={i} className="p-4 rounded-xl border border-gray-100 shadow-sm hover:shadow-md transition-shadow">
+                <div key={i} className={`sr-scale sr-d${i + 1} p-4 rounded-xl border border-gray-100 shadow-sm hover:shadow-md transition-shadow`}>
                   <div className="mb-2" style={{ color: c.color }}>{c.icon}</div>
                   <h4 className="font-bold text-xs text-gray-900 mb-1" style={{ color: c.color }}>{c.title}</h4>
                   <p className="text-xs text-gray-500 leading-relaxed">{c.desc}</p>
@@ -325,8 +327,8 @@ export default function Home() {
       <section className="py-14 bg-white">
         <div className="max-w-7xl mx-auto px-4">
           <div className="text-center mb-10">
-            <p className="text-[#F57C00] font-bold text-xs tracking-widest uppercase mb-2">VITRINE PRIMAIRE</p>
-            <h2 className="text-2xl md:text-3xl font-bold text-[#1a2b4a]">Les Piliers de la Disruption</h2>
+            <p className="sr-up text-[#F57C00] font-bold text-xs tracking-widest uppercase mb-2">VITRINE PRIMAIRE</p>
+            <h2 className="sr-up sr-d1 text-2xl md:text-3xl font-bold text-[#1a2b4a]">Les Piliers de la Disruption</h2>
           </div>
           <div className="grid grid-cols-2 gap-5">
             {[
@@ -351,7 +353,7 @@ export default function Home() {
                 desc: "Plastiques, biodéchets, métaux — transformés en actifs industriels à haute performance.",
               },
             ].map((p, i) => (
-              <div key={i} className="rounded-2xl p-4 sm:p-6 flex flex-col gap-2 sm:gap-3 shadow-md hover:shadow-lg transition-shadow" style={{ backgroundColor: p.bg }}>
+              <div key={i} className={`sr-scale sr-d${i + 1} rounded-2xl p-4 sm:p-6 flex flex-col gap-2 sm:gap-3 shadow-md hover:shadow-lg transition-shadow`} style={{ backgroundColor: p.bg }}>
                 <div className="text-white">{p.icon}</div>
                 <h3 className="font-bold text-base text-white leading-snug">{p.title}</h3>
                 <p className="text-white/80 text-sm leading-relaxed">{p.desc}</p>
@@ -387,15 +389,15 @@ export default function Home() {
       <section id="services" className="py-16 bg-white">
         <div className="max-w-7xl mx-auto px-4">
           <div className="text-center mb-10">
-            <p className="text-[#F57C00] font-bold text-xs tracking-widest uppercase mb-2">NOS EXPERTISES</p>
-            <h2 className="text-2xl md:text-3xl font-bold text-[#1a2b4a]">
+            <p className="sr-up text-[#F57C00] font-bold text-xs tracking-widest uppercase mb-2">NOS EXPERTISES</p>
+            <h2 className="sr-up sr-d1 text-2xl md:text-3xl font-bold text-[#1a2b4a]">
               Solutions d'Ingénierie Complètes<br />
               <span className="text-[#F57C00]">pour Particuliers & Entreprises</span>
             </h2>
           </div>
           <div className="grid grid-cols-2 lg:grid-cols-3 gap-4">
             {services.map((s, i) => (
-              <div key={i} className="flex flex-col gap-2 p-4 border border-gray-100 rounded-lg hover:shadow-md transition-shadow bg-white group">
+              <div key={i} className={`sr-up sr-d${Math.min(i + 1, 6)} flex flex-col gap-2 p-4 border border-gray-100 rounded-lg hover:shadow-md transition-shadow bg-white group`}>
                 <div className="w-11 h-11 rounded-lg flex items-center justify-center text-white shrink-0" style={{ backgroundColor: s.color }}>
                   {s.icon}
                 </div>
@@ -414,9 +416,9 @@ export default function Home() {
       <section id="architecture" className="py-16 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4">
           <div className="text-center mb-10">
-            <p className="text-[#F57C00] font-bold text-xs tracking-widest uppercase mb-2">ARCHITECTURE & DESIGN</p>
-            <h2 className="text-2xl md:text-3xl font-bold text-[#1a2b4a]">Haute Couture & Art Époxy</h2>
-            <p className="text-gray-500 text-sm mt-3 max-w-2xl mx-auto">L'espace devient une œuvre d'art fonctionnelle. Nous fusionnons la solidité structurelle avec une esthétique de palace.</p>
+            <p className="sr-up text-[#F57C00] font-bold text-xs tracking-widest uppercase mb-2">ARCHITECTURE & DESIGN</p>
+            <h2 className="sr-up sr-d1 text-2xl md:text-3xl font-bold text-[#1a2b4a]">Haute Couture & Art Époxy</h2>
+            <p className="sr-up sr-d2 text-gray-500 text-sm mt-3 max-w-2xl mx-auto">L'espace devient une œuvre d'art fonctionnelle. Nous fusionnons la solidité structurelle avec une esthétique de palace.</p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
             {[
@@ -436,7 +438,7 @@ export default function Home() {
                 desc: 'River Tables et mobiliers de luxe — essences nobles fusionnées à la résine cristalline.',
               },
             ].map((a, i) => (
-              <div key={i} className="bg-white rounded-xl border border-gray-100 shadow-sm p-6 hover:shadow-md transition-shadow">
+              <div key={i} className={`sr-up sr-d${i + 1} bg-white rounded-xl border border-gray-100 shadow-sm p-6 hover:shadow-md transition-shadow`}>
                 <div className="mb-3" style={{ color: a.color }}>{a.icon}</div>
                 <h3 className="font-bold text-gray-900 mb-2" style={{ color: a.color }}>{a.title}</h3>
                 <p className="text-gray-500 text-sm leading-relaxed">{a.desc}</p>
@@ -457,9 +459,9 @@ export default function Home() {
       <section id="energie" className="py-16 bg-white">
         <div className="max-w-7xl mx-auto px-4">
           <div className="text-center mb-10">
-            <p className="text-[#F57C00] font-bold text-xs tracking-widest uppercase mb-2">ÉNERGIE & EAU</p>
-            <h2 className="text-2xl md:text-3xl font-bold text-[#1a2b4a]">L'Indépendance Totale</h2>
-            <p className="text-gray-500 text-sm mt-3 max-w-2xl mx-auto">Interconnexion intelligente multi-sources pour une résilience 24h/24. Nous brisons la dépendance aux réseaux.</p>
+            <p className="sr-up text-[#F57C00] font-bold text-xs tracking-widest uppercase mb-2">ÉNERGIE & EAU</p>
+            <h2 className="sr-up sr-d1 text-2xl md:text-3xl font-bold text-[#1a2b4a]">L'Indépendance Totale</h2>
+            <p className="sr-up sr-d2 text-gray-500 text-sm mt-3 max-w-2xl mx-auto">Interconnexion intelligente multi-sources pour une résilience 24h/24. Nous brisons la dépendance aux réseaux.</p>
           </div>
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
             {[
@@ -468,7 +470,7 @@ export default function Home() {
               { icon: <Droplet size={22} />, color: "#1565C0", title: "Forages & Filtration Ionique", desc: "Eau potable de qualité supérieure, partout, 24h/24." },
               { icon: <Car size={22} />, color: "#4CAF50", title: "Rétrofit Électrique", desc: "Véhicules thermiques convertis en 100% électrique." },
             ].map((e, i) => (
-              <div key={i} className="rounded-xl border border-gray-100 p-4 hover:shadow-md transition-shadow bg-white">
+              <div key={i} className={`sr-up sr-d${i + 1} rounded-xl border border-gray-100 p-4 hover:shadow-md transition-shadow bg-white`}>
                 <div className="mb-2" style={{ color: e.color }}>{e.icon}</div>
                 <h3 className="font-bold text-xs mb-1" style={{ color: e.color }}>{e.title}</h3>
                 <p className="text-gray-500 text-[11px] leading-relaxed">{e.desc}</p>
@@ -481,10 +483,10 @@ export default function Home() {
       {/* ══ POURQUOI NOUS CHOISIR ════════════════════════════════════════════ */}
       <section className="py-12 bg-gray-50 border-y border-gray-200">
         <div className="max-w-7xl mx-auto px-4">
-          <h2 className="text-center text-2xl md:text-3xl font-bold text-[#1a2b4a] mb-8">Pourquoi Nos Clients Nous Choisissent</h2>
+          <h2 className="sr-up text-center text-2xl md:text-3xl font-bold text-[#1a2b4a] mb-8">Pourquoi Nos Clients Nous Choisissent</h2>
           <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-7 gap-4 text-center">
             {whyUs.map((w, i) => (
-              <div key={i} className="flex flex-col items-center gap-2">
+              <div key={i} className={`sr-up sr-d${Math.min(i + 1, 7)} flex flex-col items-center gap-2`}>
                 <div className="w-14 h-14 rounded-full bg-[#1a2b4a] text-white flex items-center justify-center">
                   {w.icon}
                 </div>
@@ -498,9 +500,9 @@ export default function Home() {
       {/* ══ NOS RÉALISATIONS — galerie défilante ════════════════════════════ */}
       <section className="py-14 bg-white overflow-hidden">
         <div className="max-w-7xl mx-auto px-4 mb-8 text-center">
-          <p className="text-[#F57C00] font-bold text-xs tracking-widest uppercase mb-2">GALERIE</p>
-          <h2 className="text-2xl md:text-3xl font-bold text-[#1a2b4a]">Nos Réalisations</h2>
-          <p className="text-gray-500 text-sm mt-2">Produits PLASTI-BUILD®, cuisine, toiture, art époxy — fabriqués à partir de déchets recyclés</p>
+          <p className="sr-up text-[#F57C00] font-bold text-xs tracking-widest uppercase mb-2">GALERIE</p>
+          <h2 className="sr-up sr-d1 text-2xl md:text-3xl font-bold text-[#1a2b4a]">Nos Réalisations</h2>
+          <p className="sr-up sr-d2 text-gray-500 text-sm mt-2">Produits PLASTI-BUILD®, cuisine, toiture, art époxy — fabriqués à partir de déchets recyclés</p>
         </div>
 
         {/* Row 1 — défile vers la gauche — Sanitaires & Construction */}
@@ -792,9 +794,9 @@ export default function Home() {
       <section id="about" className="py-16 bg-white">
         <div className="max-w-7xl mx-auto px-4">
           <div className="text-center mb-10">
-            <p className="text-[#F57C00] font-bold text-xs tracking-widest uppercase mb-2">PLASTI-BUILD® & H.E.R.O.®</p>
-            <h2 className="text-2xl md:text-3xl font-bold text-[#1a2b4a]">La Révolution de la Rapidité Fulgurante</h2>
-            <p className="text-gray-500 text-sm mt-3 max-w-2xl mx-auto">Le concept H.E.R.O.® (Habitation Écologique à Rendement Optimisé) redéfinit la vitesse de construction mondiale.</p>
+            <p className="sr-up text-[#F57C00] font-bold text-xs tracking-widest uppercase mb-2">PLASTI-BUILD® & H.E.R.O.®</p>
+            <h2 className="sr-up sr-d1 text-2xl md:text-3xl font-bold text-[#1a2b4a]">La Révolution de la Rapidité Fulgurante</h2>
+            <p className="sr-up sr-d2 text-gray-500 text-sm mt-3 max-w-2xl mx-auto">Le concept H.E.R.O.® (Habitation Écologique à Rendement Optimisé) redéfinit la vitesse de construction mondiale.</p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-10">
             <div className="relative rounded-xl overflow-hidden shadow-lg group">
@@ -839,11 +841,11 @@ export default function Home() {
       {/* ══ COMMENT ÇA MARCHE ════════════════════════════════════════════════ */}
       <section className="py-16 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4">
-          <h2 className="text-center text-2xl md:text-3xl font-bold text-[#1a2b4a] mb-12">Comment Ça Marche</h2>
+          <h2 className="sr-up text-center text-2xl md:text-3xl font-bold text-[#1a2b4a] mb-12">Comment Ça Marche</h2>
           {/* Mobile: vertical list — Desktop: 5-col grid */}
           <div className="flex flex-col gap-4 lg:hidden">
             {steps.map((s, i) => (
-              <div key={i} className="flex items-start gap-4 bg-white rounded-xl p-4 shadow-sm border border-gray-100">
+              <div key={i} className={`sr-left sr-d${i + 1} flex items-start gap-4 bg-white rounded-xl p-4 shadow-sm border border-gray-100`}>
                 <div className="w-12 h-12 rounded-full bg-[#F57C00] text-white flex items-center justify-center text-lg font-bold shadow-md shrink-0">
                   {s.n}
                 </div>
@@ -873,8 +875,8 @@ export default function Home() {
       <section id="realisations" className="py-16 bg-white">
         <div className="max-w-7xl mx-auto px-4">
           <div className="text-center mb-10">
-            <p className="text-[#F57C00] font-bold text-xs tracking-widest uppercase mb-2">NOS RÉALISATIONS</p>
-            <h2 className="text-2xl md:text-3xl font-bold text-[#1a2b4a]">Ce Que Nos Clients Disent de Nous</h2>
+            <p className="sr-up text-[#F57C00] font-bold text-xs tracking-widest uppercase mb-2">NOS RÉALISATIONS</p>
+            <h2 className="sr-up sr-d1 text-2xl md:text-3xl font-bold text-[#1a2b4a]">Ce Que Nos Clients Disent de Nous</h2>
           </div>
           {/* Testimonials carousel */}
           <div className="mb-14">
@@ -900,9 +902,9 @@ export default function Home() {
       <section id="investisseurs" className="py-16 bg-gray-50 border-y border-gray-200">
         <div className="max-w-7xl mx-auto px-4">
           <div className="text-center mb-10">
-            <p className="text-[#F57C00] font-bold text-xs tracking-widest uppercase mb-2">OPPORTUNITÉS</p>
-            <h2 className="text-2xl md:text-3xl font-bold text-[#1a2b4a]">Espace Investisseurs</h2>
-            <p className="text-gray-500 mt-3 max-w-xl mx-auto text-sm">PADESS offre des opportunités d'investissement exceptionnelles dans des marchés en forte croissance en Afrique.</p>
+            <p className="sr-up text-[#F57C00] font-bold text-xs tracking-widest uppercase mb-2">OPPORTUNITÉS</p>
+            <h2 className="sr-up sr-d1 text-2xl md:text-3xl font-bold text-[#1a2b4a]">Espace Investisseurs</h2>
+            <p className="sr-up sr-d2 text-gray-500 mt-3 max-w-xl mx-auto text-sm">PADESS offre des opportunités d'investissement exceptionnelles dans des marchés en forte croissance en Afrique.</p>
           </div>
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-5 mb-8">
             {[
@@ -911,7 +913,7 @@ export default function Home() {
               { val: "$/€",    label: "Trading International",   color: "#8B1A1A", desc: "Couverture naturelle contre les dévaluations monétaires locales via opérations internationales." },
               { val: "+500",  label: "Emplois & Impact Social",  color: "#1565C0", desc: "Création d'emplois locaux, lutte contre l'exode rural et dépollution des villes africaines." },
             ].map((c, i) => (
-              <div key={i} className="bg-white border border-gray-100 rounded-xl p-4 sm:p-6 text-center hover:shadow-md transition-shadow shadow-sm">
+              <div key={i} className={`sr-scale sr-d${i + 1} bg-white border border-gray-100 rounded-xl p-4 sm:p-6 text-center hover:shadow-md transition-shadow shadow-sm`}>
                 <div className="text-3xl font-bold mb-2" style={{ color: c.color }}>{c.val}</div>
                 <h4 className="font-bold text-gray-900 text-sm mb-2">{c.label}</h4>
                 <p className="text-gray-500 text-xs">{c.desc}</p>
