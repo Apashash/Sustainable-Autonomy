@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import {
@@ -70,6 +70,46 @@ const realizations = [
 ];
 
 // ─── Component ───────────────────────────────────────────────────────────────
+
+function TestimonialsCarousel() {
+  const track = useRef<HTMLDivElement>(null);
+  // Duplicate for infinite loop
+  const items = [...testimonials, ...testimonials, ...testimonials];
+
+  return (
+    <div className="overflow-hidden w-full" style={{ WebkitMaskImage: "linear-gradient(to right, transparent, black 8%, black 92%, transparent)" }}>
+      <div
+        ref={track}
+        className="flex gap-5"
+        style={{ animation: "scrollLeft 28s linear infinite", width: "max-content" }}
+      >
+        {items.map((t, i) => (
+          <div key={i} className="bg-white border border-gray-100 rounded-xl p-6 shadow-sm flex-shrink-0" style={{ width: "300px" }}>
+            <div className="flex gap-0.5 text-yellow-400 mb-3">
+              {[...Array(t.stars)].map((_, j) => <Star key={j} size={14} fill="currentColor" />)}
+            </div>
+            <p className="text-gray-600 text-sm leading-relaxed mb-4">"{t.text}"</p>
+            <div className="flex items-center gap-2">
+              <div className="w-9 h-9 rounded-full bg-[#1a2b4a] text-white flex items-center justify-center text-sm font-bold shrink-0">
+                {t.name[0]}
+              </div>
+              <div>
+                <div className="font-bold text-gray-900 text-sm">{t.name}</div>
+                <div className="text-xs text-gray-500">{t.city}</div>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+      <style>{`
+        @keyframes scrollLeft {
+          0%   { transform: translateX(0); }
+          100% { transform: translateX(-33.333%); }
+        }
+      `}</style>
+    </div>
+  );
+}
 
 export default function Home() {
   const [form, setForm] = useState({ nom: "", tel: "", email: "", service: "", message: "" });
@@ -325,23 +365,9 @@ export default function Home() {
             <p className="text-[#F57C00] font-bold text-xs tracking-widest uppercase mb-2">NOS RÉALISATIONS</p>
             <h2 className="text-2xl md:text-3xl font-bold text-[#1a2b4a]">Ce Que Nos Clients Disent de Nous</h2>
           </div>
-          {/* Testimonials */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-14">
-            {testimonials.map((t, i) => (
-              <div key={i} className="bg-gray-50 border border-gray-100 rounded-xl p-6 shadow-sm">
-                <div className="flex gap-0.5 text-yellow-400 mb-3">{[...Array(t.stars)].map((_, j) => <Star key={j} size={14} fill="currentColor" />)}</div>
-                <p className="text-gray-600 text-sm leading-relaxed mb-4">"{t.text}"</p>
-                <div className="flex items-center gap-2 mt-auto">
-                  <div className="w-9 h-9 rounded-full bg-[#1a2b4a] text-white flex items-center justify-center text-sm font-bold">
-                    {t.name[0]}
-                  </div>
-                  <div>
-                    <div className="font-bold text-gray-900 text-sm">{t.name}</div>
-                    <div className="text-xs text-gray-500">{t.city}</div>
-                  </div>
-                </div>
-              </div>
-            ))}
+          {/* Testimonials carousel */}
+          <div className="mb-14">
+            <TestimonialsCarousel />
           </div>
           {/* Project gallery */}
           <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3">
