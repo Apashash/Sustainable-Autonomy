@@ -23,12 +23,13 @@ export default function Navbar() {
     <>
       {/* Top info bar */}
       <div className="fixed top-0 w-full z-50 bg-[#1a2b4a] text-white text-xs">
-        <div className="max-w-7xl mx-auto px-4 py-2 flex items-center justify-between flex-wrap gap-2">
-          <div className="flex items-center gap-4">
-            <a href="tel:+237697221970" className="flex items-center gap-1.5 hover:text-[#F57C00] transition-colors">
+        <div className="max-w-7xl mx-auto px-4 py-2 flex items-center justify-between gap-2">
+          {/* Phone + Email: stacked on mobile, side-by-side on sm+ */}
+          <div className="flex flex-col sm:flex-row sm:items-center gap-0.5 sm:gap-4">
+            <a href="tel:+237697221970" className="flex items-center gap-1.5 hover:text-[#F57C00] transition-colors whitespace-nowrap">
               <Phone size={12} /> +237 697 221 970
             </a>
-            <a href="mailto:npadess@hoo.com" className="hidden sm:flex items-center gap-1.5 hover:text-[#F57C00] transition-colors">
+            <a href="mailto:npadess@hoo.com" className="flex items-center gap-1.5 hover:text-[#F57C00] transition-colors whitespace-nowrap">
               <Mail size={12} /> npadess@hoo.com
             </a>
           </div>
@@ -48,8 +49,8 @@ export default function Navbar() {
         </div>
       </div>
 
-      {/* Main navbar */}
-      <header className="fixed top-8 w-full z-40 bg-white shadow-sm border-b border-gray-200">
+      {/* Main navbar — offset accounts for taller top bar on mobile (2 lines) vs single line on sm+ */}
+      <header className="fixed top-[52px] sm:top-8 w-full z-40 bg-white shadow-sm border-b border-gray-200">
         <div className="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between">
           <a href="#" className="flex items-center gap-2 shrink-0">
             <img src={logo} alt="PADESS ENGINEERING" className="h-11 w-auto object-contain" />
