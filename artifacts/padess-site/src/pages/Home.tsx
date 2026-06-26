@@ -72,57 +72,105 @@ const realizations = [
 // ─── Component ───────────────────────────────────────────────────────────────
 
 function TestimonialsCarousel() {
-  const track = useRef<HTMLDivElement>(null);
+  const containerRef = useRef<HTMLDivElement>(null);
+  const [isDragging, setIsDragging] = useState(false);
   const [paused, setPaused] = useState(false);
+  const dragStart = useRef(0);
+  const scrollStart = useRef(0);
+  const resumeTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
+
   const items = [...testimonials, ...testimonials, ...testimonials];
+
+  const CARD_W = 320; // card width + gap
+  const TOTAL = testimonials.length * CARD_W;
+
+  // Auto-scroll via requestAnimationFrame
+  const offset = useRef(0);
+  const rafId = useRef<number | null>(null);
+
+  const tick = () => {
+    if (!containerRef.current) return;
+    offset.current += 0.6;
+    if (offset.current >= TOTAL) offset.current -= TOTAL;
+    containerRef.current.scrollLeft = offset.current;
+    rafId.current = requestAnimationFrame(tick);
+  };
+
+  // sync offset with actual scrollLeft when manually scrolling
+  const startAuto = () => {
+    if (rafId.current) cancelAnimationFrame(rafId.current);
+    if (containerRef.current) offset.current = containerRef.current.scrollLeft;
+    rafId.current = requestAnimationFrame(tick);
+    setPaused(false);
+  };
+
+  const stopAuto = () => {
+    if (rafId.current) { cancelAnimationFrame(rafId.current); rafId.current = null; }
+    setPaused(true);
+  };
+
+  // Start auto-scroll on mount
+  React.useEffect(() => {
+    startAuto();
+    return () => { if (rafId.current) cancelAnimationFrame(rafId.current); };
+  }, []);
+
+  // Pointer drag handlers (works for both mouse and touch via pointer events)
+  const onPointerDown = (e: React.PointerEvent) => {
+    if (!containerRef.current) return;
+    stopAuto();
+    setIsDragging(true);
+    dragStart.current = e.clientX;
+    scrollStart.current = containerRef.current.scrollLeft;
+    containerRef.current.setPointerCapture(e.pointerId);
+  };
+
+  const onPointerMove = (e: React.PointerEvent) => {
+    if (!isDragging || !containerRef.current) return;
+    const delta = dragStart.current - e.clientX;
+    containerRef.current.scrollLeft = scrollStart.current + delta;
+    offset.current = containerRef.current.scrollLeft;
+  };
+
+  const onPointerUp = () => {
+    setIsDragging(false);
+    if (resumeTimer.current) clearTimeout(resumeTimer.current);
+    resumeTimer.current = setTimeout(startAuto, 1500);
+  };
 
   return (
     <div
-      className="overflow-hidden w-full relative"
-      style={{ WebkitMaskImage: "linear-gradient(to right, transparent, black 8%, black 92%, transparent)" }}
-      onMouseEnter={() => setPaused(true)}
-      onMouseLeave={() => setPaused(false)}
-      onTouchStart={() => setPaused(true)}
-      onTouchEnd={() => setPaused(false)}
+      ref={containerRef}
+      className="flex gap-5 overflow-x-auto select-none"
+      style={{
+        scrollbarWidth: "none",
+        WebkitMaskImage: "linear-gradient(to right, transparent, black 8%, black 92%, transparent)",
+        cursor: isDragging ? "grabbing" : "grab",
+        scrollSnapType: "none",
+      }}
+      onPointerDown={onPointerDown}
+      onPointerMove={onPointerMove}
+      onPointerUp={onPointerUp}
+      onPointerLeave={onPointerUp}
     >
-      <div
-        ref={track}
-        className="flex gap-5"
-        style={{
-          animation: `scrollLeft 28s linear infinite`,
-          animationPlayState: paused ? "paused" : "running",
-          width: "max-content",
-        }}
-      >
-        {items.map((t, i) => (
-          <div key={i} className="bg-white border border-gray-100 rounded-xl p-6 shadow-sm flex-shrink-0" style={{ width: "300px" }}>
-            <div className="flex gap-0.5 text-yellow-400 mb-3">
-              {[...Array(t.stars)].map((_, j) => <Star key={j} size={14} fill="currentColor" />)}
+      <style>{`div::-webkit-scrollbar { display: none; }`}</style>
+      {items.map((t, i) => (
+        <div key={i} className="bg-white border border-gray-100 rounded-xl p-6 shadow-sm flex-shrink-0" style={{ width: "300px" }}>
+          <div className="flex gap-0.5 text-yellow-400 mb-3">
+            {[...Array(t.stars)].map((_, j) => <Star key={j} size={14} fill="currentColor" />)}
+          </div>
+          <p className="text-gray-600 text-sm leading-relaxed mb-4">"{t.text}"</p>
+          <div className="flex items-center gap-2">
+            <div className="w-9 h-9 rounded-full bg-[#1a2b4a] text-white flex items-center justify-center text-sm font-bold shrink-0">
+              {t.name[0]}
             </div>
-            <p className="text-gray-600 text-sm leading-relaxed mb-4">"{t.text}"</p>
-            <div className="flex items-center gap-2">
-              <div className="w-9 h-9 rounded-full bg-[#1a2b4a] text-white flex items-center justify-center text-sm font-bold shrink-0">
-                {t.name[0]}
-              </div>
-              <div>
-                <div className="font-bold text-gray-900 text-sm">{t.name}</div>
-                <div className="text-xs text-gray-500">{t.city}</div>
-              </div>
+            <div>
+              <div className="font-bold text-gray-900 text-sm">{t.name}</div>
+              <div className="text-xs text-gray-500">{t.city}</div>
             </div>
           </div>
-        ))}
-      </div>
-      {paused && (
-        <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-          <span className="bg-black/40 text-white text-xs px-3 py-1 rounded-full">⏸ En pause</span>
         </div>
-      )}
-      <style>{`
-        @keyframes scrollLeft {
-          0%   { transform: translateX(0); }
-          100% { transform: translateX(-33.333%); }
-        }
-      `}</style>
+      ))}
     </div>
   );
 }
