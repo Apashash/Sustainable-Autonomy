@@ -310,12 +310,12 @@ export default function Home() {
                 { color: "#4CAF50", icon: <HardHat size={22} />, title: "Construction Révolutionnaire", desc: "5× plus rapide que le béton avec PLASTI-BUILD®" },
                 { color: "#F57C00", icon: <Zap size={22} />, title: "Énergie Souveraine", desc: "Électricité microbienne BIOFLOW™ 24h/24" },
                 { color: "#1565C0", icon: <Droplet size={22} />, title: "Eau Pure", desc: "Forages & filtration ionique partout" },
-                { color: "#8B1A1A", icon: <Recycle size={22} />, title: "Zéro Déchet", desc: "Plastiques et biodéchets valorisés à 100%" },
+                { color: "#1a2b4a", icon: <Recycle size={22} />, title: "Zéro Déchet", desc: "Plastiques et biodéchets valorisés à 100%" },
               ].map((c, i) => (
-                <div key={i} className={`sr-scale sr-d${i + 1} p-4 rounded-xl border border-gray-100 shadow-sm hover:shadow-md transition-shadow`}>
-                  <div className="mb-2" style={{ color: c.color }}>{c.icon}</div>
-                  <h4 className="font-bold text-xs text-gray-900 mb-1" style={{ color: c.color }}>{c.title}</h4>
-                  <p className="text-xs text-gray-500 leading-relaxed">{c.desc}</p>
+                <div key={i} className={`sr-scale sr-d${i + 1} p-4 rounded-xl shadow-md hover:shadow-lg transition-shadow`} style={{ backgroundColor: c.color }}>
+                  <div className="mb-2 text-white">{c.icon}</div>
+                  <h4 className="font-bold text-xs text-white mb-1">{c.title}</h4>
+                  <p className="text-xs text-white/80 leading-relaxed">{c.desc}</p>
                 </div>
               ))}
             </div>
@@ -397,13 +397,13 @@ export default function Home() {
           </div>
           <div className="grid grid-cols-2 lg:grid-cols-3 gap-4">
             {services.map((s, i) => (
-              <div key={i} className={`sr-up sr-d${Math.min(i + 1, 6)} flex flex-col gap-2 p-4 border border-gray-100 rounded-lg hover:shadow-md transition-shadow bg-white group`}>
-                <div className="w-11 h-11 rounded-lg flex items-center justify-center text-white shrink-0" style={{ backgroundColor: s.color }}>
+              <div key={i} className={`sr-up sr-d${Math.min(i + 1, 6)} flex flex-col gap-2 p-4 rounded-lg hover:shadow-lg transition-shadow group`} style={{ backgroundColor: s.color }}>
+                <div className="w-11 h-11 rounded-lg flex items-center justify-center text-white shrink-0 bg-white/20">
                   {s.icon}
                 </div>
-                <h3 className="font-bold text-gray-900 text-xs leading-tight">{s.title}</h3>
-                <p className="text-gray-500 text-[11px] leading-relaxed hidden sm:block">{s.desc}</p>
-                <a href="#contact" className="inline-flex items-center gap-1 text-[11px] font-bold transition-colors" style={{ color: s.color }}>
+                <h3 className="font-bold text-white text-xs leading-tight">{s.title}</h3>
+                <p className="text-white/80 text-[11px] leading-relaxed hidden sm:block">{s.desc}</p>
+                <a href="#contact" className="inline-flex items-center gap-1 text-[11px] font-bold text-white/90 hover:text-white transition-colors">
                   EN SAVOIR PLUS <ArrowRight size={10} />
                 </a>
               </div>
@@ -423,7 +423,7 @@ export default function Home() {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
             {[
               {
-                icon: <Landmark size={28} />, color: "#8B1A1A",
+                icon: <Landmark size={28} />, color: "#1a2b4a",
                 title: "Plafonds Artistiques (BA13)",
                 desc: "Sculptures géométriques, lumières indirectes — une atmosphère de palace sur mesure.",
               },
@@ -438,10 +438,10 @@ export default function Home() {
                 desc: 'River Tables et mobiliers de luxe — essences nobles fusionnées à la résine cristalline.',
               },
             ].map((a, i) => (
-              <div key={i} className={`sr-up sr-d${i + 1} bg-white rounded-xl border border-gray-100 shadow-sm p-6 hover:shadow-md transition-shadow`}>
-                <div className="mb-3" style={{ color: a.color }}>{a.icon}</div>
-                <h3 className="font-bold text-gray-900 mb-2" style={{ color: a.color }}>{a.title}</h3>
-                <p className="text-gray-500 text-sm leading-relaxed">{a.desc}</p>
+              <div key={i} className={`sr-up sr-d${i + 1} rounded-xl shadow-sm p-6 hover:shadow-md transition-shadow`} style={{ backgroundColor: a.color }}>
+                <div className="mb-3 text-white">{a.icon}</div>
+                <h3 className="font-bold text-white mb-2">{a.title}</h3>
+                <p className="text-white/80 text-sm leading-relaxed">{a.desc}</p>
               </div>
             ))}
           </div>
@@ -466,14 +466,14 @@ export default function Home() {
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
             {[
               { icon: <Zap size={22} />, color: "#F57C00", title: "PADESS-BIOFLOW POWER™", desc: "Électricité microbienne 24h/24 — aucun réseau requis." },
-              { icon: <Flame size={22} />, color: "#8B1A1A", title: "Biogaz Domestique & Industriel", desc: "Biodéchets → gaz de cuisson et électricité stable." },
+              { icon: <Flame size={22} />, color: "#4CAF50", title: "Biogaz Domestique & Industriel", desc: "Biodéchets → gaz de cuisson et électricité stable." },
               { icon: <Droplet size={22} />, color: "#1565C0", title: "Forages & Filtration Ionique", desc: "Eau potable de qualité supérieure, partout, 24h/24." },
-              { icon: <Car size={22} />, color: "#4CAF50", title: "Rétrofit Électrique", desc: "Véhicules thermiques convertis en 100% électrique." },
+              { icon: <Car size={22} />, color: "#1a2b4a", title: "Rétrofit Électrique", desc: "Véhicules thermiques convertis en 100% électrique." },
             ].map((e, i) => (
-              <div key={i} className={`sr-up sr-d${i + 1} rounded-xl border border-gray-100 p-4 hover:shadow-md transition-shadow bg-white`}>
-                <div className="mb-2" style={{ color: e.color }}>{e.icon}</div>
-                <h3 className="font-bold text-xs mb-1" style={{ color: e.color }}>{e.title}</h3>
-                <p className="text-gray-500 text-[11px] leading-relaxed">{e.desc}</p>
+              <div key={i} className={`sr-up sr-d${i + 1} rounded-xl p-4 hover:shadow-lg transition-shadow`} style={{ backgroundColor: e.color }}>
+                <div className="mb-2 text-white">{e.icon}</div>
+                <h3 className="font-bold text-xs mb-1 text-white">{e.title}</h3>
+                <p className="text-white/80 text-[11px] leading-relaxed">{e.desc}</p>
               </div>
             ))}
           </div>
