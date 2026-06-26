@@ -380,11 +380,15 @@ export default function Home() {
           </div>
           <div className="grid grid-cols-2 lg:grid-cols-3 gap-4">
             {services.map((s, i) => (
-              <div key={i} className={`sr-up sr-d${Math.min(i + 1, 6)} flex flex-col gap-2 p-4 rounded-lg hover:shadow-lg transition-shadow group`} style={{ backgroundColor: s.color }}>
+              <div key={i} className={`sr-up sr-d${Math.min(i + 1, 6)} flex flex-col gap-2 p-4 rounded-lg hover:shadow-lg transition-shadow group relative`} style={{ backgroundColor: s.color }}>
+                {/* Numéro */}
+                <div className="absolute top-3 right-3 w-6 h-6 rounded-full bg-white/25 flex items-center justify-center text-white font-bold text-[11px] shrink-0">
+                  {i + 1}
+                </div>
                 <div className="w-11 h-11 rounded-lg flex items-center justify-center text-white shrink-0 bg-white/20">
                   {s.icon}
                 </div>
-                <h3 className="font-bold text-white text-xs leading-tight">{s.title}</h3>
+                <h3 className="font-bold text-white text-xs leading-tight pr-6">{s.title}</h3>
                 <p className="text-white/80 text-[11px] leading-relaxed hidden sm:block">{s.desc}</p>
                 <a href="#contact" className="inline-flex items-center gap-1 text-[11px] font-bold text-white/90 hover:text-white transition-colors">
                   EN SAVOIR PLUS <ArrowRight size={10} />
