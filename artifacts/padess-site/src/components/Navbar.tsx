@@ -1,15 +1,14 @@
 import React, { useState, useEffect } from "react";
-import { Button } from "@/components/ui/button";
-import { Menu, X } from "lucide-react";
+import { Menu, X, Phone, Mail, ChevronDown } from "lucide-react";
 import logo from "@assets/padess-logo-transparent.png";
 
 const navLinks = [
-  { name: "Vision", href: "#vision" },
-  { name: "Architecture & Époxy", href: "#architecture" },
-  { name: "H.E.R.O.®", href: "#hero-concept" },
-  { name: "Énergie & Eau", href: "#energie" },
-  { name: "Industrie", href: "#industrie" },
+  { name: "Accueil", href: "#" },
+  { name: "À Propos", href: "#about" },
+  { name: "Services", href: "#services" },
+  { name: "Réalisations", href: "#realisations" },
   { name: "Investisseurs", href: "#investisseurs" },
+  { name: "Contact", href: "#contact" },
 ];
 
 export default function Navbar() {
@@ -17,7 +16,7 @@ export default function Navbar() {
   const [open, setOpen] = useState(false);
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 50);
+    const onScroll = () => setScrolled(window.scrollY > 60);
     window.addEventListener("scroll", onScroll);
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
@@ -29,107 +28,104 @@ export default function Navbar() {
 
   return (
     <>
-      {/* 4-color brand stripe */}
-      <div className="fixed top-0 w-full z-50 flex h-1">
-        <div className="flex-1 bg-[#4CAF50]" />
-        <div className="flex-1 bg-[#F57C00]" />
-        <div className="flex-1 bg-[#8B1A1A]" />
-        <div className="flex-1 bg-[#1565C0]" />
+      {/* Top info bar */}
+      <div className="fixed top-0 w-full z-50 bg-[#1565C0] text-white text-sm py-2">
+        <div className="max-w-7xl mx-auto px-4 flex items-center justify-between">
+          <div className="flex items-center gap-6">
+            <a href="tel:+237697221970" className="flex items-center gap-1.5 hover:text-[#F57C00] transition-colors">
+              <Phone size={13} /> +237 697 221 970
+            </a>
+            <a href="mailto:npadess@hoo.com" className="hidden sm:flex items-center gap-1.5 hover:text-[#F57C00] transition-colors">
+              <Mail size={13} /> npadess@hoo.com
+            </a>
+          </div>
+          <div className="hidden sm:flex items-center gap-1 text-xs text-white/70">
+            <span>📍 Douala, Cameroun</span>
+          </div>
+        </div>
       </div>
 
       {/* Main navbar */}
       <header
-        className={`fixed top-1 w-full z-40 transition-all duration-300 ${
+        className={`fixed top-8 w-full z-40 transition-all duration-300 ${
           scrolled
-            ? "bg-white/97 backdrop-blur-md border-b border-gray-200 shadow-sm py-2"
-            : "bg-white/95 backdrop-blur-sm border-b border-gray-100 py-3"
+            ? "bg-white shadow-lg py-2"
+            : "bg-white border-b border-gray-100 py-3"
         }`}
       >
-        <div className="container mx-auto px-4 md:px-6 flex items-center justify-between">
-          <a href="#" className="flex items-center">
-            <img src={logo} alt="PADESS ENGINEERING" className="h-14 sm:h-16 w-auto object-contain" />
+        <div className="max-w-7xl mx-auto px-4 flex items-center justify-between">
+          {/* Logo */}
+          <a href="#" className="flex items-center shrink-0">
+            <img src={logo} alt="PADESS ENGINEERING" className="h-12 w-auto object-contain" />
           </a>
 
           {/* Desktop nav */}
-          <nav className="hidden lg:flex items-center gap-5">
+          <nav className="hidden lg:flex items-center gap-1">
             {navLinks.map((link) => (
               <a
                 key={link.name}
                 href={link.href}
-                className="text-sm font-semibold text-gray-700 hover:text-[#F57C00] transition-colors whitespace-nowrap"
+                className="px-4 py-2 text-sm font-semibold text-gray-700 hover:text-[#1565C0] transition-colors rounded"
               >
                 {link.name}
               </a>
             ))}
-            <Button asChild className="bg-[#4CAF50] hover:bg-[#43A047] text-white ml-2 font-bold shadow-md">
-              <a href="#contact">Contactez-nous</a>
-            </Button>
           </nav>
 
-          {/* Hamburger button */}
+          {/* CTA */}
+          <div className="hidden lg:block">
+            <a
+              href="#contact"
+              className="bg-[#F57C00] hover:bg-[#E65100] text-white font-bold px-6 py-3 rounded text-sm transition-colors shadow-md"
+            >
+              OBTENIR UN DEVIS
+            </a>
+          </div>
+
+          {/* Hamburger */}
           <button
-            className="lg:hidden p-2 text-gray-800"
+            className="lg:hidden p-2 text-gray-700"
             onClick={() => setOpen(true)}
-            aria-label="Ouvrir le menu"
+            aria-label="Menu"
           >
-            <Menu size={28} />
+            <Menu size={26} />
           </button>
         </div>
       </header>
 
-      {/* Mobile menu — full-screen overlay, completely outside header */}
+      {/* Mobile menu */}
       <div
         className={`fixed inset-0 z-[200] bg-white flex flex-col transition-transform duration-300 ease-in-out lg:hidden ${
           open ? "translate-x-0" : "translate-x-full"
         }`}
       >
-        {/* Header row inside menu */}
-        <div className="flex items-center justify-between px-6 py-4 border-b border-gray-100">
-          <img src={logo} alt="PADESS ENGINEERING" className="h-12 w-auto object-contain" />
-          <button
-            onClick={() => setOpen(false)}
-            aria-label="Fermer le menu"
-            className="p-2 text-gray-700 hover:text-[#F57C00] transition-colors"
-          >
-            <X size={28} />
+        <div className="bg-[#1565C0] text-white px-6 py-4 flex items-center justify-between">
+          <img src={logo} alt="PADESS ENGINEERING" className="h-10 w-auto object-contain brightness-0 invert" />
+          <button onClick={() => setOpen(false)} aria-label="Fermer" className="text-white">
+            <X size={26} />
           </button>
         </div>
-
-        {/* Color stripe */}
-        <div className="flex h-1 w-full">
-          <div className="flex-1 bg-[#4CAF50]" />
-          <div className="flex-1 bg-[#F57C00]" />
-          <div className="flex-1 bg-[#8B1A1A]" />
-          <div className="flex-1 bg-[#1565C0]" />
-        </div>
-
-        {/* Nav links */}
-        <nav className="flex flex-col flex-1 justify-center px-8 gap-2">
-          {navLinks.map((link, i) => (
+        <nav className="flex flex-col flex-1 px-6 pt-4">
+          {navLinks.map((link) => (
             <a
               key={link.name}
               href={link.href}
               onClick={() => setOpen(false)}
-              className="group flex items-center justify-between py-4 border-b border-gray-100 text-xl font-bold text-gray-800 hover:text-[#F57C00] transition-colors"
-              style={{ animationDelay: `${i * 50}ms` }}
+              className="flex items-center justify-between py-4 border-b border-gray-100 text-base font-semibold text-gray-800 hover:text-[#1565C0] transition-colors"
             >
-              <span>{link.name}</span>
-              <span className="text-gray-300 group-hover:text-[#F57C00] transition-colors text-2xl">›</span>
+              {link.name}
+              <span className="text-gray-300">›</span>
             </a>
           ))}
         </nav>
-
-        {/* CTA + slogan */}
-        <div className="px-8 pb-10 space-y-4">
-          <Button
-            asChild
-            className="w-full h-14 text-lg font-bold bg-[#4CAF50] hover:bg-[#43A047] text-white shadow-md"
+        <div className="px-6 py-6">
+          <a
+            href="#contact"
+            onClick={() => setOpen(false)}
+            className="block w-full text-center bg-[#F57C00] hover:bg-[#E65100] text-white font-bold py-4 rounded text-base transition-colors"
           >
-            <a href="#contact" onClick={() => setOpen(false)}>Contactez-nous</a>
-          </Button>
-          <p className="text-center text-xs text-gray-400 uppercase tracking-widest">
-            L'Innovation Durable au Service de votre Autonomie
-          </p>
+            OBTENIR UN DEVIS
+          </a>
         </div>
       </div>
     </>

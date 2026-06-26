@@ -1,488 +1,333 @@
 import React from "react";
-import { motion } from "framer-motion";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Textarea } from "@/components/ui/textarea";
-import { 
-  ArrowRight, Shield, Zap, Target, Factory, Droplet, 
-  Leaf, TrendingUp, Globe, Recycle, Building,
-  Mail, MapPin, Phone
-} from "lucide-react";
+import { ArrowRight, CheckCircle, Recycle, Zap, Building2, Truck, Droplet, Factory } from "lucide-react";
 
 // Assets
-import heroImg from "@assets/feceb23a-4a60-414a-943f-282e1c2ab911_1782452676920.jpeg";
-import visionImg from "@assets/efcd27e7-9cc0-41fe-8c8e-a590ec77c2a6_1782452676920.jpeg";
-import archImg1 from "@assets/8486619a-4af6-478a-8ed2-b378cd2cf4e3_1782452676920.jpeg";
-import archImg2 from "@assets/feceb23a-4a60-414a-943f-282e1c2ab911_1782452676920.jpeg";
-import archImg3 from "@assets/dd12a05e-615d-4ebe-b991-0a2af297bcd0_1782452676920.jpeg";
-import archImg4 from "@assets/f838483e-0d73-4d7c-ab3a-70bb00fe2395_1782452676920.jpeg";
-import plastiImg1 from "@assets/a22b47b7-9012-4f22-93f7-9019ab75b306_1782452676920.jpeg";
-import plastiImg2 from "@assets/308ead75-fc65-4e7a-8a66-6129152ad5d7_1782452676920.jpeg";
-import plastiImg3 from "@assets/aa2f8511-e97e-4985-8caf-4fb54a44bfcb_1782452676920.jpeg";
-import plastiImg4 from "@assets/ae7fe586-7bf4-4de0-b0ad-0874113871ad_1782452676920.jpeg";
-import energieImg1 from "@assets/d533f035-dad8-4e38-9532-945543a9faa2_1782452676919.jpeg";
-import energieImg2 from "@assets/8464e48a-bcf9-4b34-b469-ef4523c2acd0_1782452676919.jpeg";
-import energieImg3 from "@assets/df0e837b-4930-429c-832d-8a8a6e78715c_1782452676920.jpeg";
-import energieImg4 from "@assets/71b93d8a-1e71-46c9-8664-998421ba93d8_1782452676919.jpeg";
-import energieImg5 from "@assets/6d54bec4-c789-4c3e-bfcc-c0839f61e8fc_1782452676919.jpeg";
-import indImg1 from "@assets/7f0dac84-e7e2-4d58-89d7-dc8b22228aa9_1782452676920.jpeg";
-import indImg2 from "@assets/1a8eaeba-11cf-4372-8881-47b0d19ed33f_1782452676920.jpeg";
+import heroImg       from "@assets/feceb23a-4a60-414a-943f-282e1c2ab911_1782452676920.jpeg";
+import aboutImg      from "@assets/efcd27e7-9cc0-41fe-8c8e-a590ec77c2a6_1782452676920.jpeg";
+import svc1Img       from "@assets/8486619a-4af6-478a-8ed2-b378cd2cf4e3_1782452676920.jpeg";
+import svc2Img       from "@assets/a22b47b7-9012-4f22-93f7-9019ab75b306_1782452676920.jpeg";
+import svc3Img       from "@assets/d533f035-dad8-4e38-9532-945543a9faa2_1782452676919.jpeg";
+import svc4Img       from "@assets/7f0dac84-e7e2-4d58-89d7-dc8b22228aa9_1782452676920.jpeg";
+import svc5Img       from "@assets/dd12a05e-615d-4ebe-b991-0a2af297bcd0_1782452676920.jpeg";
+import svc6Img       from "@assets/ae7fe586-7bf4-4de0-b0ad-0874113871ad_1782452676920.jpeg";
+import proj1Img      from "@assets/308ead75-fc65-4e7a-8a66-6129152ad5d7_1782452676920.jpeg";
+import proj2Img      from "@assets/aa2f8511-e97e-4985-8caf-4fb54a44bfcb_1782452676920.jpeg";
+import proj3Img      from "@assets/f838483e-0d73-4d7c-ab3a-70bb00fe2395_1782452676920.jpeg";
+import proj4Img      from "@assets/1a8eaeba-11cf-4372-8881-47b0d19ed33f_1782452676920.jpeg";
 
-const fadeUp = {
-  hidden: { opacity: 0, y: 40 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: "easeOut" } }
-};
+// ── Feature cards below hero ────────────────────────────────────────────────
+const features = [
+  { icon: <Recycle size={36} className="text-[#4CAF50]" />, title: "PLASTI-BUILD®", desc: "Construction écologique à partir de déchets plastiques transformés en briques durables." },
+  { icon: <Zap size={36} className="text-[#F57C00]" />, title: "Énergie Solaire", desc: "Systèmes solaires et hydrauliques souverains pour une autonomie énergétique totale." },
+  { icon: <Building2 size={36} className="text-[#8B1A1A]" />, title: "Architecture Époxy", desc: "Revêtements époxy haut de gamme et finitions architecturales de prestige." },
+  { icon: <Truck size={36} className="text-[#1565C0]" />, title: "Mobilité & Industrie", desc: "Tricycles cargo électriques et solutions industrielles pour le marché africain." },
+];
 
-const staggerContainer = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: { staggerChildren: 0.2 }
-  }
-};
+// ── Services ────────────────────────────────────────────────────────────────
+const services = [
+  { img: svc1Img, icon: <Building2 size={22} />, color: "#8B1A1A", title: "Architecture & Art Époxy", desc: "Sols époxy industriels, décoration murale et finitions architecturales pour particuliers et entreprises." },
+  { img: svc2Img, icon: <Recycle size={22} />, color: "#4CAF50", title: "PLASTI-BUILD® & H.E.R.O.®", desc: "Briques en plastique recyclé, panneaux modulaires et systèmes de construction révolutionnaires." },
+  { img: svc3Img, icon: <Zap size={22} />, color: "#F57C00", title: "Énergie & Eau", desc: "Installations solaires, systèmes hydrauliques autonomes et gestion durable des ressources." },
+  { img: svc4Img, icon: <Truck size={22} />, color: "#1565C0", title: "Mobilité Industrielle", desc: "Tricycles cargo électriques pour la logistique urbaine et transport de marchandises en Afrique." },
+  { img: svc5Img, icon: <Factory size={22} />, color: "#4CAF50", title: "Ingénierie Industrielle", desc: "Conception, installation et maintenance d'équipements industriels sur mesure." },
+  { img: svc6Img, icon: <Droplet size={22} />, color: "#1565C0", title: "Traitement de l'Eau", desc: "Systèmes de purification, de stockage et de distribution d'eau pour particuliers et collectivités." },
+];
+
+// ── Projects ────────────────────────────────────────────────────────────────
+const projects = [
+  { img: proj1Img, label: "PLASTI-BUILD®", title: "Chantier Résidentiel Douala" },
+  { img: proj2Img, label: "ART ÉPOXY", title: "Sol Industriel Haut de Gamme" },
+  { img: proj3Img, label: "ÉNERGIE SOLAIRE", title: "Installation Système Autonome" },
+  { img: proj4Img, label: "H.E.R.O.®", title: "Transformation Déchets Plastiques" },
+];
+
+// ── Stats ───────────────────────────────────────────────────────────────────
+const stats = [
+  { value: "15+", label: "Années d'Expérience" },
+  { value: "200+", label: "Projets Réalisés" },
+  { value: "5", label: "Domaines d'Expertise" },
+  { value: "3", label: "Pays Couverts" },
+];
 
 export default function Home() {
   return (
-    <div className="min-h-screen bg-background text-foreground overflow-x-hidden">
+    <div className="bg-white text-gray-800 font-sans">
       <Navbar />
 
-      {/* HERO SECTION */}
-      <section className="relative min-h-screen flex items-center pt-24" id="hero">
-        <div className="absolute inset-0 z-0">
-          <div className="absolute inset-0 bg-black/65 z-10" />
-          <div className="absolute inset-0 bg-gradient-to-r from-[#070d18]/90 via-[#070d18]/50 to-transparent z-10" />
-          <motion.img 
-            initial={{ scale: 1.1 }}
-            animate={{ scale: 1 }}
-            transition={{ duration: 1.5, ease: "easeOut" }}
-            src={heroImg} 
-            alt="PADESS Team" 
-            className="w-full h-full object-cover"
-          />
+      {/* ── HERO ──────────────────────────────────────────────────────────── */}
+      <section className="relative min-h-[92vh] flex items-center" style={{ paddingTop: "7rem" }}>
+        <div className="absolute inset-0">
+          <img src={heroImg} alt="PADESS Team" className="w-full h-full object-cover" />
+          <div className="absolute inset-0 bg-[#0a1628]/75" />
         </div>
-        
-        <div className="container mx-auto px-4 md:px-6 relative z-20">
-          <motion.div 
-            initial="hidden"
-            animate="visible"
-            variants={staggerContainer}
-            className="max-w-4xl"
-          >
-            <motion.div variants={fadeUp} className="inline-block px-4 py-1.5 mb-6 border border-padess-gold/30 bg-padess-gold/10 text-padess-gold rounded-full text-sm font-bold tracking-widest uppercase">
-              L'INNOVATION DURABLE AU SERVICE DE VOTRE AUTONOMIE !
-            </motion.div>
-            <motion.h1 variants={fadeUp} className="text-[clamp(2rem,7vw,5.5rem)] font-display font-extrabold leading-[1.05] mb-8 text-white">
-              NOUS NE RÉPARONS PAS L'AVENIR,{" "}
-              <span className="text-[#F57C00]">NOUS L'INVENTONS.</span>
-            </motion.h1>
-            <motion.p variants={fadeUp} className="text-base sm:text-lg md:text-xl text-foreground/80 mb-10 max-w-2xl font-light">
-              Le centre de commandement d'une nouvelle révolution industrielle africaine. Transformer le déchet en richesse, installer des systèmes énergétiques souverains et bâtir l'éco-construction à une vitesse fulgurante.
-            </motion.p>
-            <motion.div variants={fadeUp} className="flex flex-col sm:flex-row gap-4">
-              <Button asChild size="lg" className="bg-padess-green hover:bg-padess-green/90 text-white font-bold h-14 px-8 text-lg">
-                <a href="#hero-concept">Découvrir nos solutions <ArrowRight className="ml-2" /></a>
-              </Button>
-              <Button asChild size="lg" variant="outline" className="border-padess-orange text-padess-orange hover:bg-padess-orange hover:text-white font-bold h-14 px-8 text-lg">
-                <a href="#contact">Contacter l'expert</a>
-              </Button>
-            </motion.div>
-          </motion.div>
-        </div>
-      </section>
-
-      {/* VISION STRATÉGIQUE */}
-      <section className="py-32 relative" id="vision">
-        <div className="container mx-auto px-4 md:px-6">
-          <motion.div 
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, margin: "-100px" }}
-            variants={staggerContainer}
-            className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center"
-          >
-            <div>
-              <motion.h2 variants={fadeUp} className="text-padess-orange font-bold tracking-widest text-sm mb-4">I. VISION STRATÉGIQUE</motion.h2>
-              <motion.h3 variants={fadeUp} className="text-4xl md:text-5xl font-display font-bold mb-8">L'ÈRE DE LA TRANSFORMATION</motion.h3>
-              
-              <motion.blockquote variants={fadeUp} className="border-l-4 border-padess-gold pl-6 py-2 mb-10">
-                <p className="text-2xl font-display italic text-white/90">
-                  "Le déchet n'est pas une fin, c'est le gisement d'une nouvelle ère industrielle. Nous ne consommons pas le monde, nous l'ingénions."
-                </p>
-                <footer className="mt-4 text-padess-gold font-bold">— M. Ahmed NCHANGE</footer>
-              </motion.blockquote>
-
-              <div className="space-y-8">
-                <motion.div variants={fadeUp} className="flex gap-4">
-                  <div className="mt-1 bg-padess-blue/20 p-3 rounded-lg text-padess-blue shrink-0">
-                    <Shield size={24} />
-                  </div>
-                  <div>
-                    <h4 className="text-xl font-bold mb-2">L'HUB DE L'AUTONOMIE TERRITORIALE</h4>
-                    <p className="text-foreground/70">Systèmes souverains, énergie des sols, habitat rapide, chaque mètre carré devient une unité de richesse.</p>
-                  </div>
-                </motion.div>
-                <motion.div variants={fadeUp} className="flex gap-4">
-                  <div className="mt-1 bg-padess-orange/20 p-3 rounded-lg text-padess-orange shrink-0">
-                    <Globe size={24} />
-                  </div>
-                  <div>
-                    <h4 className="text-xl font-bold mb-2">LE LEVIER DU TRADING STRATÉGIQUE</h4>
-                    <p className="text-foreground/70">Broker-Trader International, sécuriser les chaînes d'approvisionnement, valoriser les matières premières critiques.</p>
-                  </div>
-                </motion.div>
-                <motion.div variants={fadeUp} className="flex gap-4">
-                  <div className="mt-1 bg-padess-green/20 p-3 rounded-lg text-padess-green shrink-0">
-                    <Target size={24} />
-                  </div>
-                  <div>
-                    <h4 className="text-xl font-bold mb-2">L'INGÉNIERIE DU FUTUR (R&D)</h4>
-                    <p className="text-foreground/70">Pionnier du concept H.E.R.O.®️ et PLASTI-BUILD®️, le déchet devient ressource éternelle.</p>
-                  </div>
-                </motion.div>
-              </div>
-            </div>
-            
-            <motion.div variants={fadeUp} className="relative h-[600px] rounded-2xl overflow-hidden shadow-2xl shadow-padess-orange/10">
-              <div className="absolute inset-0 bg-padess-orange/20 mix-blend-overlay z-10"></div>
-              <img src={visionImg} alt="Engineer at sunset" className="w-full h-full object-cover" />
-            </motion.div>
-          </motion.div>
-        </div>
-      </section>
-
-      {/* ARCHITECTURE & DESIGN */}
-      <section className="py-32 bg-card relative" id="architecture">
-        <div className="container mx-auto px-4 md:px-6">
-          <motion.div 
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, margin: "-100px" }}
-            variants={staggerContainer}
-            className="text-center max-w-3xl mx-auto mb-20"
-          >
-            <motion.h2 variants={fadeUp} className="text-padess-blue font-bold tracking-widest text-sm mb-4">II. ARCHITECTURE & DESIGN "HAUTE COUTURE"</motion.h2>
-            <motion.h3 variants={fadeUp} className="text-4xl md:text-5xl font-display font-bold mb-6">L'Ingénierie au Service du Raffinement Sensoriel</motion.h3>
-            <motion.p variants={fadeUp} className="text-lg text-foreground/70">
-              PROJECTION : Une résidence VIP où le mobilier semble flotter sur un sol de quartz liquide, chaque pièce numérotée et personnalisée.
-            </motion.p>
-          </motion.div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
-            <motion.div variants={fadeUp} className="group relative h-80 rounded-xl overflow-hidden">
-              <img src={archImg1} alt="River table" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent p-6 flex flex-col justify-end">
-                <h4 className="text-xl font-bold text-white">Ébénisterie Prestige</h4>
-                <p className="text-white/70 text-sm mt-2">Bois & Époxy "River Tables"</p>
-              </div>
-            </motion.div>
-            <motion.div variants={fadeUp} className="group relative h-80 rounded-xl overflow-hidden">
-              <img src={archImg2} alt="Team" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent p-6 flex flex-col justify-end">
-                <h4 className="text-xl font-bold text-white">Art Époxy "Miroir"</h4>
-                <p className="text-white/70 text-sm mt-2">Finition monolithique incassable</p>
-              </div>
-            </motion.div>
-            <motion.div variants={fadeUp} className="group relative h-80 rounded-xl overflow-hidden">
-              <img src={archImg3} alt="Epoxy patterns" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent p-6 flex flex-col justify-end">
-                <h4 className="text-xl font-bold text-white">Motifs Géométriques</h4>
-                <p className="text-white/70 text-sm mt-2">Effets marbrés profonds</p>
-              </div>
-            </motion.div>
-            <motion.div variants={fadeUp} className="group relative h-80 rounded-xl overflow-hidden">
-              <img src={archImg4} alt="Kitchen" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent p-6 flex flex-col justify-end">
-                <h4 className="text-xl font-bold text-white">Plafonds Artistiques</h4>
-                <p className="text-white/70 text-sm mt-2">Atmosphère royale & jeux de lumières</p>
-              </div>
-            </motion.div>
+        <div className="relative z-10 max-w-7xl mx-auto px-4 py-20">
+          <div className="inline-block bg-[#F57C00] text-white text-xs font-bold px-4 py-1.5 rounded mb-6 tracking-widest uppercase">
+            15 Ans d'Expérience en Ingénierie
+          </div>
+          <h1 className="text-white font-extrabold leading-tight mb-6" style={{ fontSize: "clamp(2rem, 5vw, 4rem)", maxWidth: "700px" }}>
+            Solutions d'Ingénierie<br />
+            <span className="text-[#F57C00]">Innovantes & Durables</span><br />
+            pour l'Afrique
+          </h1>
+          <p className="text-gray-300 text-lg mb-10 max-w-xl">
+            PADESS ENGINEERING SARL — Le centre de commandement d'une nouvelle révolution industrielle africaine. Transformer le déchet en richesse, installer des systèmes énergétiques souverains.
+          </p>
+          <div className="flex flex-wrap gap-4">
+            <a href="#services" className="inline-flex items-center gap-2 bg-[#F57C00] hover:bg-[#E65100] text-white font-bold px-8 py-4 rounded transition-colors shadow-lg">
+              NOS SERVICES <ArrowRight size={18} />
+            </a>
+            <a href="#contact" className="inline-flex items-center gap-2 border-2 border-white text-white hover:bg-white hover:text-gray-900 font-bold px-8 py-4 rounded transition-colors">
+              NOUS CONTACTER
+            </a>
           </div>
         </div>
       </section>
 
-      {/* PLASTI-BUILD & H.E.R.O */}
-      <section className="py-32 relative overflow-hidden" id="hero-concept">
-        <div className="absolute top-0 right-0 w-1/2 h-full bg-padess-green/5 blur-[150px] -z-10 rounded-full"></div>
-        <div className="container mx-auto px-4 md:px-6">
-          <motion.div 
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, margin: "-100px" }}
-            variants={staggerContainer}
-            className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center"
-          >
-            <div className="order-2 lg:order-1 grid grid-cols-2 gap-4">
-              <img src={plastiImg1} alt="Roof tiles" className="rounded-xl w-full h-64 object-cover" />
-              <img src={plastiImg2} alt="Macro tiles" className="rounded-xl w-full h-64 object-cover mt-8" />
-              <img src={plastiImg3} alt="Display stand" className="rounded-xl w-full h-64 object-cover" />
-              <img src={plastiImg4} alt="Shelving unit" className="rounded-xl w-full h-64 object-cover mt-8" />
-            </div>
-
-            <div className="order-1 lg:order-2">
-              <motion.h2 variants={fadeUp} className="text-padess-green font-bold tracking-widest text-sm mb-4">III. PLASTI-BUILD®️ & CONCEPT H.E.R.O.®️</motion.h2>
-              <motion.h3 variants={fadeUp} className="text-4xl md:text-5xl font-display font-bold mb-6">La Révolution de la Rapidité Fulgurante</motion.h3>
-              <motion.p variants={fadeUp} className="text-xl text-foreground/80 mb-8">
-                Le Bâtiment "Lego". Érection d'une cité ouvrière de 20 bâtiments en seulement 30 jours, isolation thermique native supprimant la climatisation.
-              </motion.p>
-
-              <ul className="space-y-6">
-                <motion.li variants={fadeUp} className="flex gap-4">
-                  <div className="w-2 h-2 rounded-full bg-[#4CAF50] mt-2.5 shrink-0"></div>
-                  <div>
-                    <strong className="text-gray-900 block mb-1">H.E.R.O.®️ (Habitation Écologique à Rendement Optimisé)</strong>
-                    <span className="text-gray-600">Briques et parpaings en composite plastique-sable avec système d'emboîtement mécanique.</span>
-                  </div>
-                </motion.li>
-                <motion.li variants={fadeUp} className="flex gap-4">
-                  <div className="w-2 h-2 rounded-full bg-[#4CAF50] mt-2.5 shrink-0"></div>
-                  <div>
-                    <strong className="text-gray-900 block mb-1">Vitesse sans précédent</strong>
-                    <span className="text-gray-600">Assemblage sans mortier classique. Le temps de chantier est divisé par 5.</span>
-                  </div>
-                </motion.li>
-                <motion.li variants={fadeUp} className="flex gap-4">
-                  <div className="w-2 h-2 rounded-full bg-[#4CAF50] mt-2.5 shrink-0"></div>
-                  <div>
-                    <strong className="text-gray-900 block mb-1">Robustesse Totale</strong>
-                    <span className="text-gray-600">Matériaux 3x plus résistants que le béton, isolants thermiques, hydrofuges et ignifuges.</span>
-                  </div>
-                </motion.li>
-                <motion.li variants={fadeUp} className="flex gap-4">
-                  <div className="w-2 h-2 rounded-full bg-[#4CAF50] mt-2.5 shrink-0"></div>
-                  <div>
-                    <strong className="text-gray-900 block mb-1">Assainissement Biofil</strong>
-                    <span className="text-gray-600">Fosses à transformation biologique, zéro vidange à vie, sans odeurs, sans pollution des sols.</span>
-                  </div>
-                </motion.li>
-              </ul>
-            </div>
-          </motion.div>
-        </div>
-      </section>
-
-      {/* ÉNERGIE & EAU */}
-      <section className="py-32 bg-padess-blue/5 border-y border-padess-blue/10 relative" id="energie">
-        <div className="container mx-auto px-4 md:px-6">
-          <motion.div 
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, margin: "-100px" }}
-            variants={staggerContainer}
-            className="text-center max-w-3xl mx-auto mb-16"
-          >
-            <motion.h2 variants={fadeUp} className="text-padess-blue font-bold tracking-widest text-sm mb-4">IV. PÔLE ÉNERGIE & EAU</motion.h2>
-            <motion.h3 variants={fadeUp} className="text-4xl md:text-5xl font-display font-bold mb-6">L'INDÉPENDANCE TOTALE</motion.h3>
-            <motion.p variants={fadeUp} className="text-lg text-foreground/70">
-              Interconnexion Intelligente pour une Résilience 24h/24
-            </motion.p>
-          </motion.div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            <motion.div variants={fadeUp} className="bg-white border border-gray-200 rounded-2xl overflow-hidden hover:border-[#1565C0]/40 hover:shadow-lg transition-all">
-              <img src={energieImg1} alt="Bioflow power" className="w-full h-56 object-cover border-b border-gray-100" />
-              <div className="p-8">
-                <Zap className="text-[#1565C0] mb-4" size={32} />
-                <h4 className="text-xl font-bold mb-3 text-gray-900">PADESS-BIOFLOW POWER™️</h4>
-                <p className="text-gray-600">Innovation de rupture exploitant l'énergie microbienne (MFC) à partir des bactéries des sols et des racines. Électricité stable même par temps couvert ou sans vent.</p>
+      {/* ── FEATURE CARDS (below hero) ────────────────────────────────────── */}
+      <section className="relative z-10 -mt-1 bg-white">
+        <div className="max-w-7xl mx-auto px-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 -mt-16 gap-0 shadow-xl rounded-lg overflow-hidden">
+            {features.map((f, i) => (
+              <div
+                key={i}
+                className="bg-white border-r border-gray-100 last:border-r-0 p-8 flex flex-col gap-4 hover:bg-gray-50 transition-colors group"
+              >
+                <div className="mb-1">{f.icon}</div>
+                <h3 className="font-bold text-gray-900 text-lg">{f.title}</h3>
+                <p className="text-gray-500 text-sm leading-relaxed">{f.desc}</p>
+                <a href="#services" className="text-sm font-bold text-[#1565C0] hover:text-[#F57C00] transition-colors flex items-center gap-1 mt-auto">
+                  EN SAVOIR PLUS <ArrowRight size={14} />
+                </a>
               </div>
-            </motion.div>
-            
-            <motion.div variants={fadeUp} className="bg-white border border-gray-200 rounded-2xl overflow-hidden hover:border-[#4CAF50]/40 hover:shadow-lg transition-all">
-              <img src={energieImg3} alt="Biogas" className="w-full h-56 object-cover border-b border-gray-100" />
-              <div className="p-8">
-                <Leaf className="text-[#4CAF50] mb-4" size={32} />
-                <h4 className="text-xl font-bold mb-3 text-gray-900">Biogaz Domestique</h4>
-                <p className="text-gray-600">Transformation des biodéchets organiques en gaz de cuisson et en électricité stable pour une autonomie énergétique quotidienne.</p>
-              </div>
-            </motion.div>
-
-            <motion.div variants={fadeUp} className="bg-white border border-gray-200 rounded-2xl overflow-hidden hover:border-[#1565C0]/40 hover:shadow-lg transition-all">
-              <img src={energieImg2} alt="Water pump" className="w-full h-56 object-cover border-b border-gray-100" />
-              <div className="p-8">
-                <Droplet className="text-[#1565C0] mb-4" size={32} />
-                <h4 className="text-xl font-bold mb-3 text-gray-900">Forages & Filtration Ionique</h4>
-                <p className="text-gray-600">Accès permanent à une eau potable de qualité supérieure via des systèmes de pompage autonomes intelligents.</p>
-              </div>
-            </motion.div>
+            ))}
           </div>
         </div>
       </section>
 
-      {/* INDUSTRIE CIRCULAIRE */}
-      <section className="py-32 relative bg-gray-50" id="industrie">
-        <div className="container mx-auto px-4 md:px-6">
-          <motion.div 
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, margin: "-100px" }}
-            variants={staggerContainer}
-            className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center"
-          >
-            <div>
-              <motion.h2 variants={fadeUp} className="text-[#8B1A1A] font-bold tracking-widest text-sm mb-4">V. MOBILITÉ & INDUSTRIE CIRCULAIRE</motion.h2>
-              <motion.h3 variants={fadeUp} className="text-4xl md:text-5xl font-display font-bold mb-8 text-gray-900">Rien ne se perd, tout se transforme.</motion.h3>
-              
-              <div className="space-y-8">
-                <motion.div variants={fadeUp} className="border-l-2 border-[#8B1A1A] pl-6">
-                  <h4 className="text-xl font-bold mb-2 flex items-center gap-2 text-gray-900"><Recycle className="text-[#8B1A1A]" size={20}/> Métallurgie de Recyclage</h4>
-                  <p className="text-gray-600">Transformation des canettes en aluminium pour fabriquer des jantes de luxe et des composants mécaniques de haute précision.</p>
-                </motion.div>
-                <motion.div variants={fadeUp} className="border-l-2 border-[#8B1A1A] pl-6">
-                  <h4 className="text-xl font-bold mb-2 flex items-center gap-2 text-gray-900"><Building className="text-[#8B1A1A]" size={20}/> Mobilier Indestructible</h4>
-                  <p className="text-gray-600">Brouettes et sanitaires en polymères renforcés, conçus pour résister aux conditions extrêmes des chantiers africains.</p>
-                </motion.div>
-                <motion.div variants={fadeUp} className="border-l-2 border-[#8B1A1A] pl-6">
-                  <h4 className="text-xl font-bold mb-2 flex items-center gap-2 text-gray-900"><Zap className="text-[#8B1A1A]" size={20}/> Rétrofit Électrique</h4>
-                  <p className="text-gray-600">Conversion de véhicules thermiques en 100% électriques pour supprimer définitivement la dépendance aux hydrocarbures.</p>
-                </motion.div>
+      {/* ── ABOUT ─────────────────────────────────────────────────────────── */}
+      <section id="about" className="py-24 bg-white">
+        <div className="max-w-7xl mx-auto px-4">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+            {/* Image col */}
+            <div className="relative">
+              <div className="relative rounded-lg overflow-hidden shadow-2xl aspect-[4/3]">
+                <img src={aboutImg} alt="À propos de PADESS" className="w-full h-full object-cover" />
+                <div className="absolute inset-0 bg-[#1565C0]/10" />
               </div>
+              {/* Years badge */}
+              <div className="absolute -bottom-6 -right-6 bg-[#F57C00] text-white rounded-full w-32 h-32 flex flex-col items-center justify-center shadow-xl text-center">
+                <span className="text-4xl font-extrabold leading-none">15</span>
+                <span className="text-xs font-bold uppercase leading-tight mt-1">Ans<br/>d'Expertise</span>
+              </div>
+              {/* Accent bar */}
+              <div className="absolute -left-4 top-8 w-2 h-2/3 bg-[#4CAF50] rounded-full" />
             </div>
-            
-            <div className="grid grid-cols-1 gap-6">
-              <motion.img variants={fadeUp} src={indImg1} alt="Factory" className="rounded-2xl w-full h-[300px] object-cover" />
-              <motion.img variants={fadeUp} src={indImg2} alt="Aluminum recycling" className="rounded-2xl w-full h-[300px] object-cover" />
+
+            {/* Text col */}
+            <div className="lg:pl-6">
+              <p className="text-[#F57C00] font-bold text-sm tracking-widest uppercase mb-3">À PROPOS DE NOUS</p>
+              <h2 className="text-3xl md:text-4xl font-extrabold text-gray-900 mb-6 leading-tight">
+                PADESS Engineering —<br />
+                <span className="text-[#1565C0]">L'Innovation au Service</span><br />
+                de l'Autonomie Africaine
+              </h2>
+              <p className="text-gray-600 mb-6 leading-relaxed">
+                Fondée à Douala, Cameroun, PADESS ENGINEERING SARL est une entreprise d'ingénierie multi-sectorielle spécialisée dans la construction écologique, l'énergie durable et la mobilité industrielle. Nous transformons les défis africains en opportunités économiques.
+              </p>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-8">
+                <div className="flex items-start gap-3 bg-gray-50 rounded-lg p-4">
+                  <CheckCircle size={20} className="text-[#4CAF50] shrink-0 mt-0.5" />
+                  <div>
+                    <h4 className="font-bold text-gray-900 text-sm">Travail Innovant</h4>
+                    <p className="text-gray-500 text-xs mt-1">Technologies brevetées adaptées au marché africain</p>
+                  </div>
+                </div>
+                <div className="flex items-start gap-3 bg-gray-50 rounded-lg p-4">
+                  <CheckCircle size={20} className="text-[#4CAF50] shrink-0 mt-0.5" />
+                  <div>
+                    <h4 className="font-bold text-gray-900 text-sm">Construction Unique</h4>
+                    <p className="text-gray-500 text-xs mt-1">Systèmes PLASTI-BUILD® et H.E.R.O.® exclusifs</p>
+                  </div>
+                </div>
+              </div>
+              <a href="#contact" className="inline-flex items-center gap-2 bg-[#1565C0] hover:bg-[#0D47A1] text-white font-bold px-8 py-4 rounded transition-colors shadow-md">
+                DÉCOUVRIR PLUS <ArrowRight size={18} />
+              </a>
             </div>
-          </motion.div>
+          </div>
         </div>
       </section>
 
-      {/* INVESTISSEURS */}
-      <section className="py-32 bg-[#0a0f1a] relative overflow-hidden" id="investisseurs">
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-[#D4AF37]/5 rounded-full blur-[100px] pointer-events-none"></div>
-        <div className="container mx-auto px-4 md:px-6 relative z-10">
-          <motion.div 
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, margin: "-100px" }}
-            variants={staggerContainer}
-            className="text-center max-w-4xl mx-auto mb-16"
-          >
-            <motion.h2 variants={fadeUp} className="text-[#D4AF37] font-bold tracking-widest text-sm mb-4">VI. ESPACE INVESTISSEURS</motion.h2>
-            <motion.h3 variants={fadeUp} className="text-4xl md:text-6xl font-display font-bold mb-6 text-white">PERFORMANCE & RENDEMENTS</motion.h3>
-            <motion.p variants={fadeUp} className="text-xl text-[#D4AF37]/90 font-medium">
-              Pourquoi PADESS ENGINEERING est l'investissement le plus stratégique du continent ?
-            </motion.p>
-          </motion.div>
+      {/* ── STATS ─────────────────────────────────────────────────────────── */}
+      <section className="bg-[#1565C0] py-16">
+        <div className="max-w-7xl mx-auto px-4">
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 text-center text-white">
+            {stats.map((s, i) => (
+              <div key={i}>
+                <div className="text-5xl font-extrabold text-[#F57C00]">{s.value}</div>
+                <div className="text-sm font-semibold mt-2 text-white/80 uppercase tracking-wide">{s.label}</div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
 
-          <motion.div 
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            variants={staggerContainer}
-            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-16"
-          >
-            <motion.div variants={fadeUp} className="bg-white/5 border border-[#D4AF37]/25 p-8 rounded-2xl text-center">
-              <div className="text-5xl font-display font-bold text-[#D4AF37] mb-4">65%</div>
-              <h4 className="text-lg font-bold mb-2 text-white">Marges PLASTI-BUILD®️</h4>
-              <p className="text-sm text-white/60">Matière première à coût zéro : notre ressource principale est le déchet.</p>
-            </motion.div>
-            <motion.div variants={fadeUp} className="bg-white/5 border border-[#D4AF37]/25 p-8 rounded-2xl text-center">
-              <div className="text-5xl font-display font-bold text-[#D4AF37] mb-4">18-30<span className="text-2xl">m</span></div>
-              <h4 className="text-lg font-bold mb-2 text-white">ROI Projeté</h4>
-              <p className="text-sm text-white/60">Selon les unités industrielles déployées sur le territoire.</p>
-            </motion.div>
-            <motion.div variants={fadeUp} className="bg-white/5 border border-[#D4AF37]/25 p-8 rounded-2xl text-center">
-              <div className="text-5xl font-display font-bold text-[#D4AF37] mb-4">$/€</div>
-              <h4 className="text-lg font-bold mb-2 text-white">Trading International</h4>
-              <p className="text-sm text-white/60">Couverture naturelle contre les dévaluations monétaires locales.</p>
-            </motion.div>
-            <motion.div variants={fadeUp} className="bg-white/5 border border-[#D4AF37]/25 p-8 rounded-2xl text-center">
-              <div className="text-5xl font-display font-bold text-[#D4AF37] mb-4"><TrendingUp className="mx-auto" size={48}/></div>
-              <h4 className="text-lg font-bold mb-2 text-white">Emplois Massifs</h4>
-              <p className="text-sm text-white/60">Création d'emplois locaux dans la collecte, transformation et construction.</p>
-            </motion.div>
-          </motion.div>
+      {/* ── SERVICES ──────────────────────────────────────────────────────── */}
+      <section id="services" className="py-24 bg-gray-50">
+        <div className="max-w-7xl mx-auto px-4">
+          <div className="text-center mb-14">
+            <p className="text-[#F57C00] font-bold text-sm tracking-widest uppercase mb-3">NOS SERVICES</p>
+            <h2 className="text-3xl md:text-4xl font-extrabold text-gray-900">
+              Nous Fournissons des Solutions<br />
+              <span className="text-[#1565C0]">d'Ingénierie de Qualité</span>
+            </h2>
+          </div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+            {services.map((s, i) => (
+              <div key={i} className="bg-white rounded-lg overflow-hidden shadow-md hover:shadow-xl transition-shadow group">
+                <div className="relative h-52 overflow-hidden">
+                  <img src={s.img} alt={s.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+                  {/* Icon badge */}
+                  <div
+                    className="absolute bottom-0 right-0 w-14 h-14 flex items-center justify-center text-white rounded-tl-xl"
+                    style={{ backgroundColor: s.color }}
+                  >
+                    {s.icon}
+                  </div>
+                </div>
+                <div className="p-6">
+                  <h3 className="font-bold text-gray-900 text-lg mb-2">{s.title}</h3>
+                  <p className="text-gray-500 text-sm leading-relaxed mb-4">{s.desc}</p>
+                  <a href="#contact" className="text-sm font-bold uppercase tracking-wide flex items-center gap-1 transition-colors" style={{ color: s.color }}>
+                    EN SAVOIR PLUS <ArrowRight size={14} />
+                  </a>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
 
-          <motion.div variants={fadeUp} className="max-w-4xl mx-auto bg-white/5 p-8 border border-[#D4AF37]/20 rounded-2xl">
-            <h4 className="text-xl font-bold mb-4 text-white">PROJECTION FINANCIÈRE & SOUVERAINETÉ</h4>
-            <p className="text-white/75 mb-4">
-              Cluster industriel H.E.R.O.®️ permettant de capter des marchés publics et privés en millions d'euros/dollars et dizaines de milliards de FCFA. Solution clé en main pour stopper l'exode rural, réduire les importations et dépolluer les métropoles.
+      {/* ── RÉALISATIONS ──────────────────────────────────────────────────── */}
+      <section id="realisations" className="py-24 bg-white">
+        <div className="max-w-7xl mx-auto px-4">
+          <div className="text-center mb-14">
+            <p className="text-[#F57C00] font-bold text-sm tracking-widest uppercase mb-3">NOS RÉALISATIONS</p>
+            <h2 className="text-3xl md:text-4xl font-extrabold text-gray-900">
+              Nos Projets <span className="text-[#1565C0]">en Afrique</span>
+            </h2>
+          </div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            {projects.map((p, i) => (
+              <div key={i} className="group relative rounded-lg overflow-hidden shadow-md aspect-[3/4] cursor-pointer">
+                <img src={p.img} alt={p.title} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
+                <div className="absolute bottom-0 left-0 right-0 p-5">
+                  <span className="text-[#F57C00] text-xs font-bold uppercase tracking-widest">{p.label}</span>
+                  <h4 className="text-white font-bold mt-1">{p.title}</h4>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ── INVESTISSEURS ─────────────────────────────────────────────────── */}
+      <section id="investisseurs" className="py-24 bg-gray-50">
+        <div className="max-w-7xl mx-auto px-4">
+          <div className="text-center mb-14">
+            <p className="text-[#F57C00] font-bold text-sm tracking-widest uppercase mb-3">OPPORTUNITÉS</p>
+            <h2 className="text-3xl md:text-4xl font-extrabold text-gray-900">
+              Espace <span className="text-[#1565C0]">Investisseurs</span>
+            </h2>
+            <p className="text-gray-500 mt-4 max-w-xl mx-auto">
+              PADESS offre des opportunités d'investissement exceptionnelles dans des marchés en forte croissance sur le continent africain.
             </p>
-          </motion.div>
+          </div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
+            {[
+              { val: "65%", label: "Marges PLASTI-BUILD®", color: "#4CAF50", desc: "Matière première à coût zéro — le déchet est notre ressource principale." },
+              { val: "18–30m", label: "ROI Projeté", color: "#F57C00", desc: "Retour sur investissement en 18 à 30 mois selon les unités déployées." },
+              { val: "$/€", label: "Trading International", color: "#8B1A1A", desc: "Couverture naturelle contre les dévaluations monétaires locales." },
+              { val: "↑", label: "Emplois Massifs", color: "#1565C0", desc: "Création d'emplois locaux dans la collecte, transformation et construction." },
+            ].map((item, i) => (
+              <div key={i} className="bg-white rounded-lg p-8 text-center shadow-md hover:shadow-lg transition-shadow border-t-4" style={{ borderColor: item.color }}>
+                <div className="text-5xl font-extrabold mb-3" style={{ color: item.color }}>{item.val}</div>
+                <h4 className="font-bold text-gray-900 mb-2">{item.label}</h4>
+                <p className="text-gray-500 text-sm">{item.desc}</p>
+              </div>
+            ))}
+          </div>
+          <div className="text-center">
+            <a href="#contact" className="inline-flex items-center gap-2 bg-[#F57C00] hover:bg-[#E65100] text-white font-bold px-10 py-4 rounded transition-colors shadow-lg">
+              DEVENIR PARTENAIRE <ArrowRight size={18} />
+            </a>
+          </div>
         </div>
       </section>
 
-      {/* CONTACT */}
-      <section className="py-32 relative bg-white" id="contact">
-        <div className="container mx-auto px-4 md:px-6">
-          <motion.div 
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, margin: "-100px" }}
-            variants={staggerContainer}
-            className="grid grid-cols-1 lg:grid-cols-2 gap-16"
-          >
-            <div>
-              <motion.h2 variants={fadeUp} className="text-[#F57C00] font-bold tracking-widest text-sm mb-4">CONTACT & EXPERTISE</motion.h2>
-              <motion.h3 variants={fadeUp} className="text-4xl md:text-5xl font-display font-bold mb-6 text-gray-900">Prêt à inventer l'avenir ?</motion.h3>
-              <motion.p variants={fadeUp} className="text-lg text-gray-600 mb-10">
-                Chaque demande est traitée avec la rigueur d'un cabinet de conseil international.
-              </motion.p>
-              
-              <div className="space-y-6">
-                <motion.div variants={fadeUp} className="flex items-start gap-4">
-                  <div className="bg-[#4CAF50]/15 p-4 rounded-xl text-[#4CAF50]">
-                    <Phone size={24} />
-                  </div>
-                  <div>
-                    <h4 className="text-lg font-bold text-gray-900">Téléphone & WhatsApp</h4>
-                    <p className="text-gray-600 mt-1">WhatsApp / Expertise : +237 697 221 970</p>
-                    <p className="text-gray-600">Appels Directs : (+237) 658 92 90 70 | (+237) 690 38 95 45</p>
-                  </div>
-                </motion.div>
-                
-                <motion.div variants={fadeUp} className="flex items-start gap-4">
-                  <div className="bg-[#1565C0]/15 p-4 rounded-xl text-[#1565C0]">
-                    <Mail size={24} />
-                  </div>
-                  <div>
-                    <h4 className="text-lg font-bold text-gray-900">Email</h4>
-                    <p className="text-gray-600 mt-1">npadess@hoo.com</p>
-                    <p className="text-gray-600">padess@engineering.com</p>
-                    <p className="text-gray-600">ahmednchange@yahoo.com</p>
-                  </div>
-                </motion.div>
+      {/* ── CONTACT ───────────────────────────────────────────────────────── */}
+      <section id="contact" className="py-24 bg-white">
+        <div className="max-w-7xl mx-auto px-4">
+          <div className="text-center mb-14">
+            <p className="text-[#F57C00] font-bold text-sm tracking-widest uppercase mb-3">CONTACTEZ-NOUS</p>
+            <h2 className="text-3xl md:text-4xl font-extrabold text-gray-900">
+              Parlons de <span className="text-[#1565C0]">Votre Projet</span>
+            </h2>
+          </div>
 
-                <motion.div variants={fadeUp} className="flex items-start gap-4">
-                  <div className="bg-[#F57C00]/15 p-4 rounded-xl text-[#F57C00]">
-                    <MapPin size={24} />
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+            {/* Info */}
+            <div className="space-y-8">
+              <p className="text-gray-600 leading-relaxed">
+                Chaque demande est traitée avec la rigueur d'un cabinet de conseil international. Notre équipe d'experts vous répond dans les 24 heures.
+              </p>
+              {[
+                { icon: "📞", title: "Téléphone & WhatsApp", lines: ["WhatsApp / Expertise : +237 697 221 970", "(+237) 658 92 90 70  |  (+237) 690 38 95 45"], color: "#4CAF50" },
+                { icon: "✉️", title: "Email", lines: ["npadess@hoo.com", "padess@engineering.com", "ahmednchange@yahoo.com"], color: "#1565C0" },
+                { icon: "📍", title: "Siège Social", lines: ["Douala, Cameroun"], color: "#F57C00" },
+              ].map((item, i) => (
+                <div key={i} className="flex items-start gap-5">
+                  <div className="w-12 h-12 rounded-lg flex items-center justify-center text-xl shrink-0" style={{ backgroundColor: item.color + "18" }}>
+                    {item.icon}
                   </div>
                   <div>
-                    <h4 className="text-lg font-bold text-gray-900">Siège Social</h4>
-                    <p className="text-gray-600 mt-1">Douala, Cameroun</p>
+                    <h4 className="font-bold text-gray-900 mb-1">{item.title}</h4>
+                    {item.lines.map((l, j) => <p key={j} className="text-gray-500 text-sm">{l}</p>)}
                   </div>
-                </motion.div>
-              </div>
+                </div>
+              ))}
             </div>
 
-            <motion.div variants={fadeUp} className="bg-gray-50 p-8 rounded-3xl border border-gray-200 shadow-lg">
-              <form className="space-y-6" onSubmit={(e) => e.preventDefault()}>
+            {/* Form */}
+            <div className="bg-gray-50 rounded-lg p-8 shadow-md border border-gray-200">
+              <form className="space-y-5" onSubmit={(e) => e.preventDefault()}>
                 <div>
-                  <label className="block text-sm font-medium mb-2 text-gray-700">Nom complet ou Entreprise</label>
-                  <Input placeholder="Votre nom" className="bg-white h-12 border-gray-300 text-gray-900" />
+                  <label className="block text-sm font-semibold text-gray-700 mb-1.5">Nom complet ou Entreprise</label>
+                  <input type="text" placeholder="Votre nom" className="w-full border border-gray-300 rounded px-4 py-3 text-sm focus:outline-none focus:border-[#1565C0] bg-white text-gray-900" />
                 </div>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
                   <div>
-                    <label className="block text-sm font-medium mb-2 text-gray-700">Email</label>
-                    <Input type="email" placeholder="votre@email.com" className="bg-white h-12 border-gray-300 text-gray-900" />
+                    <label className="block text-sm font-semibold text-gray-700 mb-1.5">Email</label>
+                    <input type="email" placeholder="votre@email.com" className="w-full border border-gray-300 rounded px-4 py-3 text-sm focus:outline-none focus:border-[#1565C0] bg-white text-gray-900" />
                   </div>
                   <div>
-                    <label className="block text-sm font-medium mb-2 text-gray-700">Téléphone</label>
-                    <Input placeholder="+237 ..." className="bg-white h-12 border-gray-300 text-gray-900" />
+                    <label className="block text-sm font-semibold text-gray-700 mb-1.5">Téléphone</label>
+                    <input type="tel" placeholder="+237 ..." className="w-full border border-gray-300 rounded px-4 py-3 text-sm focus:outline-none focus:border-[#1565C0] bg-white text-gray-900" />
                   </div>
                 </div>
                 <div>
-                  <label className="block text-sm font-medium mb-2 text-gray-700">Votre Projet / Message</label>
-                  <Textarea placeholder="Décrivez vos besoins d'ingénierie, d'investissement ou de partenariat..." className="bg-white min-h-[150px] border-gray-300 resize-y text-gray-900" />
+                  <label className="block text-sm font-semibold text-gray-700 mb-1.5">Votre Projet / Message</label>
+                  <textarea rows={5} placeholder="Décrivez vos besoins d'ingénierie, d'investissement ou de partenariat..." className="w-full border border-gray-300 rounded px-4 py-3 text-sm focus:outline-none focus:border-[#1565C0] bg-white resize-y text-gray-900" />
                 </div>
-                <Button className="w-full h-14 text-lg font-bold bg-[#F57C00] hover:bg-[#E65100] text-white">
-                  Envoyer ma demande
-                </Button>
+                <button type="submit" className="w-full bg-[#F57C00] hover:bg-[#E65100] text-white font-bold py-4 rounded text-base transition-colors shadow-md">
+                  ENVOYER MA DEMANDE
+                </button>
               </form>
-            </motion.div>
-          </motion.div>
+            </div>
+          </div>
         </div>
       </section>
 
