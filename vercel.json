@@ -1,0 +1,13 @@
+{
+  "buildCommand": "pnpm --filter @workspace/padess-site run build",
+  "outputDirectory": "artifacts/padess-site/dist/public",
+  "installCommand": "pnpm install",
+  "framework": null,
+  "rewrites": [
+    { "source": "/(.*)", "destination": "/index.html" }
+  ],
+  "env": {
+    "NODE_ENV": "production",
+    "BASE_PATH": "/"
+  }
+}
